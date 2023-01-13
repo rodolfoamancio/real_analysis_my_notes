@@ -1,0 +1,31 @@
+\documentclass[12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[lmargin=2cm,tmargin=3cm,rmargin=2cm,bmargin=2cm]{geometry}
+\usepackage{epigraph}
+\usepackage{graphicx,xcolor,comment,enumerate,multirow,multicol,indentfirst}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,dsfont,mathtools,blindtext}
+\usepackage{mdframed, lipsum}
+
+\newmdtheoremenv{theorem}{Theorem}
+% \newtheorem{theorem}{Theorem}[section]
+\newmdtheoremenv{corollary}{Corollary}[theorem]
+% \newtheorem{corollary}{Corollary}
+
+\newmdtheoremenv{lemma}[theorem]{Lemma}
+\title{
+    \Huge \textbf{Notes on real analysis}
+}
+
+% Author
+\author{
+    \textsc{Rodolfo J Amancio}
+}
+
+\begin{document}
+\maketitle
+
+\input{chapters/01_preface.tex}
+
+
+\end{document}
