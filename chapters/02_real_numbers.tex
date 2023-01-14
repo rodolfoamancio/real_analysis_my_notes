@@ -169,6 +169,7 @@ Consider the set $B = \R$ and $A = [0,1]$. Then, $2, 2.5, \pi$ are all upper bou
         \item $s$ is an upper bound for $A$, and
         \item If $u$ is another upper bound for $A$ then $s \leq u$.
     \end{enumerate}
+    Mathematically, we write $s = \sup A$.
 \end{definition}
 
 \begin{definition}[Infimum]
@@ -177,6 +178,7 @@ Consider the set $B = \R$ and $A = [0,1]$. Then, $2, 2.5, \pi$ are all upper bou
         \item $i$ is a lower bound for $A$, and
         \item If $l$ is another lower bound for $A$ then $i \geq l$.
     \end{enumerate}
+    Mathematically, we write $i = \inf A$.
 \end{definition}
 
 \paragraph{Example}
@@ -284,3 +286,42 @@ using induction.
 \end{proof}
 
 \section{Defining $\R$}
+
+Now, let's revisit our initial problem, namely $\sqrt{2} \notin \Q$. First, we start with a theorem:
+
+\begin{theorem}
+    The set $E = \{ x \in \Q: 0 < x < \sqrt{2}\}$ is bounded above and does not have a supremum in $\Q$.
+\end{theorem}
+
+\begin{proof}
+    First, consider $q \in \Q$ then $q^2 <  2 < 4 \Rightarrow q^2 - 4 < 0 \Rightarrow (q-2)(q+2) < 0$. Since $q > 0$ we have $q - 2 < 0 \Rightarrow a <  2$. Hence, $2$ is an upper bound for $E$.\\
+    Next, to show that $\nexists \sup E \in \Q$ we begin by assuming $x = \sup E \in Q$. \\
+    Assume, for contradiction, $x^2 < 2$. Define
+    \begin{equation*}
+        h = \min \left\{ 
+            \frac{1}{2}, \frac{2 - x^2}{2(2x+1)}
+        \right\} < 1
+    \end{equation*}
+    Then, $h > 0$. Now we prove $h + x \in E$. Computing $(x+h)^2 = x^2 +2xh + h^2 < x^2 + 2xh + h$ since $h < 1$. So
+    \begin{equation*}
+        \begin{split}
+            (x+ h)^2 < x^2 + (2x + 1)h &= x^2 + (2x+1)\frac{2-x^2}{2(2x+1)} \\
+            &= x^2 + 2 - x^2 \\
+            &= 2
+        \end{split}
+    \end{equation*}
+    Therefore $(x+h)^2 < 2$ which implies $x + h \in E$ and $x + h > x$ so $x \neq \sup E$ which is a contradiction. Therefore, $x^2 \geq 2$. \\
+    Now, assume for contradiction $x > 2$. Then, define
+    \begin{equation*}
+        h = \frac{x^2 - 2}{2x}
+    \end{equation*}
+    Note that $x^2 > 2 \Rightarrow h > 0 \Rightarrow x - h < x$. Now we prove $x-h$ is an upper bound for $E$. Compute $(x-h)^2 = x^2 -2xh + h^2 = x^2 - (x^2 - 2) + h^2 = 2 + h^2 > 2$. Let $q \in E$, \emph{i.e.} $0 < q < \sqrt{2}$. Then, $q^2 < 2 < (x - h)^2 \Rightarrow 0 <  (x - h)^2 - q^2 \Rightarrow 0 < (x-h+q)(x-h-q)$ and
+    \begin{equation*}
+        0 < \left(
+            \frac{x^2+2}{2x} + q
+        \right)(x-h-q).
+    \end{equation*}
+    Since $q > 0$ and $(x^2+2)/(2x) > 0$ then $0 < x-h-q \Rightarrow q < x-h$. Thus, $\forall q \in E, q < x - h \Rightarrow x-h$ is an upper bound for $E$. Since $x = \sup E \Rightarrow x \leq x + h \Rightarrow h \leq 0$, which is a contradiction. \\
+    Thus, $x^2 = 2$ and $x > 1$. \\
+    For contradiction, assume $\exists m,n \in \N$ such that $m > n, x = m/n$. Then, $\exists n \in \N$ such that $nx \in \N$. Let $S = \{ k \in \N: kx \in \N\}$, note that $n \in S \Rightarrow S \neq \varnothing$. By the well-ordering of $\N$, $S$ has the least element $k_0 \in S$. Define $k_1 = k_0x-k_0 \in \Z$. Since $x > 1, k_1 = k_0(x-1) > 0 \Rightarrow k_1 \in \N$. Since $x^2 = 2 \Rightarrow 4 - x^2 > 0 \Rightarrow (2-x)(2+x) > 0 \Rightarrow 2-x > 0 \Rightarrow x < 2$. Then $k_1 = k_0(x-1) < k_0(2-x) = k_0$. Thus, $k_1 \in \N$ and $k_1 < k_0$. Computing $xk_1 = x(xk_0 -k_0) = x^2k_0 - xk_0 = 2k_0 - xk_0 = k_0 + (k_0 - xk_0) = k_0 - k_1 \in \N$. Thus, $k_1 \in S$ and $k_1 < k_0$ which means $k_0$ is not the least element in $S$ and $\sup E$ does not exist in $\Q$.
+\end{proof}
