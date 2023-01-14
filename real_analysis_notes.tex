@@ -6,7 +6,10 @@
 \usepackage{graphicx,xcolor,comment,enumerate,multirow,multicol,indentfirst}
 \usepackage{amsmath,amsthm,amsfonts,amssymb,dsfont,mathtools,blindtext}
 \usepackage{mdframed, lipsum}
+\usepackage{amsfonts}
+\usepackage{amssymb}
 
+\newtheorem{definition}{Definition}
 \newmdtheoremenv{theorem}{Theorem}
 % \newtheorem{theorem}{Theorem}[section]
 \newmdtheoremenv{corollary}{Corollary}[theorem]
@@ -16,6 +19,10 @@
 \title{
     \Huge \textbf{Notes on real analysis}
 }
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
 
 % Author
 \author{
@@ -24,8 +31,9 @@
 
 \begin{document}
 \maketitle
-
+\tableofcontents
 \input{chapters/01_preface.tex}
+\input{chapters/02_real_numbers.tex}
 
 
 \end{document}

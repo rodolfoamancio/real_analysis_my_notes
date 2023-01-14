@@ -1,0 +1,286 @@
+\chapter{The real numbers}
+
+During high school math we are often given a simplified definition of the real numbers, one it may take a while to fully grasp how awkward it is: "The real numbers is the set which contains the rational numbers and the irrational numbers". Taking alone it may seem a reasonable statement. In fact, it is true. However, if we start with the natural numbers there is a very concise and clear way of writing it:
+
+\begin{equation}
+    \N = \{1, 2, 3, ...\}
+\end{equation}
+
+Taking one step further, the integers follow quite naturally:
+
+\begin{equation}
+    \Z = \{..., -3, -2, -1, 0, 1, 2, 3, ... \}
+\end{equation}
+
+And even for the rationals, we can clearly write:
+
+\begin{equation}
+    \Q = \left \{
+        \frac{p}{q}: p, q \in \Z \text{ and } q \neq 0
+    \right \}
+\end{equation}
+
+Now, for the real numbers things are not so clear. So, we are stuck with our initial understanding of the big set which includes the rational and irrational numbers. So, let's start by looking more carefully at this similarly weird creature.
+
+\section{Irrational numbers}
+
+Before we proceed, let's take a minute to appreciate why we need irrational numbers. The following result will play an important role to distinguish the "holes" of the rational numbers when compared with the reals. We begin with a theorem.
+
+\begin{theorem}
+    There is no such number whose square root is $2$
+\end{theorem}
+
+\begin{proof}
+    As stated before, a rational number is one that can be written in the form $p/q$, with $q \neq 0$. Our approach here is what is called proof by contradiction. We will assume the opposite of what we want to prove, once we arrive at some absurd result we will conclude our initial assumption was wrong. Therefore, assume $\exists p, q \in \Z: (p/q)^2 = 2$, additionally, we take $p$ and $q$ with no common factors, such that the fraction $p/q$ is written in its simplest form. \\
+    If this is true, we can rearrange the relation into: $p^2 = 2 q^2$. Which implies $p^2$ is an even number, since the square of any odd number is odd, $p$ must also be even, \emph{i.e.} $p = 2r$. \\
+    Now, replacing $p$ on the previous equation yields $4 r^2 = 2 q^2 \Rightarrow q^2 = 2 r^2$, which implies $q^2$ and so is $q$. \\
+    This directly contradicts our initial assumption, since $p$ and $q$ are both even from the result above. Hence, our initial assumption must be wrong, and we conclude $\nexists p,q \in \Z: (p/q)^2=2$.
+\end{proof}
+
+In order to deal with irrational numbers, the set of real numbers is the natural extension necessary. Before we deal with it in a rigorous way, will start with the necessary tools to help us on this journey.
+
+\section{Preliminaries}
+
+This section aims to define some basic definitions and results that will help us to deal with real numbers, and the other topics of interest.
+
+\subsection{Set theory}
+
+\begin{definition}[Set]
+    A set is a collection of objects, called elements or members. An empty set is a set with no elements, denoted $\varnothing$.
+\end{definition}
+
+Usually, we write a set $A$ as $A = \{ a_1, a_2, ...\}$ where $a_1, a_2, ...$ are the elements of the set. Some important notations are:
+
+\begin{itemize}
+    \item $a \in A$: meaning $a$ is an element of $A$
+    \item $a \notin A$: meaning $a$ is not an element of $A$
+    \item $\forall$: meaning `for all'. For example, in mathematical notation the expression `for all $a$ which is an element of $A$' would be $\forall a \in B$
+    \item $\exists$: meaning `there exists'. The opposite would be $\nexists$
+    \item $\Rightarrow$: implies
+    \item $\Leftrightarrow$: if and only if
+\end{itemize}
+
+On a sidenote, the terms `implies' and `if and only if' have fundamental differences which will lead to different approaches in demonstrations and results. For instance, let's say proposition $P_1$ implies proposition $P_2$. In mathematical notation $P_1 \Rightarrow P_2$. This means that if $P_1$ is true, so is  $P_2$, but it does not say anything about the opposite direction. That is, if $P_2$ is true, not necessarily $P_1$ is true. On the other hand when the relation is $P_1$ is true if, and only if, $P_2$ is true. Or, $P_1 \Leftrightarrow P_2$ then the relation works both ways: if $P_1$ is true, so is $P_2$ and if $P_2$ is true, so is $P_1$. During proofs, when we have a $Leftrightarrow$ relation, the result must be proven in both directions.
+
+\begin{definition}[Subset]
+    $A$ is a subset of $B$ if, every element of $A$ is also an element of $B$. Notation: $A \subseteq B$. Equivalently, if $B$ is a superset of $A$, it is denoted $B \supseteq A$.
+\end{definition}
+
+Informally, we understand that two sets are equal if every element of one set is also an element of the other, and vice-versa. On mathematical notation:
+
+\begin{definition}[Equal sets]
+    Two sets, $A$ and $B$, are equal if $A \subseteq B$ and $B \subseteq A$. Hence, $A = B$.
+\end{definition}
+
+\begin{definition}[Proper subset]
+    A set $A$ is a proper subset of $B$ if $A \subseteq B$ and $A \neq B$. Notation: $A \subsetneq B$.
+\end{definition}
+
+Now, tow (or more) sets can be combined by operations. We define:
+
+\begin{itemize}
+    \item Union: $A \cup B = \{ x: x \in A \text{ or } x \in B\}$
+    \item Intersection: $A \cap B = \{ x: x \in A \text{ and } x \in B\}$
+    \item Difference: $A \setminus B = \{ x : x \in A \text { and } x \notin B\}$
+    \item Complement: $A^C = \{ x \notin A \}$
+\end{itemize}
+
+\begin{definition}[Disjoint sets]
+    Two sets, $A$ and $B$, are disjoint if $A \cap B = \varnothing$.
+\end{definition}
+
+Some important from set theory are the so-called De Morgan's laws:
+
+\begin{theorem}[De Morgan's Laws]
+    If $A$, $B$ and $C$ are sets, then:
+    \begin{itemize}
+        \item $(B \cup C)^C = B^C \cap C^C$
+        \item $(B \cap C)^C = B^C \cup C^C$
+        \item $A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$
+        \item $A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)$
+    \end{itemize}
+\end{theorem}
+
+Following the proof of the first result is shown, the other results can be derived similarly.
+
+\begin{proof}
+    Two sets $X$ and $Y$ are equal if $X \subseteq Y$ and $Y \subseteq X$. Our goal is to show that $(B \cup C)^C \subseteq B^C \cap C^C$ and $(B \cup C)^C \supseteq B^C \cap C^C$. \\
+    Let $x \in (B \cup C)^C$. It follows that $x \notin (B \cup C)$ then $x \notin B$ and $x \notin C$. So, $x \in B^C \cap C^C$ and we have $(B \cup C)^C \subseteq B^C \cap C^C$. \\
+    From the opposite direction, let  $x \in B^C \cap C^C$. Then $x \in B^C$ and $x \in C^C$ which means $x \notin B$ and $x \notin C$. So $x \notin (B \cup C) \Rightarrow x \in (B \cup C)^C$. So $B^C \cap C^C \subseteq (B \cup C)^C$.
+    Since $(B \cup C)^C \subseteq B^C \cap C^C$ and $B^C \cap C^C \subseteq (B \cup C)^C$, we have $(B \cup C)^C \subseteq B^C \cap C^C$.
+\end{proof}
+
+\subsubsection{Fields}
+
+\begin{definition}[Field]
+    A set $F$ is a field if satisfies the following properties:
+    \begin{itemize}
+        \item For addition
+            \begin{enumerate}
+                \item If $x, y \in F \Rightarrow x + y \in F$
+                \item Commutativity: $\forall x, y \in F: x + y = y + x$
+                \item Associativity: $\forall x, y, z \in F: (x+y) + z = x + (y + z)$
+                \item Additive identity: $\exists 0 \in F: 0 + x = x, \forall x \in F$
+                \item Additive inverse: $\exists -x \in F: x + (-x) = 0, \forall x \in F$
+            \end{enumerate}
+        \item For multiplication
+            \begin{enumerate}
+                \item If $x, y \in F \Rightarrow x \cdot y \in F$
+                \item Commutativity: $\forall x, y \in F: x \cdot y = y \cdot x$
+                \item Associativity: $\forall x,y, z \in F: (x\cdot y) z = x (y \cdot z)$
+                \item Multiplicative identity: $\exists 1 \in F: x \cdot 1 = x, \forall x \in F$
+                \item Multiplicative inverse: $\exists x^{-1} \in F: x \cdot x^{-1} = 1, \forall x \in F$
+            \end{enumerate}
+    \end{itemize}
+\end{definition}
+
+\begin{theorem}
+    If $F$ is a field, $\forall x \in F: x \cdot 0 = 0$.
+\end{theorem}
+
+\begin{proof}
+    If $x \in F$ then $0x \in F$ so $0 = 0x + (-0x) = 0x + 0x + (-0x) = 0x$.
+\end{proof}
+
+\begin{definition}[Ordered field]
+    An ordered field $F$ is a field which satisfies $\forall x, y, z \in F$:
+    \begin{enumerate}
+        \item If $x < y$ then $x + z < y + z$
+        \item If $x > 0$ and $y > 0$ then $xy > 0$ 
+    \end{enumerate}
+\end{definition}
+
+\subsubsection{Bounds}
+
+\begin{definition}[Bounds]
+    Let $A \subseteq B$. Then,
+    \begin{enumerate}
+        \item If $\exists u \in B: u \geq a, \forall a \in A$ then $A$ is bounded above and $u$ is an upper bound for $A$.
+        \item If $\exists l \in B: l \leq a, \forall a \in A$ then $A$ is bounded below and $l$ is a lower bound for $A$.
+    \end{enumerate}
+\end{definition}
+
+\paragraph{Example}
+Consider the set $B = \R$ and $A = [0,1]$. Then, $2, 2.5, \pi$ are all upper bounds for $A$. Similarly, $-1, 0, -\pi$ are all lower bounds for $A$.  
+
+\begin{definition}[Supremum]
+    Let $A \subseteq B$ with $A$ bounded above. Then $s$ is the least upper bound (or supremum) if:
+    \begin{enumerate}
+        \item $s$ is an upper bound for $A$, and
+        \item If $u$ is another upper bound for $A$ then $s \leq u$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Infimum]
+    Let $A \subseteq B$, with $A$ bounded below. Then, $i$ is the greatest lower bound (or infimum) of $A$ if:
+    \begin{enumerate}
+        \item $i$ is a lower bound for $A$, and
+        \item If $l$ is another lower bound for $A$ then $i \geq l$.
+    \end{enumerate}
+\end{definition}
+
+\paragraph{Example}
+Consider $B = \R$ and $A = (0,1) \subseteq A$. Then $1, \pi, 10$ are all upper bounds for $A$ but $1$ is the least upper bound (or infimum). On the other hand, $-10, -1, 0$ are all lower bounds for $A$, but only $0$ is the greatest lower bound (or infimum) of $A$.
+
+The previous example shows an important characteristic of the supremum (or infimum). In this case $0 \notin A$ and $1 \notin B$. We can also define:
+
+\begin{definition}[Maximum]
+    Let $A$ be a set bounded above, then $M$ is the maximum of $A$ if $M \in A$ and $M \geq a, \forall a \in A$.
+\end{definition}
+
+\begin{definition}[Minimum]
+    Let $A$ be a set bounded below, then $m$ is the minimum of $A$ if $m \in A$ and $m \leq a, \forall a \in A$.
+\end{definition}
+
+Notice that a set may have an infimum and not a minimum, as the previous example, since $0 \notin A$. The same result is valid for the supremum and maximum. On the other hand, if a set $A$ has a maximum, then it necessarily has a supremum. An equivalent result holds for the infimum and minimum.
+
+\subsection{Function}
+
+The formal definition of function is the following:
+
+\begin{definition}[Function]
+    Given a set $A$ and a set $B$, a function is a mapping rule which takes as an argument an element $a \in A$ and associates it with an element of $B$. We write $f: A \to B$. $f(a)$ is used to express the element of $B$, $f(a) \in B$, associated with the element $a \in A$. $A$ is called the domain of the function, while $B$ is its codmoain. The image of $f$ is not necessarily equal to $B$, but refers to $\{b \in B: b = f(a) \text{ for some } a \in A\} \subseteq B$.
+\end{definition}
+
+It is worth noting how this definition liberates math from the usual `formula' understanding of a function. In particular, this definition is closer to Dirichlet's definition, and it allows math to deal with more interesting and complex functions, such as:
+
+\paragraph{Example - Dirichlet's function}
+
+\begin{equation}
+    f(x) = \begin{cases}
+        1 \text{ if } x \in \Q \\
+        0 \text{ if } x \notin \Q
+    \end{cases}
+\end{equation}
+
+This broader definition of function will lead to interesting results and test some limits in math. But more on that latter.
+
+\begin{definition}
+    The function $f: A \to B$ is called 1-1 or injective if $f(a_1) = f(a_2) \Rightarrow a_1 = a_2$. Equivalently, $a_1 \neq a_2 \Rightarrow f(a_1) \neq f(a_2)$.
+\end{definition}
+
+\begin{definition}
+    The function $f: A \to B$ is called onto or surjective if $\forall b \in B, \exists a \in A$ such that $ f(a) = b$.
+\end{definition}
+
+\begin{definition}
+    A function that is both injective and surjective is called bijective.
+\end{definition}
+
+\subsection{Induction}
+
+The natural numbers have a property which leads to very important applications. This can be enunciated as:
+
+\subsubsection{Well ordering property of $\N$}
+
+If $S \subseteq \N$ and $S \neq \varnothing$. Then, $\exists x \in S$ such that $x \leq y, \forall y in S$.
+
+An important tool that arises from it is called `Induction'. We can state it as:
+
+\subsubsection{Proof by induction}
+
+Let $P(n)$ be a statement depending on $n \in \N$. Assume:
+
+\begin{enumerate}
+    \item Base case: $P(1)$ is true
+    \item Inductive case: If $P(m)$ is true, so is $P(m+1)$.
+\end{enumerate}
+
+From it, we conclude $P(n)$ is true for all $n \in \N$.
+
+\paragraph{Example}
+
+Prove that 
+\begin{equation}
+    1 + c + c^2 + ... + c^n = \frac{1-c^{n+1}}{1-c}, \forall c \neq 1, \forall n \in \N
+\end{equation}
+
+using induction.
+
+\begin{proof}
+    Following the algorithm presented before:
+    \begin{enumerate}
+        \item Base case.
+            \begin{equation}
+                1 + c = \frac{1-c^2}{1 - c} = \frac{(1-c)(1+c)}{1-c} = 1 + c
+            \end{equation}
+            As expected.
+        \item Inductive case.
+            Assume
+            \begin{equation}
+                1 + c + c^2 + ... + c^m = \frac{1-c^{m+1}}{1-c}
+            \end{equation}
+            is true. Now, for $m+1$:
+            \begin{equation}
+                \begin{split}
+                    1 + c + c^2 + ... + c^{m+1} & = (1 + c + c^2 + ... +c^{m}) + c^{m+1} \\
+                    & = \frac{1-c^{m+1}}{1-c} + c^{m+1} \\
+                    & = \frac{1-c^{m+1} + c^{m+1} + c^{m+2}}{1-c} \\
+                    & = \frac{1-c^{m+2}}{1-c}
+                \end{split}
+            \end{equation}
+            Hence, the relation still holds.
+    \end{enumerate}
+\end{proof}
+
+\section{Defining $\R$}
