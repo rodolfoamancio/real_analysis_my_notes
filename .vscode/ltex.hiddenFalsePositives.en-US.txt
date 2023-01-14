@@ -1,0 +1,1 @@
+{"rule":"THE_SUPERLATIVE","sentence":"^\\QThe previous definition could be stated about a `Greatest upper bound property'.\\E$"}

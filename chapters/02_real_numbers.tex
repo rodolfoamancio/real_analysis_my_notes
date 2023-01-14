@@ -217,6 +217,8 @@ It is worth noting how this definition liberates math from the usual `formula' u
 
 This broader definition of function will lead to interesting results and test some limits in math. But more on that latter.
 
+\subsubsection{Classification}
+
 \begin{definition}
     The function $f: A \to B$ is called 1-1 or injective if $f(a_1) = f(a_2) \Rightarrow a_1 = a_2$. Equivalently, $a_1 \neq a_2 \Rightarrow f(a_1) \neq f(a_2)$.
 \end{definition}
@@ -227,6 +229,16 @@ This broader definition of function will lead to interesting results and test so
 
 \begin{definition}
     A function that is both injective and surjective is called bijective.
+\end{definition}
+
+\subsubsection{Composition and inverse}
+
+\begin{definition}[Composite function]
+    If $f: A \to B$ and $g: B \to C$, then $f \circ g: A \to C$ is defined by $(f \circ g)(x) = g(f(x))$.
+\end{definition}
+
+\begin{definition}[Inverse function]
+    Consider $f: A \to B$ a bijective function. Then the inverse function $f^{-1}: B \to A$ is defined by: if $b \in B$ then $f^{-1}(b) \in A$ is the unique element $f^{-1}(b)$ such that $f(f^{-1}(b)) = b$.
 \end{definition}
 
 \subsection{Induction}
@@ -287,6 +299,8 @@ using induction.
 
 \section{Defining $\R$}
 
+\subsection{The incompleteness of $\Q$}
+
 Now, let's revisit our initial problem, namely $\sqrt{2} \notin \Q$. First, we start with a theorem:
 
 \begin{theorem}
@@ -325,3 +339,90 @@ Now, let's revisit our initial problem, namely $\sqrt{2} \notin \Q$. First, we s
     Thus, $x^2 = 2$ and $x > 1$. \\
     For contradiction, assume $\exists m,n \in \N$ such that $m > n, x = m/n$. Then, $\exists n \in \N$ such that $nx \in \N$. Let $S = \{ k \in \N: kx \in \N\}$, note that $n \in S \Rightarrow S \neq \varnothing$. By the well-ordering of $\N$, $S$ has the least element $k_0 \in S$. Define $k_1 = k_0x-k_0 \in \Z$. Since $x > 1, k_1 = k_0(x-1) > 0 \Rightarrow k_1 \in \N$. Since $x^2 = 2 \Rightarrow 4 - x^2 > 0 \Rightarrow (2-x)(2+x) > 0 \Rightarrow 2-x > 0 \Rightarrow x < 2$. Then $k_1 = k_0(x-1) < k_0(2-x) = k_0$. Thus, $k_1 \in \N$ and $k_1 < k_0$. Computing $xk_1 = x(xk_0 -k_0) = x^2k_0 - xk_0 = 2k_0 - xk_0 = k_0 + (k_0 - xk_0) = k_0 - k_1 \in \N$. Thus, $k_1 \in S$ and $k_1 < k_0$ which means $k_0$ is not the least element in $S$ and $\sup E$ does not exist in $\Q$.
 \end{proof}
+
+\subsection{The definition of $\R$}
+
+First, in order to define $\R$ the previous result about the lack of an upper bound for $E = \{ q \in \Q: 0 < q < \sqrt{2}\}$ allows us to introduce a definition.
+
+\begin{definition}[Least upper bound property]
+    An ordered set $S$ has the least upper bound property if every nonempty and bounded above subset $E \subseteq S$ has a supremum in $S$.
+\end{definition}
+
+The previous definition could be stated about a `Greatest upper bound property'. Clearly $\Q$ does not have the Least upper bound property as the previous subsection has shown.
+
+Now, for the real numbers,
+
+\begin{theorem}[Existence of $\R$]
+    There exists a unique ordered field which contains $\Q$ and has the least upper bound property. This field is denoted by $\R$.
+\end{theorem}
+
+\begin{theorem}
+    There exists a unique $r \in \R$ such that $r>0$ and $r^2 = 2$.
+\end{theorem}
+
+\begin{proof}
+    First, let $\tilde{E} = \{ x \in \R: 0 < x < \sqrt{2} \}$. Then, $\tilde{E}$ is bounded above. Take $r = \sup \tilde{E}$. The same proof as before show $r > 1$ and $r^2 = 2$. We now prove $r$ is unique. Suppose $\tilde{r} \in \R, \tilde{r}>0$ and $\tilde{r}^2 = 2$. Then, $0 = \tilde{r}^2 - r^2 = (\tilde{r} - r)(\tilde{r} + r) \Rightarrow 0 = \tilde{r} - r \Rightarrow r = \tilde{r}$.
+\end{proof}
+
+\subsection{The density of $\Q$ in $\R$}
+
+The set $\Q$ contains $\N$, and $\R$ contains $\Q$. The following theorems shows how $\N$ and $\Q$ sit inside $\R$:
+
+\begin{theorem}[Archimedean property]
+    If $x, y \in \R$ and $x > 0$ then $\exists n \in \N$ such that $nx < y$.
+\end{theorem}
+
+\begin{proof}
+    Suppose $x, y \in \R$ and $x > 0$. We need to show $\exists n \in \N$ such that $nx < y$, \emph{i.e.} $x < y/n$. \\
+    Assume for contradiction $\forall n \in \N: n \leq y/x$. Then $\N \subseteq \R$ is bounded above, hence it has a supremum, by the least upper bound property of $\R$ with value $a \in \R$. Since $a$ is the supremum of $\N$ then $a-1$ is not an upper bound for $\N$. Therefore, $\exists m \in \N$ such that $a-1 < m \Rightarrow a < m + 1$ which implies $a$ is not an upper bound for $\N$ contradiction our initial claim.
+\end{proof}
+
+\begin{theorem}[Densit of $\Q$ in $\R$]
+    If $x, y \in \R$ and $x < y$ then $\exists q \in \Q$ such that $x < r < y$.
+\end{theorem}
+
+\begin{proof}
+    Let $x, y \in \R$ and $x < y$, then:
+    \begin{enumerate}
+        \item If $x < 0 < y$ we have $r = 0 \in \Q$.
+        \item If $0 \leq x < y$ then by the Archimedean property, $\exists n \in \N$ such that $n(y-x) > 1$ and $\exists l \in \N$ such that $l > nx$. Thus, $S = \{ k \in \N: k > nx\} \neq \varnothing$. By the well ordering property of $\N$, $S$ has the least element $m$.\\
+        Since $m \in S \Rightarrow nx < m$. Since $m$ is the least element of $S$, $m-1 \notin S \Rightarrow m-1 \leq nx \Rightarrow m \leq nx + 1$. Thus, $nx < m < nx + 1 \Rightarrow x < m/n < y$. So, $r = m/n \in \Q$ is the solution.
+        \item If $x < y \leq 0$, then $0 \leq -y < x$. Then by the previous result $\exists \tilde{r} \in \Q$ such that $-y < \tilde{r} < -x$, or equivalently $x < -\tilde{r} < y$ and $r = -\tilde{r}$ is the solution.
+    \end{enumerate}
+\end{proof}
+
+\section{Cardinality}
+
+Now, we turn our attention to cardinality, which is an approach to compare the size of sets.
+
+\begin{definition}[Cardinality]
+    Two sets, $A$ and $B$, have the same cardinality if there exists a bijective function $f: A \to B$.
+\end{definition}
+
+\paragraph{Notation}
+
+\begin{itemize}
+    \item If $A$ and $B$ have the same cardinality we write $|A| = |B|$
+    \item If $|A| = |\{ 1, 2, 3, ..., n\}|$ we write $|A| = n$
+    \item If there exists an injective function $f: A \to B$ we write $|A| \leq |B|$
+    \item If $|A| \leq |B|$ and $|A| \neq |B|$ then $|A| < |B|$
+\end{itemize}
+
+\begin{theorem}[Cantor-Schorer-Bernstein]
+    If $|A| \leq |B|$ and $|B| \leq |A|$ then $|A| = |B|$
+\end{theorem}
+
+\subsection{Countable, uncountable and countably infinite sets}
+
+\begin{definition}[Countably infinite]
+    If $|A| = |\N|$ then $A$ is countably infinite.
+\end{definition}
+
+\begin{definition}[Countable sets]
+    If $A$ is countably infinite or finite, then $A$ is countable.
+\end{definition}
+
+\begin{definition}[Uncountable set]
+    If $A$ is neither countably infinite nor finite, then $A$ is uncountable.
+\end{definition}
+
