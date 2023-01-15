@@ -1,0 +1,170 @@
+\chapter{Sequences and series}
+
+\section{The starting problem}
+
+Basically a series is a sum of infinite terms. On the following example, some problems will appear as we try to manipulate the series as standard mathematical entities. Consider, for instance:
+
+\begin{equation}
+    \sum \limits_{n=1}^\infty \frac{(-1)^{n+1}}{n} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + ...
+\end{equation}
+
+We can consider the partial sum, $s_n$, \emph{i.e.} the sum of the $n$ first terms of the series. In this case we would obtain: $s_1 = 1$, $s_2 = 1/2$, $s_3 = 5/6$,... and so on. Interestingly, the odd sums decrease ($s_1 > s_3 > s_5 > ...$), while the even sums increase ($s_2 < s_4 < s_6 < ...$). It gives the idea that $\{s_n\}$ converges to some number $S$. And we may feel tempted to write:
+
+\begin{equation*}
+    S = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + ...
+\end{equation*}
+
+However, the use of standard mathematical notation ($+, -, =$) for series can be misleading. Take the previous equation, multiply it for $1/2$ and add it to itself. We would get:
+
+\begin{equation*}
+    \frac{3}{2}S = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + ...
+\end{equation*}
+
+Which seems to be a contradiction to our initial claim. In a certain sense, addition in this infinite setting is not commutative.
+
+Another example is the series:
+
+\begin{equation}
+    \sum \limits_{n=1}^\infty (-1)^n = -1 + 1 - 1 + 1 - 1 + ...
+\end{equation}
+
+Depending on how we group the terms we would find different results:
+
+\begin{equation*}
+    (-1 + 1) + (-1 + 1) + (-1 + 1) + ... = 0
+\end{equation*}
+
+On the other hand,
+
+\begin{equation*}
+    -1 + (1-1) + (1-1) + (1-1) + ... = 1
+\end{equation*}
+
+In order to deal with the tricks hidden in infinite series, we begin by discussing sequences.
+
+\section{Sequences}
+
+\subsection{Convergent sequences}
+
+\begin{definition}[Sequence]
+    A sequence is a function, $f$, whose domain is $\N$. In this way, $f: \N to \R$. Hence, $f(n)$ is the $n$-th term of the sequence. Notation: usually, a sequence is presented in the form $\{ x_n \}$, equivalent to $\{ x_1, x_2, x_3, ...\}$
+\end{definition}
+
+\begin{definition}[Convergence of a sequence]
+    A sequence $\{x_n \}$ converges to $x$ if $\forall \varepsilon > 0, \exists N \in N$ such that $|x_n - x| < \varepsilon, \forall n \geq N$. There are a few different ways to denote convergence, such as $\{ x_n\} \to x$, $\lim \limits_{n \to \infty} x_n = x$ or $x_n \to x$.
+\end{definition}
+
+The negation of the convergence of a sequence would be:
+
+\begin{definition}
+    A sequence  $\{ x_n\}$ does not converge to $x$ if $\exists \varepsilon_0 > 0$ such that $\exists m \in \N$ such that $|x_n - x| \geq \varepsilon, \forall n \geq m$.
+\end{definition}
+
+\paragraph{Example}
+
+\begin{equation*}
+    \lim \limits_{n \to \infty} \frac{1}{n^2 + 30n + 1} = 0
+\end{equation*}
+
+\begin{proof}
+    We need to find $N \in \N$ such that
+    \begin{equation*}
+        \frac{1}{n^2 + 30n + 1} < \varepsilon, \forall n \geq N
+    \end{equation*}
+    But
+    \begin{equation*}
+        \frac{1}{n^2 + 30n + 1} \leq \frac{1}{n^2 + 30n} \leq \frac{1}{30n} \leq \frac{1}{n}
+    \end{equation*}
+    Hence, if $1/n < \varepsilon$ then we would obtain the initial inequality. \\
+    Let $\varepsilon > 0$, set $N \in \N$ such that $1/N < \varepsilon$. Then, for all $n \geq N$:
+    \begin{equation*}
+        \left| \frac{1}{n^2+30n+1} - 0\right| = \frac{1}{n^2+30n+1} \leq  \frac{1}{30n} \leq \frac{1}{n} \leq \frac{1}{N} < \varepsilon
+    \end{equation*}
+\end{proof}
+
+\begin{definition}[Bounded sequences]
+    A sequence $\{x_n\}$ is bounded if there exists a number $M > 0$ such that $|x_n| < M, \forall n \in \N$.
+\end{definition}
+
+\begin{theorem}
+    If $\{ x_n\}$ is convergent, then $\{ x_n\}$ is bounded.
+\end{theorem}
+
+\begin{proof}
+    Suppose $\{ x_n\} \to x$, then $\exists N \in \N$ such that $\forall n \geq N, |x_n - x| < \varepsilon, \forall \varepsilon > 0$. Regardless if $x$ is positive or negative, we can write $|x_n| < |x| + \varepsilon$. Define $M = \max \{||x_1|, |x_2|, ..., |x_{N-1}|, |x| + \varepsilon \}$. Then, $|x_n| \leq M, \forall n \in \N$. 
+\end{proof}
+
+\begin{definition}
+    A sequence $\{ x_n \}$ is:
+    \begin{enumerate}
+        \item Monotone increasing, if $x_n \leq x_{n+1}, \forall n \in \N$,
+        \item Monotone decreasing, if $x_n \geq x_{n+1}, \forall n \in \N$,
+        \item If it is either monotone increasing or decreasing, then it is called monotone.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    A monotonic sequence is convergent if, and only if, it is bounded.
+\end{theorem}
+
+\begin{proof}
+    Suppose $\{ x_n\}$ is a monotonic increasing sequence. Then,
+    \begin{enumerate}
+        \item $( \Rightarrow )$ follows from the previous theorem.
+        \item $( \Leftarrow )$. Suppose $ \{x_n \} $ is bounded. Then, $ \{ x_n: n \in \N\} \subseteq \R$ is a bounded set. Let $x = \sup \{ x_n: n \in \R\}$. We claim 
+        \begin{equation*}
+            x = \lim \limits_{n\to \infty} x_n
+        \end{equation*}
+        Let $\varepsilon > 0$. Since $x - \varepsilon$ is not an upper bound for $\{ x_n: n \in \N\}$, $\exists M_0 \in \N$ such that $x_n - \varepsilon < x_{M_0} < x$. Choose $M = M_0$, then $\forall n \geq M, x-\varepsilon < x_{M_0} < x_n \leq x + \varepsilon$, or $x-\varepsilon < x_M < x+\varepsilon$.
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[Algebraic limit theorem]
+    Let $\{ a_n\} \to a$ and $\{ b_n\} to b$. Then,
+    \begin{enumerate}
+        \item $\{ ca_n\} \to ca, \forall c \in \R$
+        \item $\{ a_n + b_n\} \to a + b$
+        \item $\{ a_nb_n\} \to ab $
+        \item $\{a_n/b_n\} \to a/b$, given $b \ne 0$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Let's take each item individually:
+    \begin{enumerate}
+        \item First, note $|ca_n - ca| = |c||a_n - a|$. Hence, for $\varepsilon > 0$ we have $|ca_n - ca| < \varepsilon \Leftrightarrow |a_n-a| < \varepsilon/|c|$. Since $\{ a_n \} \to a$ then $\exists N \in \N$ such that $|a_n - a| < \varepsilon / |c|$, so $|ca_n - ca| = |c||a_n-a| < |c|\varepsilon/|c|, \forall n \geq N$.
+        \item From the triangle inequality, $|(a_n+b_n)-(a-b)| \leq |a_n-a|+|b_n-b|$. Set $N_1 \in \N$ such that $|a_n-a|< \varepsilon/2, \forall n \geq N_1$ with $\varepsilon > 0$. And set $N_2 \in \N$ such that $|b_n-b| < \varepsilon/2, \forall n \geq N_2$. Then, for $N = \max \{ N_1, N_2\}$ we obtain: $|(a_n+b_n)-(a+b)| \leq |a_n-a| + |b_n-b| < \varepsilon/2 + \varepsilon/2 = \varepsilon$.
+        \item First, $|a_nb_n - ab| = |a_nb_n -ab_n + ab_n - ab| \leq |a_nb_n-ab_n| + |ab_n - ab| = |b_n||a_n-a| + |a||b_n-b|$. Take $N_1 \in \N$ such that $|b_n-b| < \varepsilon/(2|a|), \forall n \geq N_1$ with $\varepsilon > 0$. Since every convergent sequence is bounded, take $M > 0$ so that $|b_n| < M, \forall n \in \N$. Then, set $N_2 \in \N$ such that $|a_n-a| < \varepsilon/(2M), \forall n \geq N_2$. Finally, for $N = \max \{ N_1, N_2\}$ we obtain $|a_nb_n - ab| \leq |b_n||a_n-a| + |a||b_n-b| < M\varepsilon/(2M) + |a|\varepsilon/(2|a|) = \varepsilon$.
+        \item $\{ a_n/b_n\} \to a/b$ follows from the previous result by noting $\{(1/b_n)\} \to 1/b$, provided $b \ne 0$. So,
+        \begin{equation*}
+            \left |
+            \frac{1}{b_n} - \frac{1}{b}
+            \right | = \frac{|b -b_n|}{|b||b_n|}
+        \end{equation*}
+        $|b_n-b|$ can be made arbitrarily small. On the other hand, considering $\varepsilon_0 = |b|/2$, define $N_1 \in \N$ such that $|b_n-b|<|b|/2, \forall n \geq N_1$, hence $|b_n| > |b|/2, \forall n \geq N_1$. Now, set $N_2 \in \N$ such that $|b_n-b| < \varepsilon|b|^2/2$. Taking $N = \max \{ N_1, N_2\}$ leads to
+        \begin{equation*}
+            \left|
+                \frac{1}{b_n} - \frac{1}{b}
+                \right| = 
+                |b-b_n|\frac{1}{|b||b_n|} < \frac{\varepsilon |b|^2}{2} \frac{1}{|b|\frac{|b|}{2}} = \varepsilon, \forall n \geq N
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[Order limit theorem]
+    Assume $\{a_n\} \to a$ and $\{ b_n\} \to b$, then:
+    \begin{enumerate}
+        \item If $a_n \geq 0, \forall n \in \N \Rightarrow a \geq 0$,
+        \item If $a_n \leq b_n, \forall n \in \N \Rightarrow a \leq b$,
+        \item If there exists $c \in \R$ such that $c \leq b_n, \forall n \in \N$, then $c \leq b$. Similarly, if $a_n \leq c, \forall n \in \N$ then $a \leq c$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Proof for each statement:
+    \begin{enumerate}
+        \item Assume $a < 0$. Consider $\varepsilon  = |a|$, since $\{ a_n\} \to a$ we have $|a_n - a|< |a|, \forall n \geq N$. In particular, $|a_N - a|<|a|$ hence $a_N < 0$ which is a contradiction. Therefore, $a \geq 0$.
+        \item From the algebraic theorem,  $\{ b_n - a_n\} \to a-b$. Since $b_n-a_n \geq 0$ from the previous result, we get $b - a \geq 0$.
+        \item Take $a_n = c, \forall n \in \N$. From the previous theorem, if $c \leq b_n$ then $b-c \geq 0$. Hence, $b \geq c$.
+    \end{enumerate}
+\end{proof}
