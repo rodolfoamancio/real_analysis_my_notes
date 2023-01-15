@@ -241,6 +241,26 @@ This broader definition of function will lead to interesting results and test so
     Consider $f: A \to B$ a bijective function. Then the inverse function $f^{-1}: B \to A$ is defined by: if $b \in B$ then $f^{-1}(b) \in A$ is the unique element $f^{-1}(b)$ such that $f(f^{-1}(b)) = b$.
 \end{definition}
 
+\subsection{The absolute function}
+
+The absolute function plays an important role in the proofs and arguments that are to come. First, it is defined as:
+
+\begin{definition}[Absolute function]
+    The absolute function $f(x): \R \to \R_+$ is defined as:
+    \begin{equation*}
+        |x| = \begin{cases}
+            x \: \: \:\textnormal{ if } x \geq 0, \\
+            -x \textnormal{ if } x < 0
+        \end{cases}
+    \end{equation*}
+\end{definition}
+
+It leads to a very important result, called the triangle inequality:
+
+\begin{theorem}[Triangle inequality]
+    $\forall a, b \in \R$, $|a+b| \leq |a| + |b|$
+\end{theorem}
+
 \subsection{Induction}
 
 The natural numbers have a property which leads to very important applications. This can be enunciated as:
