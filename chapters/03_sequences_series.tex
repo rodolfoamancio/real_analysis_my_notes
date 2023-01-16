@@ -169,20 +169,6 @@ The negation of the convergence of a sequence would be:
     \end{enumerate}
 \end{proof}
 
-\subsection{Subsequences}
-
-\begin{definition}[Subsequence]
-    Let $\{x_n\}$ be a sequence of real numbers, and $\{n_k\}$ be a strictly increasing sequence of natural numbers. Then, $\{x_{n_k}\}_{k=1}^\infty$ is called a subsequence of $\{x_n\}$.
-\end{definition}
-
-\begin{theorem}
-    If $\{x_n\}$ converges to $x$ then any subsequence of $\{x_n\}$ will converge to $x$.
-\end{theorem}
-
-\begin{proof}
-    Suppose $\{x_n\} \to x$. Let $\varepsilon > 0$, then $\exists M_0 \in \N$ such that $\forall n \geq M_0, |x_n-x| < \varepsilon$. Choose, $M=M_0$. If $k \geq M$, then $n_k \geq k \geq M = M_0$, hence for $\varepsilon>0, \exists M \in \N$ such that $|x_{n_k}-x| < \varepsilon, \forall n_k \geq M$.
-\end{proof}
-
 \subsection{Operations involving convergent sequences}
 
 In order to find out if a sequence converges, and to what value, there are a few tools at our disposal. We begin with the very popular Squeeze theorem, sometimes refered here as ST.
@@ -246,6 +232,8 @@ Show that
     \end{equation*}
     by the Squeeze theorem.
 \end{proof}
+
+\subsection{Some special sequences}
 
 \begin{theorem}
     If $\{x_n\}$ is a convergent sequence such that $\forall n \in \N, x_n \geq 0$, then $\{\sqrt{x_n}\}$ is convergent and
@@ -312,3 +300,38 @@ Show that
         \item For $c > 1$. Note that $\forall B \geq 0, \exists n \in \N$ such that $c^n > B$. For $n \in \N$ such that $n > B/(c-1)$ then $c^n = (1+(1-c))^n \geq 1 + n(c-1) \geq n(c-1) > B$. Hence, $\{c^n\}$ is unbounded $\forall c > 1$ and the sequence does not converge.
     \end{enumerate}
 \end{proof}
+
+\begin{theorem}
+    If $p>0$ then $\lim \limits_{n \to \infty}n^{-p} = 0$
+\end{theorem}
+
+\begin{proof}
+    Let $\varepsilon > 0$. Take $N > (1/\varepsilon)^{1/p}$, then
+    \begin{equation*}
+        \left |
+        \frac{1}{n^p} - 0
+        \right | = 
+        \frac{1}{|n^p|} \leq
+        \frac{1}{N^p} <
+        \varepsilon
+    \end{equation*}
+\end{proof}
+
+\begin{theorem}
+    If $p>0$ then $\lim \limits_{n \to \infty} p^{1/n}=1$.
+\end{theorem}
+
+\subsection{Subsequences and Bolzano–Weierstrass theorem}
+
+\begin{definition}[Subsequence]
+    Let $\{x_n\}$ be a sequence of real numbers, and $\{n_k\}$ be a strictly increasing sequence of natural numbers. Then, $\{x_{n_k}\}_{k=1}^\infty$ is called a subsequence of $\{x_n\}$.
+\end{definition}
+
+\begin{theorem}
+    If $\{x_n\}$ converges to $x$ then any subsequence of $\{x_n\}$ will converge to $x$.
+\end{theorem}
+
+\begin{proof}
+    Suppose $\{x_n\} \to x$. Let $\varepsilon > 0$, then $\exists M_0 \in \N$ such that $\forall n \geq M_0, |x_n-x| < \varepsilon$. Choose, $M=M_0$. If $k \geq M$, then $n_k \geq k \geq M = M_0$, hence for $\varepsilon>0, \exists M \in \N$ such that $|x_{n_k}-x| < \varepsilon, \forall n_k \geq M$.
+\end{proof}
+
