@@ -246,3 +246,69 @@ Show that
     \end{equation*}
     by the Squeeze theorem.
 \end{proof}
+
+\begin{theorem}
+    If $\{x_n\}$ is a convergent sequence such that $\forall n \in \N, x_n \geq 0$, then $\{\sqrt{x_n}\}$ is convergent and
+    \begin{equation}
+        \lim \limits_{n \to \infty} \sqrq{x_n} = \sqrt{\lim \limits_{n \to \infty} x_n}
+    \end{equation}
+\end{theorem}
+
+\begin{proof}
+    Let $x = \lim \limits_{n \to infty} x_n$, then:
+    \begin{enumerate}
+        \item If $x = 0$. Let $\varepsilon > 0$ then, since $\{x_n\} \to 0$, $\exists N_0 \in \N$ such that $x_n = |x_n-0| \varepsilon^2, \forall n \geq N_0$. Choose $N = N_0$, then $\sqrt{x_n}-\sqrt{0} = \sqrt{x_n} < \sqrt{\varepsilon^2} = \varepsilon$
+        \item If $ x > 0$. Then, 
+        \begin{equation*}
+            \begin{align}
+                |\sqrt{x_n} - \sqrt{x}| &= \left |
+                    \frac{\sqrt{x_n}-\sqrt{x}}{\sqrt{x_n}+\sqrt{x}}(\sqrt{x_n}+\sqrt{x})
+                \right | \\
+                &= \frac{1}{\sqrt{x_n} - \sqrt{x}}|x_n-x| \\
+                &\leq \frac{1}{\sqrt{x}}|x_n-x|, \forall n \in \N
+            \end{align}
+        \end{equation*}
+        And,
+        \begin{equation*}
+            0 \leq |\sqrt{x_n}-\sqrt{x}| \leq \frac{1}{\sqrt{x}}|x_n-x|, \forall n \in \N
+        \end{equation*}
+        So, by the squeeze theorem, $\lim \limits_{n\to\infty} |\sqrt{x_n}-\sqrt{x}| = 0$
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    If $\{x_n\}$ is convergent and $\lim \limits_{n\to\infty} x_n = x$, then $\{|x_n|\}$ is convergent and $\lim \limits_{n \to \infty} |x_n| = |x|$.
+\end{theorem}
+
+\begin{proof}
+    Note that $|x| = \sqrt{x^2}, \forall x \in \R$. Then,
+    \begin{equation*}
+        \lim \limitis_{n\to \infty} |x_n| = \lim \limitis_{n\to \infty} \sqrt{x_n^2} = \sqrt{x^2} = x
+    \end{equation*}
+\end{proof}
+
+\begin{theorem}
+    If $x \in (0,1)$ then $\lim \limits_{n \to \infty} c^n = 0$. If $c > 1$ then $\{c^n\}$ is unbounded.
+\end{theorem}
+
+\begin{proof}
+    For each case:
+    \begin{enumerate}
+        \item If $0 < c < 1$. Note that $0 < c^{n+1} < c^n < 1, \forall n \in \N$. This can be shown by induction:
+        \begin{itemize}
+            \item Base case, consider $0 < c^2 < c < 1$, since $0 < c < 1$.
+            \item Inductive case, consider $0 < c^{m+1} < c^m < 1$ to be true. Multiplying the former inequality by $c$ we obtain $0 < c^{m+2} < c^{m+1}$.
+        \end{itemize}
+        Thus, $\{c^n\}$ is monotone decreasing sequence and is bounded below, which implies $\{c^n\}$ is convergent. Set $L = \lim \limits_{n \to \infty} c^n$. Take $\varepsilon > 0$, then $\exists N \in \N$ such that
+        \begin{equation*}
+            \begin{align*}
+                (1-c)|L| &= |L-cL| = |L - c^{M+1} + c^{M+1} - cL| \\
+                &\leq |L-c^{M+1}| + c|c^M-L| \\
+                &< (1-c)\frac{\varepsilon}{2} + c(1-c)\frac{\varepsilon}{2} \\
+                &< (1-c) \varepsilon, \forall n \geq N
+            \end{align*}
+        \end{equation*}
+        Hence, $|L| < \varepsilon, \forall \varepsilon>0 \longrightarrow L = 0$.
+        \item For $c > 1$. Note that $\forall B \geq 0, \exists n \in \N$ such that $c^n > B$. For $n \in \N$ such that $n > B/(c-1)$ then $c^n = (1+(1-c))^n \geq 1 + n(c-1) \geq n(c-1) > B$. Hence, $\{c^n\}$ is unbounded $\forall c > 1$ and the sequence does not converge.
+    \end{enumerate}
+\end{proof}
