@@ -182,9 +182,9 @@ In order to find out if a sequence converges, and to what value, there are a few
 \end{theorem}
 
 \begin{proof}
-    Let $\varepsilon > 0$. Since $\{a_n\} \to x$, $\exists M_0 \in \N$ such that $\forall n \geq M_0, |a_n-x| < \varepsilon \Righarrow x-\varepsilon < a_n$.\\
+    Let $\varepsilon > 0$. Since $\{a_n\} \to x$, $\exists M_0 \in \N$ such that $\forall n \geq M_0, |a_n-x| < \varepsilon \Rightarrow x-\varepsilon < a_n$.\\
     Since $\{b_n\} \to x$, then $\exists M_1 \in \N$ such that $\forall n \geq M_1, |b_n-x|<\varepsilon \Rightarrow b_n < x + \varepsilon$. \\
-    Choose $M = \max\{ M_0, M_1\}$. Then, if $n \geq M, x-\varepsilon < a_n \leq x_n \leq b_n < x-\varepsilon \Righarrow |x_n-x|>\varepsilon$.
+    Choose $M = \max\{ M_0, M_1\}$. Then, if $n \geq M, x-\varepsilon < a_n \leq x_n \leq b_n < x-\varepsilon \Rightarrow |x_n-x|>\varepsilon$.
 \end{proof}
 
 The limit of a function can be also expressed in another form, which can be pretty useful.
@@ -238,7 +238,7 @@ Show that
 \begin{theorem}
     If $\{x_n\}$ is a convergent sequence such that $\forall n \in \N, x_n \geq 0$, then $\{\sqrt{x_n}\}$ is convergent and
     \begin{equation}
-        \lim \limits_{n \to \infty} \sqrq{x_n} = \sqrt{\lim \limits_{n \to \infty} x_n}
+        \lim \limits_{n \to \infty} \sqrt{x_n} = \sqrt{\lim \limits_{n \to \infty} x_n}
     \end{equation}
 \end{theorem}
 
@@ -247,15 +247,15 @@ Show that
     \begin{enumerate}
         \item If $x = 0$. Let $\varepsilon > 0$ then, since $\{x_n\} \to 0$, $\exists N_0 \in \N$ such that $x_n = |x_n-0| \varepsilon^2, \forall n \geq N_0$. Choose $N = N_0$, then $\sqrt{x_n}-\sqrt{0} = \sqrt{x_n} < \sqrt{\varepsilon^2} = \varepsilon$
         \item If $ x > 0$. Then, 
-        \begin{equation*}
-            \begin{align}
-                |\sqrt{x_n} - \sqrt{x}| &= \left |
-                    \frac{\sqrt{x_n}-\sqrt{x}}{\sqrt{x_n}+\sqrt{x}}(\sqrt{x_n}+\sqrt{x})
-                \right | \\
-                &= \frac{1}{\sqrt{x_n} - \sqrt{x}}|x_n-x| \\
-                &\leq \frac{1}{\sqrt{x}}|x_n-x|, \forall n \in \N
-            \end{align}
-        \end{equation*}
+        
+        \begin{align}
+            |\sqrt{x_n} - \sqrt{x}| &= \left |
+                \frac{\sqrt{x_n}-\sqrt{x}}{\sqrt{x_n}+\sqrt{x}}(\sqrt{x_n}+\sqrt{x})
+            \right | \\
+            &= \frac{1}{\sqrt{x_n} - \sqrt{x}}|x_n-x| \\
+            &\leq \frac{1}{\sqrt{x}}|x_n-x|, \forall n \in \N
+        \end{align}
+        
         And,
         \begin{equation*}
             0 \leq |\sqrt{x_n}-\sqrt{x}| \leq \frac{1}{\sqrt{x}}|x_n-x|, \forall n \in \N
@@ -271,7 +271,7 @@ Show that
 \begin{proof}
     Note that $|x| = \sqrt{x^2}, \forall x \in \R$. Then,
     \begin{equation*}
-        \lim \limitis_{n\to \infty} |x_n| = \lim \limitis_{n\to \infty} \sqrt{x_n^2} = \sqrt{x^2} = x
+        \lim \limits_{n\to \infty} |x_n| = \lim \limits_{n\to \infty} \sqrt{x_n^2} = \sqrt{x^2} = x
     \end{equation*}
 \end{proof}
 
@@ -288,14 +288,14 @@ Show that
             \item Inductive case, consider $0 < c^{m+1} < c^m < 1$ to be true. Multiplying the former inequality by $c$ we obtain $0 < c^{m+2} < c^{m+1}$.
         \end{itemize}
         Thus, $\{c^n\}$ is monotone decreasing sequence and is bounded below, which implies $\{c^n\}$ is convergent. Set $L = \lim \limits_{n \to \infty} c^n$. Take $\varepsilon > 0$, then $\exists N \in \N$ such that
-        \begin{equation*}
-            \begin{align*}
-                (1-c)|L| &= |L-cL| = |L - c^{M+1} + c^{M+1} - cL| \\
-                &\leq |L-c^{M+1}| + c|c^M-L| \\
-                &< (1-c)\frac{\varepsilon}{2} + c(1-c)\frac{\varepsilon}{2} \\
-                &< (1-c) \varepsilon, \forall n \geq N
-            \end{align*}
-        \end{equation*}
+        
+        \begin{align*}
+            (1-c)|L| &= |L-cL| = |L - c^{M+1} + c^{M+1} - cL| \\
+            &\leq |L-c^{M+1}| + c|c^M-L| \\
+            &< (1-c)\frac{\varepsilon}{2} + c(1-c)\frac{\varepsilon}{2} \\
+            &< (1-c) \varepsilon, \forall n \geq N
+        \end{align*}
+        
         Hence, $|L| < \varepsilon, \forall \varepsilon>0 \longrightarrow L = 0$.
         \item For $c > 1$. Note that $\forall B \geq 0, \exists n \in \N$ such that $c^n > B$. For $n \in \N$ such that $n > B/(c-1)$ then $c^n = (1+(1-c))^n \geq 1 + n(c-1) \geq n(c-1) > B$. Hence, $\{c^n\}$ is unbounded $\forall c > 1$ and the sequence does not converge.
     \end{enumerate}
@@ -335,3 +335,49 @@ Show that
     Suppose $\{x_n\} \to x$. Let $\varepsilon > 0$, then $\exists M_0 \in \N$ such that $\forall n \geq M_0, |x_n-x| < \varepsilon$. Choose, $M=M_0$. If $k \geq M$, then $n_k \geq k \geq M = M_0$, hence for $\varepsilon>0, \exists M \in \N$ such that $|x_{n_k}-x| < \varepsilon, \forall n_k \geq M$.
 \end{proof}
 
+From the decision of subsequence we may ask: ``does a bounded sequence have a convergent subsequence?''. The answer is yes, before we show it, we need to define some specific limits.
+
+\begin{definition}[Limsup/liminf]
+    Let $\{x_n\}$ be a bounded sequence. If the limit exists, we can define:
+    \begin{itemize}
+        \item Limit superior: $\limsup \limits_{n \to \infty} x_n = \lim \limits_{n \to \infty} \left( \sup \{ x_k: k \geq n\}\right)$
+        \item Limit inferior: $\liminf \limits_{n \to \infty} x_n = \lim \limits_{n \to \infty} \left( \inf \{ x_k: k \geq n\}\right)$
+    \end{itemize}
+\end{definition}
+
+Now we proceed to show an interesting result: these limits always exist.
+
+\begin{theorem}
+    Let $\{x_n\}$ be a bounded sequence, and
+    \begin{itemize}
+        \item $a_n = \sup\{x_k: k \geq n\}$
+        \item $b_n = \inf\{x_k: k \geq n\}$
+    \end{itemize}
+    Then, the following statements are true:
+    \begin{enumerate}
+        \item $\{a_n\}$ is monotone decreasing and bounded,
+        \item $\{b_n\}$ is monotone increasing and bounded,
+        \item $\liminf \limits_{n\to \infty} x_n \leq \limsup_{n \to \infty} x_n$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Proving each of the results:
+    \begin{enumerate}
+        \item First, $\{x_k:k \geq n+1\} \subseteq \{x_k: k \geq n\}, \forall n \in N$, so $a_{n+1} = \sup \{x_k: k \geq n+1\} \leq \sup \{x_k: k \geq n\} = a_n$.
+        \item Similarly, $b_{n+1} \geq b_n, \forall n \in \N$. Since $\{x_n\}$ is bounded, $\exists M \geq 0$ such that $-B \leq x_n \leq B, \forall n \in \N$. So, $-B \leq b_n \leq a_n \leq B$.
+        \item By the previous result, $b_n \leq a_n, \forall n \in \N \Longrightarrow \liminf \limits_{n \to \infty} x_n = \lim \limits_{n \to \infty} b_n \leq \lim \limits_{n \to \infty} a_n = \limsup \limits_{n \to \infty} x_n$
+    \end{enumerate}
+\end{proof}
+
+\paragraph{Example} Consider the series $\{x_n\}$ with $x_n=(-1)^n$. Calculate the limit superior and limit inferior.
+
+\begin{proof}
+    First, notice that $\{ (-1)^k: k \geq n\} = \{-1, 1\}, \forall n \in \N$. Hence, the supremum is always $1$ and the infimum is always $-1$. So,
+    \begin{equation*}
+        \limsup \limits_{n \to \infty} = 1
+    \end{equation*}
+    \begin{equation*}
+        \liminf \limits_{n \to \infty} = -1
+    \end{equation*}
+\end{proof}
