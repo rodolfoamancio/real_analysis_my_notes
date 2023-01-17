@@ -381,3 +381,132 @@ Now we proceed to show an interesting result: these limits always exist.
         \liminf \limits_{n \to \infty} = -1
     \end{equation*}
 \end{proof}
+
+\begin{theorem}[Bolzano-Weierstrass]
+    Every bounbed sequence has a convergent subsequence.
+\end{theorem}
+
+\begin{proof}
+    This result follows from the previous theorem.
+\end{proof}
+
+\begin{theorem}
+    Let $\{x_n\}$ be a bounded subsequence. Then, $\{x_n\}$ converges if, and only if,$\liminf \limits_{n \to \infty} x_n = \limsup \limits_{n \to \infty} x_n$.
+\end{theorem}
+
+\begin{proof}
+    Proving each direction separately:
+    \begin{itemize}
+        \item $(\Longrightarrow)$: let $x = \lim \limits_{n \to \infty} x_n$ then every subsequence converges to $x$, so $\liminf \limits_{n \to \infty} x_n = x$ and $\limsup \limits_{n \to \infty} x_n = x$. Hence, $\liminf \limits_{n \to \infty} x_n = \limsup \limits_{n \to \infty} x_n$.
+        \item $(\Longleftarrow)$: suppose $\liminf \limits_{n \to \infty} x_n= \limsup \limits_{n \to \infty} x_n$. Then, $\inf \{ x_k: k \geq n\} \leq x_k \leq \sup \{x_k: k \geq n\}, \forall n \in \N$. By the squeeze theorem we obtain: $\lim \limits_{n \to \infty} x_n  = \liminf \limits_{n \to \infty} x_n = \limsup \limits_{n \to \infty} x_n$.
+    \end{itemize}
+\end{proof}
+
+\subsection{Cauchy sequences}
+
+\begin{definition}[Cauchy sequence]
+    A sequence $\{x_n\}$ is Cauchy if $\forall \varepsilon > 0, \exists N \in \N$ such that $|x_n-x_k| < \varepsilon, \forall n,k \geq N$.
+\end{definition}
+
+\paragraph{Example} Show $x_n = 1/n$ is Cauchy.
+\begin{proof}
+    Let $\varepsilon > 0$, take $N \in \N$ such that $1/N < \varepsilon/2$. Then,
+    \begin{equation*}
+        \left |
+            \frac{1}{n} - \frac{1}{k}
+        \right | \leq
+        \frac{1}{n} + \frac{1}{k} \leq
+        \frac{2}{N} < \varepsilon
+    \end{equation*} 
+\end{proof}
+
+\begin{theorem}
+    If $\{x_n\}$ is Cauchy, then $\{x_n\}$ is bounded.
+\end{theorem}
+
+\begin{proof}
+    From the definition of a Cauchy sequence, take $\varepsilon=1$ without loss of generality, then $\exists N \in \N$ such that $|x_n-x_k| < 1, \forall n, k \geq N$. So, $|x_n| \leq |x_n - x_N| + |x_N| < |x_M| + 1$. Let $M = |x_1| + |x_1| + ... + |x_M| + 1$, so $|x_n| \leq M, \forall n \in \N$.
+\end{proof}
+
+\begin{theorem}
+    IF $\{x_n\}$ is Cauchy and a subsequence $\{x_{n_k}\}$ converges, then $\{x_n\}$ converges.
+\end{theorem}
+
+\begin{proof}
+    Suppose $\{x_{n_k^}\}$ is a subsequence of $\{x_n\}$ such that $\lim \limits_{n \to \infty} x_n = x$. Let $\varepsilon > 0$, then $\exist N_1 \in \N$ such that $|x_{n_k} - x| < \varepsilon/2, \forall k \geq N_1$. Since $\{x_n\}$ is Cauchy, $\exists N_2 \in \N$ such that $|x_n-x_m| < \varepsilon/2, \forall n, m \geq M_1$.\\
+    Take $N = \max \{N_1, N_2\}$. Then, $|x_n-x| \leq |x_n-x_{n_N}| + |x_{n_M} - x| < \varepsilon/2  + \varepsilon/2 = \varepsilon$.
+\end{proof}
+
+\begin{theorem}
+    A sequence $\{x_n\}$ is Cauchy if, and only if, it is convergent.
+\end{theorem}
+
+\begin{proof}
+    Proving each direction of the theorem:
+    \begin{itemize}
+        \item $(\Longrightarrow)$: if $\{x_n\}$ is Cauchy then it is bounded. So, by the Bolzano-Weierstrass theorem, there exists a convergent subsequence. From the previous theorem, if a sequence is Cauchy and has a convergent subsequence, then it is convergent. So, $\{x_n\}$ is convergent.
+        \item $(\Longleftarrow)$: Suppose $\{x_n\}$ is convergent and $\{x_n\} \to x$. Let $\varepsilon > 0$, then $\exists N_0 \in \N$ such that $|x_n - x| < \varepsilon/2, \forall n \geq N_0$. Choose $N = N_0$, then $|x_n-x_k| \leq |x_n-x| + |x_k-x| < $
+    \end{itemize}
+\end{proof}
+
+\section{Series}
+
+\subsection{Convergent series}
+
+As pointed out by David Bressoud in `` A radical approach to real analysis'', infinite summation is in itself a oxymoron. That is, sum is the process of adding up, or reaching the totality. On the other hand, infinite means never-ending. Weird things can happen as we deal with series. The formal treatment of real analysis aims to safe-guard us against the danger. 
+
+\begin{definition}[Series convergence]
+    Given the sequence $\{x_n\}$, the series associated with it is the summation of its terms, denoted as $\sum \limits_{n=1}^\infty = \sum x_n$. The series converges the the sequence of partial sums
+    \begin{equation}
+        \left \{
+            s_m = \sum \limits_{n=1}^m x_n
+        \right \}\limits_{m=1}^\infty
+    \end{equation}
+    converges. If $\lim \limits_{m \to \infty} s_m = s$ we write $\sum x_n = s$ and treat $\sum x_n$ as a number.
+\end{definition}
+
+\paragraph{Example} Prove that the series $\sum _{n=1}^\infty 1/(n(n+1))$ converges.
+
+\begin{proof}
+    First, note that
+    \begin{align*}
+        s_m = \sum \limits_{n=1}^\infty \frac{1}{n(n+1)} &= \sum \limits_{n=1}^\infty \frac{1}{n} - \frac{1}{n+1} \\
+        &= \left(
+            1 + \frac{1}{2} + \frac{1}{3} + ... + \frac{1}{m}
+        \right) - 
+        \left(
+            \frac{1}{2} + \frac{1}{3} + ... + \frac{1}{m+1}
+        \right) \\
+        &= 1 -\frac{1}{m+1}
+    \end{align*}
+    Thus, $s_m = 1 - \frac{1}{m+1} \to 1$ and the series converges.
+\end{proof}
+
+\begin{theorem}[Geometric series convergence]
+    If $|x| < 1$ then $\sum _{n=0}^\infty r^n$ converges and
+    \begin{equation}
+        \sum \limits_{n=0}^\infty r^n = \frac{1}{1-x}
+    \end{equation}
+\end{theorem}
+
+\begin{proof}
+    First, note that
+    \begin{equation*}
+        s_m = \sum \limits_{n=0}^m x^n = \frac{1-x^{m+1}}{1-x}, \forall m \in \N
+    \end{equation*}
+    which can be proven by induction (not the point here). Since $|x| < 1$ we have $\lim_{m\to \infty} |x|^{m+1} = 0$ and
+    \begin{equation*}
+        \lim \limits_{n \to \infty} s_m = \frac{1-0}{1-x} = \frac{1}{1-x}
+    \end{equation*}
+\end{proof}
+
+\begin{theorem}
+    Consider the sequence $\{x_n\}$ and let $N \in \N$. Then, $\sum_{n=1}^\infty x_n$ converges if and only if $\sum_{n=N}^\infty x_n$ converges.
+\end{theorem}
+
+\begin{proof}
+    The partial sums satisfy
+    \begin{equation*}
+        \sum \limits_{n=1}^N x_n = \sum \limits_{n=1}^M x_n + \sum \limits_{n=M}^N x_n, \forall  N \in \N \textnormal{ and } 1 \leq M \leq N
+    \end{equation*}
+\end{proof}
