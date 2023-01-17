@@ -510,3 +510,98 @@ As pointed out by David Bressoud in `` A radical approach to real analysis'', in
         \sum \limits_{n=1}^N x_n = \sum \limits_{n=1}^M x_n + \sum \limits_{n=M}^N x_n, \forall  N \in \N \textnormal{ and } 1 \leq M \leq N
     \end{equation*}
 \end{proof}
+
+\begin{definition}
+    The series $\sum x_n$ is Cauchy if the sequence of partial sums $\{s_m = \sum_{n=1}^m x_n\}$ is Cauchy.
+\end{definition}
+
+\begin{theorem}
+    The series $\sum x_n$ is Cauchy if, and only if, $\sum x_n$ is convergent.
+\end{theorem}
+
+\begin{proof}
+    This follows from the previous theorem which states that a sequence is Cauchy if, and only if, it is convergent.
+\end{proof}
+
+\begin{theorem}
+    The series $\sum x_n$ is Cauchy $\forall \varepsilon > 0, \exists N \in \N$ such that $\forall m \geq N$ and $l \geq m$,
+    \begin{equation*}
+        \left |
+            \sum \limits_{n=m+1}^l x_n < \varepsilon
+        \right |
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    $(\Longrightarrow)$ If $\sum x_n$ is Cauchy, let $\varepsilon > 0$ then $\exists N_0 \in \N$ such that $|s_m-s_l| < \varepsilon, \forall m,l \geq N_0$, where $s_m$ is the partial sum of the first $m$ terms. Hence, for $N = N_0$ if $m \geq N$ and $l > m$ we obtain:
+    \begin{equation*}
+        \left |
+            \sum \limits_{n=m+1}^l x_n = |s_l - s_m| < \varepsilon
+        \right |
+    \end{equation*}
+    $(\Longleftarrow)$ If $\forall \varepsilon > 0, \exists m \in \N$ such that if $m \geq N$ and $l > m$
+    \begin{equation*}
+        \left |
+            \sum \limits_{n=m+1}^l x_n < \varepsilon
+        \right |
+    \end{equation*}
+    Note also,
+    \begin{equation*}
+        \left |
+            \sum \limits_{n=m+1}^l x_n
+        \right | = |s_l -s_m| < \varepsilon
+    \end{equation*}
+    So, since the sum can be split we have for $m+1 \leq k \leq l$:
+    \begin{align*}
+        \left |
+            \sum \limits_{n=m+1}^l x_n
+        \right | &= 
+        \left |
+            \sum \limits_{n=m+1}^k x_n + 
+            \sum \limits_{n=k}^l x_n 
+        \right | \\
+        &= 
+        \left |
+            \sum \limits_{n=1}^k x_n -
+            \sum \limits_{n=1}^{m} x_n + 
+            \sum \limits_{n=1}^l x_n -
+            \sum \limits_{n=1}^{k-1} x_n 
+        \right | \\
+        &= | s_k - s_m + s_l - s_{k-1}| \\
+        &\leq |s_k - s_{k-1}| + |s_l - s_m| \\
+        &< |s_k - s_{k-1}| + \varepsilon
+    \end{align*}
+    Since $|s_l -s_m| < \varepsilon$, $|s_l -s_m| < |s_k - s_{k-1}| + \varepsilon$ and $\varepsilon$ can be made arbitrary small, so can $|s_k - s_{k-1}|$.
+\end{proof}
+
+\begin{theorem}
+    If $\sum x_n$ converges, then $\{x_n\} \to 0$.
+\end{theorem}
+
+\begin{proof}
+    If $\sum x_n$ converges then it is Cauchy, hence for $\varepsilon > 0, \exists N_0$ such that $\forall l > m \geq N_0$, 
+    \begin{equation*}
+        \left |
+            \sum \limits_{n=m+1}^l x_n
+        \right | < \varepsilon
+    \end{equation*}
+    For $N  = N_0 + 1$ we have $m \geq N$ which implies $m-1 \geq N_0$ so for $l=m$,
+    \begin{equation*}
+        |x_m| = \left |
+            \sum \limits_{n=m}^m x_n < \varepsilon
+        \right |
+    \end{equation*}
+    And since $\varepsilon$ can be made arbitrarily small $\{x_n\} \to 0$.
+\end{proof}
+
+\begin{theorem}
+    If $|x| \geq 1$ then $\sum_{n=0}^\infty x^n$ diverges.
+\end{theorem}
+
+\begin{proof}
+    If $|x| \geq 1$ then $\lim_{n \to \infty} x_n \neq 0$ and $\sum x^n$ diverges from the previous theorem.
+\end{proof}
+
+\begin{corollary}
+    The series $\sum _{n=0}^\infty \alpha \cdot x^n$ converges if, and only if, $|x| < 1$.
+\end{corollary}
