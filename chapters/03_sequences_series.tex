@@ -645,3 +645,79 @@ First, let's revisit one of the last results, namely that for a convergent serie
     \end{enumerate}
 \end{proof}
 
+\begin{theorem}
+    If $x_n \geq 0, \forall n \in \N$ then $\sum x_n$ converges if, and only if, the sequence of partial sums, $\{s_m\}$, is bounded.
+\end{theorem}
+
+\begin{proof}
+    If $x_n \geq 0, \forall n \in \N$ then
+    \begin{equation*}
+        s_{m+1} = \sum \limits_{n=1}^{m+1} x_n = \sum \limits_{n=1}^m + x_{m+1} = s_m + x_{m+1} \geq s_m
+    \end{equation*}
+    Which implies $\{s_m\}$ is a monotone increasing sequence, which converges if, and only if, it is bounded.
+\end{proof}
+
+\begin{definition}[Absolute convergence]
+    The series $\sum x_n$ converges absolutely if $\sum |x_n|$ converges
+\end{definition}
+
+\begin{theorem}
+    If $\sum x_n$ converges absolutely then $\sum x_n$ converges.
+\end{theorem}
+
+\begin{proof}
+    If $\sum |x_n|$ converges then from the previous theorem $\{s_m\}$ is bounded, since $|x_n| \geq 0, \forall n \in \N$ and $s_m = \sum_{n=1}^m |x_n|$. From the previous result $s_{m+1} \geq s_m$. Since $\sum |x_n|$ converges by the initial hypothesis that means $\sum |x_n|$ is Cauchy. So, $\forall \varepsilon > 0, \eists N_0 \in \N$ such that:
+    \begin{equation*}
+        \sum \limits_{n=m+1}^l |x_n| < \varepsilon, \forall l > m \geq N_0
+    \end{equation*}
+    Take $N = N_0$. Then, 
+    \begin{equation*}
+        \left |
+            \sum \limits_{n=m+1}^l x_n
+        \right | \leq
+        \sum \limits_{n=m+1}^l |x_n|
+        < \varepsilon
+    \end{equation*}
+    Hence, $\sum x_n$ is Cauchy and converges.
+\end{proof}
+
+From the previous theorem, we may be tempted to ask `` If a series converges, does it mean it also converges absolutely?''. We will show this is not the case by a counter-example:
+\paragraph{Example} Consider the series
+\begin{equation*}
+    \sum \limits_{n=1}^\infty \frac{(-1)^n}{n}
+\end{equation*}
+This series converges, as we will see in a while. Now, show it does not converge absolutely.
+
+\begin{proof}
+    Note that the sum of absolute values is exactly the harmonic series, which we have already seen does not converge. 
+\end{proof}
+
+\subsection{Convergence tests}
+
+\begin{theorem}[Ratio test]
+    Consider the series $\sum x_n$ and $x_n \neq 0, \forall n \in \N$. Suppose
+    \begin{equation}
+        L = \lim \limits_{n \to \infty} \frac{|x_{n+1}|}{|x_n|}
+    \end{equation}
+    exists. Then,
+    \begin{enumerate}
+        \item if $L < 1$ then $\sum x_n$ converges absolutely
+        \item if $L > 1$ then $\sum x_n$ diverges
+        \item if $L = 1$ no assertion can be made
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Proving the first two statements:
+    \begin{enumerate}
+        \item For $L < 1$, take $\alpha \in (L, 1)$. Then, $\exists N_0 \in \N$ such that $|x_{n+1}|/|x_n| < \alpha, \forall n \geq N_0$. Equivalently $|x_{n+1}| \leq \alpha |x_n|, \forall n \geq N_0$. Which leads to $|x_n| \leq \alpha |x_{n+1}| \leq \alpha^2 |x_{n+2}| \leq ... \leq \alpha^{n-N_0} |x_{n+1}|^{n-N_0}, \forall n \geq N_0$. Now, for $m \in \N$:
+        \begin{align*}
+            \sum \limits_{n=1}^m |x_n| &= \sum \limits_{n=1}^{N_0-1}|x_n| + \sum \limits_{n=N_0}^{m}|x_n| \\
+            &\leq \sum \limits_{n=1}^{N_0-1}|x_n| + |x_{N_0}| \sum \limits_{n=N_0}^{m} \alpha^{n-N_0} \\
+            &\leq \sum \limits_{n=1}^{N_0-1}|x_n| + |x_{N_0}| \sum \limits_{l=0}^{\infty} \alpha^l \\
+            &= \sum \limits_{n=1}^{N_0-1}|x_n| + \frac{|x_{N_0}|}{1-\alpha}
+        \end{align*}
+        Therefore, $\{ \sum_{n=1}^m |x_n|\}_{m=1}^\infty$ is bounded and $\sum |x_n|$ converges.
+        \item For $L > 1$, take $\alpha \in (1, L)$. Then, $\exists N_0 \in \N$ such that $|x_{n+1}|/|x_n| \geq \alpha > 1, \forall n \geq N_0$. Which means $|x_{n+1}| \geq |x_n|, \forall n \geq N_0$. Hence, $\lim_{n \to \infty} |x_n| \neq 0$ and $\sum x_n$ diverges.
+    \end{enumerate}
+\end{proof}
