@@ -1,0 +1,80 @@
+\chapter{The derivative}
+
+Before we begin dealing with derivative, we must build some of the tools needed to define it and evaluate its existence. We begin by evaluating limits on a function, which lead us to the cornerstone concept of continuity. 
+
+\subsection{Continuity}
+
+In order to expand our concepts of limits from sequences to functions on real numbers, we begin by defining the points on the real line we will be able to evaluate the future concepts.
+
+\begin{definition}[Cluster point]
+    Let $S \subseteq \R$. Then, $x \in \R$ is a cluster point of $S$ if $\forall \delta > 0, (x-\delta, x+ \delta) \cap S \setminus\{x\} \neq \varnothing$
+\end{definition}
+
+This notion can be further clarified by a few examples:
+\paragraph{Examples}
+\begin{enumerate}
+    \item $S = \{1/n: n \in \N\}$: $0$ is a cluster point of $S$, since $1/n$ can be made arbitrary small, so $ (0 - \delta, 0 + \delta) \cap S \setminus \{0\} \neq \varnothing, \forall \delta > 0$.
+    \item $S = (0,1)$ then $[0,1]$ is the set of cluster points of $S$.
+    \item $S = \Q$ then $\R$ is the set of cluster points.
+\end{enumerate}
+
+\begin{theorem}
+    Let $S \subseteq \R$, then $x$ is a cluster point of $S$ if, and only if, there exists a sequence $\{x_n\}$ of elements in $S \setminus \{x\}$ such that $x_n \to x$.
+\end{theorem}
+
+\begin{definition}[Function convergence]
+    Consider $S \subseteq \R$, $c$ a cluster point of $S$, and $f: S \to \R$. Then, $f(x)$ converges to $L \in \R$ at $c$ if $\forall \varepsilon > 0, \exists \delta > 0$ such that if $x \in S$ and $0 < |x-c| < \delta$, then $|f(x) - L| < \varepsilon$. \\
+    We can write $f(x) \to L$ as $x \to c$ or $\lim_{x \to c} f(x) = L$.
+\end{definition}
+
+\begin{theorem}[Uniqueness of the limit of a function]
+    Let $c$ be a cluster point of $S \subseteq \R$ and $f: S \to \R$. If $f(x) \to L_1$ and $f(x) \to L_2$ as $x \to c$ then $L_1 = L_2$.
+\end{theorem}
+
+\begin{proof}
+    Take $\varepsilon > 0$, since $f(x) \to L_1$ and $f(x) \to L_2, \exists \delta_1, \delta_2 \in \R$ such that if $x \in S$ with $0 < |x-c| < \delta_1$ and $0 < |x-c| < \delta_2$ we have $|f(x) - L_1| < \varepsilon/2$ and $|f(x) - L_2| < \varepsilon/2$. \\
+    Choose $\delta = \min\{\delta_1, \delta_2\}$. Since $c$ is a cluster point of $S, \exists x_0 \in S$ such that $0 < |x_0-c| < \delta \longrightarrow |L_1-L_2| = |L_1 - f(x_0) + f(x_0) - L_2| \leq |L_1 - f(x_0)| + |f(x_0) - L_2| < \varepsilon$.
+\end{proof}
+
+\begin{theorem}
+    Consider $c$ a cluster point in $S \subseteq \R$, and $f: S \to \R$. Then, the following statements are equivalent:
+    \begin{itemize}
+        \item $\lim_{x \to c} f(x) = L$ and,
+        \item for every sequence $\{x_n\}$ in $S \setminus \{x\}$ such that $x_n \to c$, then $f(x_n) \to L$.
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+    Proving each direction of the theorem individually:
+    \begin{enumerate}
+        \item Suppose $f(x) \to L$ as $x \to c$, then consider $\{x_n\}$ in $S \setminus \{x\}$ such that $x_n \to c$. Let $\varepsilon > 0, \exists \delta > 0$ such that $|f(x) - L| < \varepsilon$ if $x \in S$ and $0 < |x-c| < \delta$. Since $x_n \to c, \exists N \in \N$ such that $0 < |x_n-c| < \delta, \forall n \geq N$, since $|f(x) - L| \varepsilon, \forall 0 < |x-c| < \delta$ then $f(x_n) \to L$.
+        \item Assuming the second part is false, for contradiction, $\exists \varepsilon_0 > 0$ such that $\forall \delta > 0, \eixists x \in S$ such that $0 < |x-c| < \delta$ and $|f(x) - L| \geq \varepsilon_0$. Then, $\forall n \in \n, \exists x_n \in S$ such that $0 < |x_n - c| < 1/n$ and $|f(x_n) - L| \geq \varepsilon_0$. By the squeeze theorem we conclude $x_n \to c$ and $0 = \lim_{n \to \infty} |f(x_n) - L| \geq \varepsilon_0 > 0$ which is a contradiction.
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    \begin{equation*}
+        \lim \limits_{x \to 0} \sin (1/x) \textnormal { does not exist}
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Let $x_n = \frac{2}{(2n-1)\pi}$. Then, $x_n \neq 0$ and $x_n \to 0$. Now,
+    \begin{equation*}
+        \sin (1/x_n) = \sin \frac{(2n-1) \pi}{2} = (-1)^{n+1}
+    \end{equation*}
+\end{proof}
+
+\begin{theorem}
+    \begin{equation*}
+        \lim \limits_{x \to 0} x \sin(1/x) = 0
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Suppose $x_n \neq 0$ and $x_n \to 0$. Then,
+    \begin{equation*}
+        0 \leq |x_n \sin(1/x_n)| = |x_n||\sin(1/x_n)| \leq |x_n|
+    \end{equation*}
+    By the squeeze theorem, $\lim _{n \to \infty} |x_n \sin(1/x_n)| = 0$
+\end{proof}
