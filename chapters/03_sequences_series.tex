@@ -666,7 +666,7 @@ First, let's revisit one of the last results, namely that for a convergent serie
 \end{theorem}
 
 \begin{proof}
-    If $\sum |x_n|$ converges then from the previous theorem $\{s_m\}$ is bounded, since $|x_n| \geq 0, \forall n \in \N$ and $s_m = \sum_{n=1}^m |x_n|$. From the previous result $s_{m+1} \geq s_m$. Since $\sum |x_n|$ converges by the initial hypothesis that means $\sum |x_n|$ is Cauchy. So, $\forall \varepsilon > 0, \eists N_0 \in \N$ such that:
+    If $\sum |x_n|$ converges then from the previous theorem $\{s_m\}$ is bounded, since $|x_n| \geq 0, \forall n \in \N$ and $s_m = \sum_{n=1}^m |x_n|$. From the previous result $s_{m+1} \geq s_m$. Since $\sum |x_n|$ converges by the initial hypothesis that means $\sum |x_n|$ is Cauchy. So, $\forall \varepsilon > 0, \exists N_0 \in \N$ such that:
     \begin{equation*}
         \sum \limits_{n=m+1}^l |x_n| < \varepsilon, \forall l > m \geq N_0
     \end{equation*}
@@ -720,4 +720,138 @@ This series converges, as we will see in a while. Now, show it does not converge
         Therefore, $\{ \sum_{n=1}^m |x_n|\}_{m=1}^\infty$ is bounded and $\sum |x_n|$ converges.
         \item For $L > 1$, take $\alpha \in (1, L)$. Then, $\exists N_0 \in \N$ such that $|x_{n+1}|/|x_n| \geq \alpha > 1, \forall n \geq N_0$. Which means $|x_{n+1}| \geq |x_n|, \forall n \geq N_0$. Hence, $\lim_{n \to \infty} |x_n| \neq 0$ and $\sum x_n$ diverges.
     \end{enumerate}
+\end{proof}
+
+\paragraph{Example} Consider the series
+\begin{equation*}
+    \sum \limits_{n=1}^\infty \frac{(-1)^n}{n^2+1}
+\end{equation*}
+Use the ratio test to verify it converges absolutely.
+
+\begin{proof}
+    We bein by noticing:
+    \begin{equation*}
+        \left |
+            \frac{(-1)^n}{n^2+1}
+        \right | \leq
+        \frac{1}{n^2+1} <
+        \frac{1}{n^2}
+    \end{equation*}
+    So, for the limit:
+    \begin{equation*}
+        \lim \limits_{n \to \infty} \left |
+            \frac{
+                \frac{(-1)^{n+1}}{(n+1)^2+1}
+            }{
+                \frac{(-1)^{n}}{(n)^2+1}
+            }
+        \right | <
+        \lim \limits_{n \to \infty} \frac{n^2}{(n+1)^2} = 1
+    \end{equation*}
+    Since the limit is less then $1$, the series converges absolutely by the ration test.
+\end{proof}
+
+\begin{theorem}[Root test]
+    Consider the series $\sum x_n$ and suppose the limit
+    \begin{equation*}
+        L = \lim \limits_{n\to \infty} |x_n|^{1/n}
+    \end{equation*}
+    exists. Then,
+    \begin{enumerate}
+        \item if $L < 1$ the series converges absolutely,
+        \item if $L > 1$ the series diverges,
+        \item if $L = 1$ no assertion can be made.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Proving the first two assertions:
+    \begin{enumerate}
+        \item Take $r \in (L, 1)$. Since $\{|x_n|^{1/n} \to L\}, \exists N \in \N$ such that $|x_n|^{1/n} < r, \forall n \geq N$ which is equivalent to $|x_n| \leq r^n, \forall n \geq N$. So,
+        \begin{align*}
+            \sum \limits_{n=1}^n|x_n| &= \sum \limits_{n=1}^{N-1}|x_n| + \sum \limits_{n=N}^{m}|x_n| \\
+            &\leq \sum \limits_{n=1}^{N-1}|x_n| + \sum \limits_{n=N}^{m}r^n \\
+            &\leq \sum \limits_{n=1}^{N-1}|x_n| + \sum \limits_{n=1}^{\infty}r^n \\
+            &= \sum \limits_{n=1}^{N-1}|x_n| + \frac{1}{1-r}
+        \end{align*}
+        Thus, the sequence of partial sums of absolute values is bounded and the series converges absolutely.
+        \item Since $\{|x_n|^{1/n}\} \to L > 1, \exists N \in \N$ such that $|x_n|^{1/n} > 1, \forall n \geq N$, which is equivalent to $|x_n| > 1, \forall n \geq N$ and $\lim_{n \to \infty} x_n \neq 0$ and the series diverges.
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[Alternating series test]
+    Consider the sequence $\{x_n\}$ to be monotone decreasing, with $x_n \to x$. Then $\sum (-1)^n x_n$ converges.
+\end{theorem}
+
+\begin{proof}
+    Considering $\{x_n\}$ is monotone decreasing, then for the partial sums:
+    \begin{align*}
+        s_{2k} &= \sum \limits_{n=1}^{2k} (-1)^n x_n \\
+        &= (x_2-x_1) + (x_4-x_3) + ... + (x_{2k} - x_{2k-1}) \\
+        &\geq (x_2-x_1) + (x_4-x_3) + ... + (x_{2k} - x_{2k-1}) + (x_{2k+2} - x_{2k+1}) \\
+        &= s_{2(k+1)}
+    \end{align*}
+    Hence, $\{s_{2k}\}$ is monotone decreasing. And, $s_{2k} = -x_1 + (x_2-x_3) + (x_4-x_5) + ... + (x_{2k-2}-x_{2k-1}) + x_{2k} \geq -x_1$. So $\{s_{2k}\}$ is monotone decreasing and bounded below. Therefore it converges.  \\
+    Take $s = \lim_{k\to \infty} s_{2k}$ and $\varepsilon > 0$. Since $s_{2k} \to s, \exists N_1 \in \N$ such that $|s_{2k} - s| < \varepsilon/2, \forall k \geq N_1$. On the other hand, since $x_n \to 0, \exists N_2 \in \N$ such that $|x_n| < \varepsilon/2, \forall n \geq N_2$. Choose $N = \max\{2N_1 + 1, N_2\}$, then $|s_m-s| = |s_{2m/2}-s| < \varepsilon/2 < \varepsilon, \forall m \in \geq N$, with $m$ even and $m/2 \geq N_1 + 1/2 \geq M_0$. \\
+    If $m$ is even, take $k=(m-1)/2$ so $m = 2k + 1$. Then, $|s_m-s| = |s_{m-1} + x_m - s| \leq |s_{2k} - s + x_m| \leq |s_{2k} - s| + |x_m| < \varepsilon/2 + \varepsilon/2 = \varepsilon$.
+    Thus, $s_m \to s$ and $\sum (-1)^n x_n$ converges.
+\end{proof}
+
+From the previous theorem it is clear that $\sum (-1)^n/n$ converges since $\{1/n\}$ is monotone decreasing, however as it was shown before it does not converge absolutely as the sum of the absolute terms of the series is excatly the harmonic series, which does not converge.
+
+\begin{theorem}
+    Suppose $\sum x_n$ converges absolutely to $X$. Consider $f: \N \to \N$ a bijective function, then $\sum x_{f(n)}$ converges absolutely and $\sum x_{f(n)}$ converges to $X$. In other words ``If a series converges absolutely, then any rearrangement of its terms also converges to the same limit''.
+\end{theorem}
+
+\begin{proof}
+    To show $\sum |x_{f(n)}|$ converges it suffices to show $\sum_{n=1}^m |x_{f(n)}|$is bounded. Since $\um x_n$ converges, then it is also bounded hence $\exists M \in \N$ such that
+    \begin{equation*}
+        \sum \limits_{n=1}^l |x_n| \leq M, \forall l \in \N
+    \end{equation*}
+    Let $m \in \N$, then $f(\{1, 2, ..., m\})$ is a finite subset of $\N$, so $\exists l \in \N$ such that $f(\{1, 2, ..., m\}) \subseteq \{1, 2, ..., l\}$. And,
+    \begin{equation*}
+        \sum \limits_{n=1}^n |x_{f(n)}| = \sum \limits_{n \in f(\{1, 2, ..., m\})} |x_n| \leq \sum \limits_{n=1}^l |x_n| \leq B
+    \end{equation*}
+    So, $\sum |x_{f(n)}|$ converges. Let $\varepsilon  > 0$ then $\exists N_0 \in \N$ such that:
+    \begin{equation*}
+        \left |
+            \sum \limits_{n=1}^m x_n - X
+        \right | < \varepsilon/2, \forall m \geq N_0
+    \end{equation*}
+    Since $\sum |x_n|$ converges, $\exists N_1 \in \N$ such that:
+    \begin{equation*}
+        \sum \limits_{n=m+1}^m |x_n| < \varepsilon/2, \textnormal{ with } l > m > N_1
+    \end{equation*}
+    Take $N_2 = \max\{N_0, N_1\}$, then:
+    \begin{equation*}
+        \left |
+            \sum \limits_{n=1}^m x_n - X
+        \right | < \varepsilon/2
+        \textnormal{ and }
+        \sum \limits_{n=m+1}^m |x_n| < \varepsilon/2
+        \textnormal{ and }
+        l > m \geq N_2
+    \end{equation*}
+    Since $f^{-1}(\{1, ..., N_2\})$ is finite, set $N \in \N$ such that $\{1, ..., N_2\} \subseteq \{1, ..., N\}$, then:
+    \begin{align*}
+        \left |
+            \sum \limits_{n'=1}^{m'} x_{f(n')} - X
+        \right | &= 
+        \left |
+            \sum \limits_{n \in f(\{ 1, ..., m'\})} x_n - X
+        \right | \\
+        &= \left |
+            \sum \limits_{n=1}^N x_n - X
+            + \sum \limits_{n \in f(\{1, ..., m'\}) \setminus \{1, ..., N\}} x_n
+        \right | \\
+        &\leq
+        \left |
+            \sum \limits_{n=1}^N x_n - X
+        \right | + \sum \limits_{n=N+1}^{\max \{f(\{1, ..., m'\})} |x_n|  \\
+        &\leq 
+        \left |
+            \sum \limits_{n=1}^N x_n - X
+        \right | + \sum \limits_{n=N+1}^{l} |x_n|  \\
+        &< \varepsilon/2 + \varepsilon/2 = \varepsilon
+    \end{align*} 
 \end{proof}
