@@ -2,9 +2,11 @@
 
 Before we begin dealing with derivative, we must build some of the tools needed to define it and evaluate its existence. We begin by evaluating limits on a function, which lead us to the cornerstone concept of continuity. 
 
-\subsection{Continuity}
+\section{Continuity}
 
 In order to expand our concepts of limits from sequences to functions on real numbers, we begin by defining the points on the real line we will be able to evaluate the future concepts.
+
+\subsection{Limits of function}
 
 \begin{definition}[Cluster point]
     Let $S \subseteq \R$. Then, $x \in \R$ is a cluster point of $S$ if $\forall \delta > 0, (x-\delta, x+ \delta) \cap S \setminus\{x\} \neq \varnothing$
@@ -78,3 +80,52 @@ This notion can be further clarified by a few examples:
     \end{equation*}
     By the squeeze theorem, $\lim _{n \to \infty} |x_n \sin(1/x_n)| = 0$
 \end{proof}
+
+\begin{theorem}
+    Consider $c$ a cluster point in $S \subseteq \R$ and $f,g: S \to \R$, with $f(x) \leq g(x), \forall x \in S$. Suppose $\lim_{x \to c} f(x)$ and $\lim_{x \to c} g(x)$ both exist. Then,
+    \begin{equation*}
+        \lim \limits_{x \to c} f(x) \leq \lim \limits_{x \to c} g(x)
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Define $L_1 = \lim_{x \to c} f(x)$ and $L_2 = \lim_{x \to c} g(x)$, and $\{x_n\}$ to be a sequence in $S \setminux \{c\}$ with $x_n \to c$. Then, $f(x_n) \leq g(x_n), \forall n \in \N$. So,
+    \begin{equation*}
+        L_1 = \lim \limits_{n \to \infty} f(x_n) \leq \lim \limits_{n \to \infy} g(x_n) = L_2
+    \end{equation*}
+\end{proof}
+
+\begin{definition}[Convergence from the left]
+    Consider $c$ to be a cluster point of $S \cap (-\infty, c)$ with $S \subseteq \R$. Then, we say $f(x)$ converges to $L$ from the left (or as $x \to c^-$) if $\forall \varepsilon > 0, \exists \delta >0$ such that if $x \in S$ and $c - \delta < x < c$ we obtain $|f(x) - L| < \varepsilon$. \\
+    We denote it by $L = \lim_{x \to c^-} f(x)$.
+\end{definition}
+
+\begin{definition}[Convergence from the right]
+    Consider $c$ to be a cluster point of $S \cap (c, \infty)$ with $S \subseteq \R$. Then, we say $f(x)$ converges to $L$ from the right (or as $x \to c^+$) if $\forall \varepsilon > 0, \exists \delta >0$ such that if $x \in S$ and $c < x < c + \delta$ we obtain $|f(x) - L| < \varepsilon$. \\
+    We denote it by $L = \lim_{x \to c^+} f(x)$.
+\end{definition}
+
+\paragraph{Example} Consider
+\begin{equation*}
+    f(x) = \begin{cases}
+    1 \textnormal{ if } x > 0 \\
+    0 \textnormal{ if } x < 0
+    \end{cases}
+\end{equation*}
+Then, $\lim_{x \to 0^-} f(x) = 0$ and $\lim_{x \to 0^+} f(x) = 0$, despite $f(0)$ being undefined.
+
+\begin{theorem}
+    Consider $c$ a cluster point of $S\cap(-\infty, c)$ and $S\cap(c, \infty)$, with $S \subseteq \R$. Then, $c$ is a cluster point of $S$. Or equivalently:
+    \begin{equation*}
+        \lim \limits_{x \to c} f(x) = L \longleftrightarrow \lim \limits_{x \to c^-} f(x)= \lim \limits_{x \to c^+} f(x) = L
+    \end{equation*}
+\end{theorem}
+
+\subsection{Continuity of a function}
+
+As shown in a past example, it is possible that $\lim_{x \to c} f(x) \neq f(c)$. In other words, it is possible that a limit of a function as $x \to c$ (or $x \to c^-$, $x \to c^+$) differs from $f(c)$. Continuity links the two concepts.
+
+\begin{definition}[Continuous function]
+    Consider $c \in S \subseteq \R$ a cluster point. We say $f$ is continuous at $c$ if $\forall \varepsilon > 0, \exists \delta > 0$ such that if $x \in S$ with $|x-c| < \delta$ then $|f(x)-f(c)| < \varepsilon$. If $f$ is continuous at all points of $U \subseteq S$ then $f$ is continuous on $U$.
+\end{definition}
+
