@@ -129,3 +129,89 @@ As shown in a past example, it is possible that $\lim_{x \to c} f(x) \neq f(c)$.
     Consider $c \in S \subseteq \R$ a cluster point. We say $f$ is continuous at $c$ if $\forall \varepsilon > 0, \exists \delta > 0$ such that if $x \in S$ with $|x-c| < \delta$ then $|f(x)-f(c)| < \varepsilon$. If $f$ is continuous at all points of $U \subseteq S$ then $f$ is continuous on $U$.
 \end{definition}
 
+\begin{theorem}
+    Consider $c \in S \subseteq \R$, and $f: S \to \R$, then:
+    \begin{enumerate}
+        \item if $c$ is not a cluster point of $f$, then $f$ is continuous at $c$,
+        \item if $c$ is a cluster point of $f$, then $f$ is continuous at $c$ if, and only if, $\lim_{x \to c} f(x) = f(c)$,
+        \item $f$ is continuous at $c$, and only if, for all sequence $\{x_n\}$ in $S$ with $x_n \to c$ then $f(x_n) \to f(c)$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Proving each statement:
+    \begin{enumerate}
+        \item Consider $\varepsilon > 0$, since $c$ is not a cluster point of $S$ then $\exists \delta >0$ such that $(c-\delta, c+ \delta) \cap S = \{c\}$, so if $x \in S$ and $|x-c| < \delta$ then $x = c$ and $|f(x) - f(c)| < \varepsilon$.
+        \item Proving each direction of the statement:
+            \begin{itemize}
+                \item $(\Longleftarrow)$ If $\lim_{x \to c} f(x) = f(c)$ then $\forall \varepsilon > 0, \exista \delta > 0$ such that if $x \in S$ and $|x-c| < \delta$ then $|f(x) - f(c)| < \varepsilon$.
+                \item $(\Longrightarrow)$ If $f$ is continuous at $c$ then $\forall \varepsilon > 0, \exists \delta > 0$ such that if $x \in S$ with $|x-c| < \delta$ then $|f(x) - f(c)| < \varepsilon$.
+            \end{itemize}
+        \item Proving each direction of the statement:
+            \begin{itemize}
+                \item $(\Longrightarrow)$, let $\{x_n\}$ in $S$ with $x_n \to c$. Take $\varepsilon > 0$, since $f$ is continuous at $c$, $\exists \delta > 0$ such that if $|x-c| < \delta$ with $x \in S$ then $|f(x_n) - f(c)| < \varepsilon$. Since $x_n \to c, \exists N \in \N$ such that $|x_n-c| <  \delta, \forall n \geq N$. So, $|x_n-c| < \delta \longrightarrow |f(x_n) - f(c)| < \varepsilon$.
+                \item $(\Longleftarrow)$ For contradiction, assume $f$ is not continuous at $c$, then $\exists \varepsilon_0 > 0$ such that $\forall \delta > 0, \exists x \in S$ such $|x-c| < \delta$ and $|f(x) - f(c)| \geq \varepsilon_0$. Thus, $\forall n \in N, \exists x_n \in S$ such that $|x_n-c| < 1/n$ and $|f(x_n) -  f(c)| \geq \varepsilon_0$. Thus, by the squeeze theorem $|x_n - c| \to 0$ and $x_n \to c$ which implies $f(x_n) \to x$ which is a contradiction.
+            \end{itemize}
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}[Bounded function]
+    A function $f: S \to \R$ is bounded if $\exists M \geq 0$ such that $|f(x)| \leq M, \forall x \in S$.
+\end{definition}
+
+\begin{theorem}
+    If $f: [a,b] \to \R$ is continuous at $[a,b]$ then it is bounded.
+\end{theorem}
+
+\begin{proof}
+    For contradiction, assume $f$ is continuous but not bounded. Then, $\forall n \in \N, \exists x_n \in [a,b]$ such that $|f(x)| \geq n$. By the Bolzano-Weierstrass theorem, there exists a subsequence $\{x_{n_k}\}$ of $\{x_n\}$ with $x \in \R$ and $x_{n_k} \to x$. Since, $x_{n_k} \in [a,b], \forall k \in \N$ then $x \in [a,b]$. Given $f$ is continuous
+    \begin{equation*}
+        f(x) = \lim \limits_{k \to \infty} f(x_{n_k}) \Longrightarrow |f(x)| = \lim \limits_{k \to \infty} |f(x_{n_k})|
+    \end{equation*}
+    Hence, $\{|f(x_{n_k})\}$ is bounded and so is $\{n_k\}$ since $n_k \leq |f(x_{n_k})|$, from the definition of a subsequence $k \leq x_k, \forall k \in N$, contradicting the initial claim.
+\end{proof}
+
+\begin{theorem}[Min-max theorem or Extreme value theorem]
+    Consider $f: [a,b] \to \R$. If $f$ is continuous on $[a,b]$ then it achieves an absolute maximum and absolute minimum on $[a,b]$.
+\end{theorem}
+
+\begin{proof}
+    For the absolute maximum, if $f$ is continuous then $f$ is bounded. Thus, $E = \{ f(x): x \in [a,b]\}$ is bounded. Let $L = \sup E$ then,
+    \begin{itemize}
+        \item $L$ is an upper bound for $E$
+        \item There exists a sequence $\{f(x_n)\}$ with $x_n \in [a,b]$ such that $f(x_n) \to L$
+    \end{itemize}
+    By the Bolzano-Weierstrass theorem, there exists a subsequence $\{x_{n_k}\}$ of $\{x_n\}$ and $d \in [a,b]$ such that $x_n \to d$ as $k \to \infty$. Hence,
+    \begin{equation*}
+        f(d) = \lim \limits_{k \to \infty} f(x_{n_k}) = \lim \limits_{n \to \infty} f(x_n) = L
+    \end{equation*}
+    by the continuity of $f$ on $[a,b]$. So, $f$ achieves an absolute maximum at $d$.
+    The proof for the absolute minimum follows similarly.
+\end{proof}
+
+\begin{theorem}
+    Consider $f: [a,b] \to \R$. If $f(a) < 0$ and $f(b) > 0$, then $\exists c \in (a,b)$ such that $f(c) = 0$
+\end{theorem}
+
+\begin{proof}
+    Let $a_1 = a$ and $b_1 = b$. Define $a_n, b_n$ as follows:
+    \begin{itemize}
+        \item If $f((a_{n-1} + b_{n-1})/2) \geq 0$ then $a_n = a_{n-1}$ and $b_n = (a_{n-1} + b_{n-1})/2$,
+        \item If $f((a_{n-1} + b_{n-1})/2 < 0$ then $a_n = (a_{n-1}+b_{n-1})/2$ and $b_n = b_{n-1}$.
+    \end{itemize}
+    In this way, we obtain:
+    \begin{enumerate}
+        \item $a \leq a_n \leq a_{n+1} \leq b_{n+1} \leq b_n \leq b, \forall n \in N$,
+        \item $b_{n+1} - a_{n+1} = (b_n - a_n)/2, \forall n \in \N$,
+        \item $f(a_n) \leq 0$ and $f(b_n) \geq 0, \forall n \in N$.
+    \end{enumerate}
+    From 1., $\{a_n\}$ and $\{b_n\}$ are bounded and monotone increasing and decreasing respectfully. Thus, $\exists c, d \in [a,b]$ such that $a_n \to c$ and $b_n \to d$. By 2.,
+    \begin{equation*}
+        b_n - a_n = \frac{b_{n-1} - a_{n-1}}{2} = \frac{1}{4}(b_{n-2} - a_{n-2}) = ... = \frac{1}{2^{n-1}}(b-a)
+    \end{equation*}
+    And,
+    \begin{equation*}
+        d - c = \lim \limits_{n \to \infty} (b_n - a_n) = \lim \limits_{n \to \infty} \frac{1}{2^{n-1}} (b-a) = 0 \Longrightarrow d = c
+    \end{equation*}
+    So, $a_n \to c$ and $b_n \to c$. By 3., $f(c) = \lim_{n \to \infty} f(a_n) \leq 0$ and $f(c) = \lim_{n \to  \infty} f(b_n) \geq 0$. Therefore, $f(c) = 0$.
+\end{proof}
