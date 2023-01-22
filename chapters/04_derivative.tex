@@ -50,7 +50,7 @@ This notion can be further clarified by a few examples:
     Proving each direction of the theorem individually:
     \begin{enumerate}
         \item Suppose $f(x) \to L$ as $x \to c$, then consider $\{x_n\}$ in $S \setminus \{x\}$ such that $x_n \to c$. Let $\varepsilon > 0, \exists \delta > 0$ such that $|f(x) - L| < \varepsilon$ if $x \in S$ and $0 < |x-c| < \delta$. Since $x_n \to c, \exists N \in \N$ such that $0 < |x_n-c| < \delta, \forall n \geq N$, since $|f(x) - L| \varepsilon, \forall 0 < |x-c| < \delta$ then $f(x_n) \to L$.
-        \item Assuming the second part is false, for contradiction, $\exists \varepsilon_0 > 0$ such that $\forall \delta > 0, \eixists x \in S$ such that $0 < |x-c| < \delta$ and $|f(x) - L| \geq \varepsilon_0$. Then, $\forall n \in \n, \exists x_n \in S$ such that $0 < |x_n - c| < 1/n$ and $|f(x_n) - L| \geq \varepsilon_0$. By the squeeze theorem we conclude $x_n \to c$ and $0 = \lim_{n \to \infty} |f(x_n) - L| \geq \varepsilon_0 > 0$ which is a contradiction.
+        \item Assuming the second part is false, for contradiction, $\exists \varepsilon_0 > 0$ such that $\forall \delta > 0, \exists x \in S$ such that $0 < |x-c| < \delta$ and $|f(x) - L| \geq \varepsilon_0$. Then, $\forall n \in \N, \exists x_n \in S$ such that $0 < |x_n - c| < 1/n$ and $|f(x_n) - L| \geq \varepsilon_0$. By the squeeze theorem we conclude $x_n \to c$ and $0 = \lim_{n \to \infty} |f(x_n) - L| \geq \varepsilon_0 > 0$ which is a contradiction.
     \end{enumerate}
 \end{proof}
 
@@ -89,9 +89,9 @@ This notion can be further clarified by a few examples:
 \end{theorem}
 
 \begin{proof}
-    Define $L_1 = \lim_{x \to c} f(x)$ and $L_2 = \lim_{x \to c} g(x)$, and $\{x_n\}$ to be a sequence in $S \setminux \{c\}$ with $x_n \to c$. Then, $f(x_n) \leq g(x_n), \forall n \in \N$. So,
+    Define $L_1 = \lim_{x \to c} f(x)$ and $L_2 = \lim_{x \to c} g(x)$, and $\{x_n\}$ to be a sequence in $S \setminus \{c\}$ with $x_n \to c$. Then, $f(x_n) \leq g(x_n), \forall n \in \N$. So,
     \begin{equation*}
-        L_1 = \lim \limits_{n \to \infty} f(x_n) \leq \lim \limits_{n \to \infy} g(x_n) = L_2
+        L_1 = \lim \limits_{n \to \infty} f(x_n) \leq \lim \limits_{n \to \infty} g(x_n) = L_2
     \end{equation*}
 \end{proof}
 

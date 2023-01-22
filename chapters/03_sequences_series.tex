@@ -433,7 +433,7 @@ Now we proceed to show an interesting result: these limits always exist.
 \end{theorem}
 
 \begin{proof}
-    Suppose $\{x_{n_k^}\}$ is a subsequence of $\{x_n\}$ such that $\lim \limits_{n \to \infty} x_n = x$. Let $\varepsilon > 0$, then $\exist N_1 \in \N$ such that $|x_{n_k} - x| < \varepsilon/2, \forall k \geq N_1$. Since $\{x_n\}$ is Cauchy, $\exists N_2 \in \N$ such that $|x_n-x_m| < \varepsilon/2, \forall n, m \geq M_1$.\\
+    Suppose $\{x_{n_k}\}$ is a subsequence of $\{x_n\}$ such that $\lim \limits_{n \to \infty} x_n = x$. Let $\varepsilon > 0$, then $\exists N_1 \in \N$ such that $|x_{n_k} - x| < \varepsilon/2, \forall k \geq N_1$. Since $\{x_n\}$ is Cauchy, $\exists N_2 \in \N$ such that $|x_n-x_m| < \varepsilon/2, \forall n, m \geq M_1$.\\
     Take $N = \max \{N_1, N_2\}$. Then, $|x_n-x| \leq |x_n-x_{n_N}| + |x_{n_M} - x| < \varepsilon/2  + \varepsilon/2 = \varepsilon$.
 \end{proof}
 
@@ -456,11 +456,11 @@ Now we proceed to show an interesting result: these limits always exist.
 As pointed out by David Bressoud in `` A radical approach to real analysis'', the infinite summation is in itself an oxymoron. That is, the sum is the process of adding up, or reaching the totality. On the other hand, infinite means never-ending. Weird things can happen as we deal with series. The formal treatment of real analysis aims to safeguard us against danger. 
 
 \begin{definition}[Series convergence]
-    Given the sequence, $\{x_n\}$, the series associated with it is the summation of its terms, denoted as $\sum \limits_{n=1}^\infty = \sum x_n$. The series converges the sequence of partial sums
+    Given the sequence, $\{x_n\}$, the series associated with it is the summation of its terms, denoted as $\sum \limits_{n=1}^\infty x_n = \sum x_n$. The series converges the sequence of partial sums
     \begin{equation}
         \left \{
             s_m = \sum \limits_{n=1}^m x_n
-        \right \}\limits_{m=1}^\infty
+        \right \} _{m=1}^\infty
     \end{equation}
     converges. If $\lim \limits_{m \to \infty} s_m = s$ we write $\sum x_n = s$ and treat $\sum x_n$ as a number.
 \end{definition}
@@ -804,7 +804,7 @@ From the previous theorem it is clear that $\sum (-1)^n/n$ converges since $\{1/
 \end{theorem}
 
 \begin{proof}
-    To show $\sum |x_{f(n)}|$ converges it suffices to show $\sum_{n=1}^m |x_{f(n)}|$is bounded. Since $\um x_n$ converges, then it is also bounded hence $\exists M \in \N$ such that
+    To show $\sum |x_{f(n)}|$ converges it suffices to show $\sum_{n=1}^m |x_{f(n)}|$ is bounded. Since $\sum x_n$ converges, then it is also bounded hence $\exists M \in \N$ such that
     \begin{equation*}
         \sum \limits_{n=1}^l |x_n| \leq M, \forall l \in \N
     \end{equation*}
