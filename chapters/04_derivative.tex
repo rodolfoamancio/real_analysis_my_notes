@@ -144,7 +144,7 @@ As shown in a past example, it is possible that $\lim_{x \to c} f(x) \neq f(c)$.
         \item Consider $\varepsilon > 0$, since $c$ is not a cluster point of $S$ then $\exists \delta >0$ such that $(c-\delta, c+ \delta) \cap S = \{c\}$, so if $x \in S$ and $|x-c| < \delta$ then $x = c$ and $|f(x) - f(c)| < \varepsilon$.
         \item Proving each direction of the statement:
             \begin{itemize}
-                \item $(\Longleftarrow)$ If $\lim_{x \to c} f(x) = f(c)$ then $\forall \varepsilon > 0, \exista \delta > 0$ such that if $x \in S$ and $|x-c| < \delta$ then $|f(x) - f(c)| < \varepsilon$.
+                \item $(\Longleftarrow)$ If $\lim_{x \to c} f(x) = f(c)$ then $\forall \varepsilon > 0, \exists \delta > 0$ such that if $x \in S$ and $|x-c| < \delta$ then $|f(x) - f(c)| < \varepsilon$.
                 \item $(\Longrightarrow)$ If $f$ is continuous at $c$ then $\forall \varepsilon > 0, \exists \delta > 0$ such that if $x \in S$ with $|x-c| < \delta$ then $|f(x) - f(c)| < \varepsilon$.
             \end{itemize}
         \item Proving each direction of the statement:
@@ -214,4 +214,37 @@ As shown in a past example, it is possible that $\lim_{x \to c} f(x) \neq f(c)$.
         d - c = \lim \limits_{n \to \infty} (b_n - a_n) = \lim \limits_{n \to \infty} \frac{1}{2^{n-1}} (b-a) = 0 \Longrightarrow d = c
     \end{equation*}
     So, $a_n \to c$ and $b_n \to c$. By 3., $f(c) = \lim_{n \to \infty} f(a_n) \leq 0$ and $f(c) = \lim_{n \to  \infty} f(b_n) \geq 0$. Therefore, $f(c) = 0$.
+\end{proof}
+
+\begin{theorem}[Bolzano intermediate value theorem]
+    Consider $f: [a,b] \to \R$ continuous. If $f(a) < f(b)$ with $y \in (f(a), f(b)), \exists c \in (a,b)$ such that $f(c) = y$. Else, if $ f(b) < f(a)$ with $y \in (f(b), f(a))$ then $\exists c \in (a,b)$ such that $f(c) = y$.
+\end{theorem}
+
+\begin{proof}
+    Suppose $f(a) < f(b)$ with $y \in (f(a), f(b))$. Define $g(x) = f(x) - y$. Then, $f(x) = c \Longleftrightarrow g(x) = 0$ and $g: [a,b] \to \R$ is continuous, more importantly $g(a) = f(a) - y < 0$ and $g(b) = f(b) - y > 0$, then by the previous theorem $\exists c \in (a,b)$ such that $g(c) = y$ which is equivalent to $f(c) = y$. The proof for $f(b)<f(a)$ follows similarly.
+\end{proof}
+
+\begin{theorem}
+    Consider $f: [a,b]  \to \R$ to be continuous. Take $c \in [a,b]$ to be where $f$ achieves a minimum value in $[a,b]$ and $d \in [a,b]$ to be where $f$ achieves a maximum value in $[a,b]$. Then, $f([a,b]) = [f(c), f(d)]$. Putting it in words: every value between the maximum and minimum is achieved.
+\end{theorem}
+
+\begin{proof}
+    It is clear that $f([a,b]) \subseteq [f(c), f(d)]$. By the intermediate value theorem applied to $f: [c,d] \to \R$, we obtain $[f(c), f(d)] \subseteq f([c,d]) \subset f([a,b])$. Therefore, $f([a,b]) = [f(c), f(d)]$.
+\end{proof}
+
+\subsection{Uniform continuity}
+
+\begin{definition}[Uniform continuity]
+    Consider $f: S \to \R$. Then $f$ is continuous on $S$ if $\forall \varepsilon > 0, \exists \delta = \delta(\varepsilon) > 0$ such that $|x-c| < \delta$ implies $|f(x) - f(c)| < \varepsilon, \forall x \in S$.    
+\end{definition}
+
+\begin{theorem}
+    Consider $f: [a,b] \to \R$, then $f$ is continuous if, and only if, $f$ is uniformly continuous.
+\end{theorem}
+
+\begin{proof}
+    Proving each direction of the statement:
+    \begin{itemize}
+        \item $(\Longrightarrow)$: Suppose $f$ is continuous and assume for contradiction that $f$ is not uniformly continuous. Then, $\exists \varepsilon_0 > 0$ such that $\forall n \in \N, \exists x_n, c_n \in [a,b]$ such that $|x_n-c|<1/n$ and $|f(x_n) - f(c_n)| \geq \varepsilon_0$. 
+    \end{itemize}
 \end{proof}
