@@ -381,7 +381,7 @@ In order to prove such function exists and fulfils the description above it is n
                 \sum \limits_{k=N_0 + 1}^\infty \frac{\cos (160^k x_n)}{4^k} - \frac{\cos (160^k c)}{4^k}
             \right | \\
             &\leq \limsup \limits_{n \to \infty} \sum \limits_{k = 0}^{N_0} 4^{-k} |\cos (160^k x) - \cos( 160^k c) + \sum \limits_{k = N_0 + 1}^\infty 4^{-k} |\cos (160^k x) - \cos( 160^k c) \\
-            &\leq \limsup \limits_{n \to \infty} \left ( \sum \limits_{k=0}^{N_0} 4^{-k}\right) |x_n - c| + \varepsilon = \varepsilon
+            &\leq \limsup \limits_{n \to \infty} \left ( \sum \limits_{k=0}^{N_0} 4^{-k} \right ) |x_n - c| + \varepsilon = \varepsilon
         \end{align*}
     \end{enumerate}
 \end{proof}
@@ -432,4 +432,123 @@ In order to prove such function exists and fulfils the description above it is n
         \frac{|f(c) - f(x_n)|}{|c-x_n|} \geq \frac{160^n}{3\pi} 4^{-n}\frac{1}{39} = \frac{40^n}{117 \pi}
     \end{equation*}
     Thus, the sequence is unbound and therefore does not converge for any $x \in \R$ and the derivative does not exist.
+\end{proof}
+
+\subsection{Differentiation rules and theorems}
+
+\begin{theorem}[Chain rule]
+    Consider $f: A \to B$ and $g: B \to \R$, with $f$ differentiable at $c \in A$ and $g$ differentiable at $f(c) \in B$. Then, $(g \circ f)'(c) = g'(f(c))f'(c)$.
+\end{theorem}
+
+\begin{proof}
+    Let $h(x) = (g \circ f)(x)$ and $d = f(c)$. Define:
+    \begin{equation*}
+        u(y) = \begin{cases}
+            \frac{g(y) - g(d)}{y - d} \text{ if } y \neq d \\
+            g'(d) \: \: \: \: \: \: \text{ if } y = d
+        \end{cases}
+    \end{equation*}
+    and,
+    \begin{equation*}
+        v(x) = \begin{cases}
+            \frac{f(x) - f(c)}{x - c} \text{ if } x \neq c \\
+            f'(c) \: \: \: \: \: \: \text{ if } x = c
+        \end{cases}
+    \end{equation*}
+    Then,
+    \begin{equation*}
+        \lim \limits_{y \to d} u(y) = \lim \limits_{y \to d} \frac{g(y) - g(d)}{y - d} = g'(d) = u(d)
+    \end{equation*}
+    and,
+    \begin{equation*}
+        \lim \limits_{x \to c} v(x) = \lim \limits_{x \to c} \frac{f(x) - f(c)}{x - c} = d'(c) = v(c)
+    \end{equation*}
+    Which shows $u(y)$ and $v(x)$ are continuous. Now, $g(y) - g(d) = u(y)(y-d)$ and $f(x) - f(c) = v(x)(x-c)$. Then, $h(x) - h(c) = g(f(x)) - g(f(c)) = g(f(x)) - g(d) = u(f(x))(f(x) - f(c)) = u(f(x))v(x)(x-c)$. So, 
+    \begin{align*}
+        \lim \limits_{x \to c} \frac{h(x) - h(c)}{x - c} &= \lim \limits_{x \to c} u(f(x))v(x) \\
+        &= u(f(c))v(c) \\
+        &= f'(g(c))g'(c)
+    \end{align*}
+\end{proof}
+
+\begin{theorem}
+    Consider $f: I \to \R$ and $g: I \to \R$, both differentiable at $c \in I$. Then,
+    \begin{enumerate}
+        \item $(\alpha f)'(c) = \alpha f'(c), \forall \alpha \in \R$,
+        \item $(f + g)'(c) = f'(c) + g'(c)$,
+        \item $(fg)'(c) = f'(c)g(c) + f(c)g'(c)$,
+        \item $(f/g)'(c) = \frac{f'(c)g(c) - f(c)g'(c)}{[g(c)]^2}$, provided $g(c) \neq 0$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Proving each statement:
+    \begin{enumerate}
+        \item This result follows directly from the definition:
+            \begin{equation*}
+                (\alpha f)'(c) = \lim \limits_{x \to c} \frac{(\alpha f)(x) - (\alpha f)(c)}{x - c} = \alpha \frac{f(x) - f(c)}{x-c} = \alpha f'(c)
+            \end{equation*}
+        Considering the algebraic properties of limits.
+        \item Again, from the definition:
+            \begin{equation*}
+                (f + g)'(c) = \lim \limits_{x \to c}\frac{(f + g)(x) - (f + g)(c)}{x - c} = \lim \limits_{x \to c} \frac{f(x) - f(c)}{x-c} + \lim \limits_{x \to c}\frac{g(x) - g(c)}{x-c} = f'(c)+g'(c)
+            \end{equation*}
+        \item First, note:
+            \begin{equation*}
+                \frac{f(x)g(x) - f(c)g(c)}{x - c} = \frac{f(x) - f(c)}{x- c}g(x) + f(c) \frac{g(x) - g(c)}{x - c}
+            \end{equation*}
+            Then, taking $\lim_{x \to c}$, we obtain: $ (fg)'(c) = f'(c)g(c) + f(c)g'(c)$.
+        \item Consider $h(x) = 1/g(x)$. By the chain rule $h'(c) = -g'(c)/[g(c)]^2$. Then, $(f/g)'(c) = (fh)'(c) = f'(c)h(c) + f(c)h'(c) = [f'(c)/g(c) - f(c)[g(c)]^2/g'(c)] = [f'(c)g(c) - f(c)g'(c)]/[g(c)]^2$.
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}[Relative maximum/minimum]
+    Consider $S \subseteq \R$ and $f: S \to \R$. Then, $f$ has a relative maximum at $c \in S$ if $\exists \delta > 0$ such that $\forall x \in S: |x-c| < \delta$ then $f(x) \leq f(c)$. The definition of minimum follows analogously.
+\end{definition}
+
+\begin{theorem}
+    If $f:[a,b] \to \R$, $f$ has a relative min or max at $c \in (a,b)$ and $f$ is differentiable at $c$, then: $f'(c) = 0$.
+\end{theorem}
+
+\begin{proof}
+    If $f$ has a relative maximum at $c \in (a,b)$, then $\exists \delta > 0$ such that $f(c) \leq f(x), \forall x in (c- \delta, c + \delta)$, with $x \in [a,b]$. Let 
+    \begin{equation*}
+        x_n = c - \frac{\delta}{2n} \in (c- \delta, c)
+    \end{equation*}
+    Then, $x_n \to c$, so:
+    \begin{equation*}
+        f'(c) = \lim \limits_{n \to \infty} \frac{f(x_n) - f(c)}{x_n - c} \geq 0
+    \end{equation*}
+    Now, define:
+    \begin{equation*}
+        y_n = c + \frac{\delta}{2n} \in (c, c+\delta)
+    \end{equation*}
+    Then, $y_n \to c$, and
+    \begin{equation*}
+        f'(c) = \lim \limits_{n \to \infty}\frac{(f(y_n) - f(c))}{y_n - c} \leq 0
+    \end{equation*}
+    Therefore, $f'(c) = 0$.
+\end{proof}
+
+\begin{theorem}[Rolle's theorem]
+    Consider $f: [a,b] \to \R$ and $f$ differentiable in $(a,b)$, additionally if $f(a) = f(b)$, then $\exists c \in (a,b)$ such that $f'(c) = 0$.
+\end{theorem}
+
+\begin{proof}
+    Let $Y = f(a) = f(b)$. Since $f$ is continuous $\exists c_1, c_2 \in [a,b]$ to be a relative maximum and a relative minimum, respectfully. Then if $f(c_1) > Y$ then $ c_1 \in (a,b)$ and $f'(c_1) = 0$. Similarly, if $f(c_2) < Y$ then $c_2 \in (a,b)$ and $f'(c_2) = 0$. If $f(c_1) \leq Y \leq f(c_2)$ then $f(x) = Y, \forall x \in [a,b]$, so $f'(c) - 0$ for any $c \in (a,b)$.
+\end{proof}
+
+\begin{theorem}[Mean value theorem]
+    Consider $f: [a,b] \to \R$ to be continuous and differentiable in $(a,b)$. Then, $\exists c \in (a,b)$ such that $f(b) - f(a) = f'(c)(b - a)$.
+\end{theorem}
+
+\begin{proof}
+    Define
+    \begin{equation*}
+        g(x) = f(x) - f(b) + \frac{f(b) - f(a)}{b - a}(b - x)
+    \end{equation*}
+    Then, $g(a) = g(b) = 0$. Thus, by the Rolle's theorem, $\exists c \in (a,b)$ such that $g'(c) = 0$. Hence,
+    \begin{equation*}
+        g'(c) = 0 = f'(c) - \frac{f(b) - f(a)}{b-a}
+    \end{equation*}
 \end{proof}
