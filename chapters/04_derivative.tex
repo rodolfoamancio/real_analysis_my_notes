@@ -245,6 +245,8 @@ As shown in a past example, it is possible that $\lim_{x \to c} f(x) \neq f(c)$.
 \begin{proof}
     Proving each direction of the statement:
     \begin{itemize}
-        \item $(\Longrightarrow)$: Suppose $f$ is continuous and assume for contradiction that $f$ is not uniformly continuous. Then, $\exists \varepsilon_0 > 0$ such that $\forall n \in \N, \exists x_n, c_n \in [a,b]$ such that $|x_n-c|<1/n$ and $|f(x_n) - f(c_n)| \geq \varepsilon_0$. 
+        \item $(\Longrightarrow)$: Suppose $f$ is continuous and assume for contradiction that $f$ is not uniformly continuous. Then, $\exists \varepsilon_0 > 0$ such that $\forall n \in \N, \exists x_n, c_n \in [a,b]$ such that $|x_n-c|<1/n$ and $|f(x_n) - f(c_n)| \geq \varepsilon_0$. \\
+        By the Bolzano-Weierstrass theorem, there exists a subsequence $\{x_{n_k}\}$ of $\{x_n\}$ and $x \in [a,b]$ such that $x_{n_k} \to x$. Similarly, there also exists a subsequence $\{c_{n_k}\}$ of $\{c_n\}$ and $c \in [a,b]$ such that $c_{n_k} \to c$. And also, the subsequence $\{x_{n_{k_k}}\}$ of $\{x_{n_k}\}$ satisfies $x_{n_{k_j}} \to x$. Then, $|x-c| = \lim_{j \to \infty} |x_{n_{k_j}} - c_{n_{k_j}}| \leq \lim_{j \to \infty} 1/n_{k_j} - 0$. \\
+        Thus, $x = c$. But since $f$ is continuous at $c$, $0 = |f(c) - f(c)| = \lim_{j \to \infty} |f(x_{n_{k_j}}) - f(c_{n_{k_j}})| \geq \varepsilon_0$ which is a contradiction to the initial claim.
     \end{itemize}
 \end{proof}
