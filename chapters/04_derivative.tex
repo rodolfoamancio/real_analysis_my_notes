@@ -250,3 +250,186 @@ As shown in a past example, it is possible that $\lim_{x \to c} f(x) \neq f(c)$.
         Thus, $x = c$. But since $f$ is continuous at $c$, $0 = |f(c) - f(c)| = \lim_{j \to \infty} |f(x_{n_{k_j}}) - f(c_{n_{k_j}})| \geq \varepsilon_0$ which is a contradiction to the initial claim.
     \end{itemize}
 \end{proof}
+
+\section{Differentiation}
+
+\subsection{Definition and properties}
+
+\begin{definition}[Derivative]
+    Let $I$ be an interval with $f: I \to \R$ and $c \in I$. Then, $f$ is differentiable at $c$ if the limit
+    \begin{equation}
+        \lim \limits_{x \to c} \frac{f(x) - f(c)}{x-c}
+    \end{equation}
+    exists, in this case we write:
+    \begin{equation}
+        f'(c) = \lim \limits_{x \to c} \frac{f(x) - f(c)}{x-c}
+    \end{equation}
+    Furthermore, if $f$ is differentiable $\forall c \in I$ then we write the derivative as $f'$, or $f'(x)$ or $\frac{\dint f}{\dint x}$.
+\end{definition}
+
+\paragraph{Example} For all $n \in \N$, the derivative of the power function $f: \R \to \R$, $f(x) = \alpha x^n$ is given by $f'(c) = \alpha n c^{n-1}, \forall c \in \R$.
+
+\begin{proof}
+    First, note that $\forall n \in \N$:
+    \begin{equation*}
+        (x-c) \sum \limits_{j=0}^{n-1} x^{n-1-j}c^j = \sum \limits_{j=0}^{n-1}x^{n-j}c^j - \sum \limits_{j=0}^{n-1} x^{n-1-j}c^{j+1}
+    \end{equation*}
+    Defining $l = j + 1$:
+    \begin{align*}
+        (x-c) \sum \limits_{j=0}^{n-1} x^{n-1-j}c^j &= \sum \limits_{l=1}^{n}x^{n-j}c^j - \sum \limits_{j=0}^{n-1} x^{n-l}c^{l} \\
+        &= x^{n-0}c^0 - x^{n-n}c^n \\
+        &= x^n - c^n
+    \end{align*}
+    Therefore,
+    \begin{equation*}
+        f'(c) = \lim \limits_{x \to c} \frac{\alpha x^n - \alpha c^n}{x-c} = \alpha \lim \limits_{x \to c} \sum \limits_{j=0}^{n-1} x^{n-1-j}c^j = \alpha \sum \limits_{j=0}^{n-1} c^{n-1-j}c^j = \alpha n c^{n-1}
+    \end{equation*}
+\end{proof}
+
+\begin{theorem}
+    If the function $f: I \to \R$ is differentiable at $c \in I$, then it is also continuous at $c$.
+\end{theorem}
+
+\begin{proof}
+    Since every point of $I$ is also a cluster point, then $f$ is continuous at $c \in I$ if, and only if, $\lim_{x \to c} f(x) = f(c)$. Now, 
+    \begin{align*}
+        \lim \limits_{x \to c} f(x) &= \lim \limits_{x \to c} (f(x) - f(c) + f(c)) \\
+        &= \lim \limits_{x \to c} \left( (x-c)\frac{f(x)-f(c)}{x-c} + f(c)\right) \\
+        &= 0 \cdot f'(c) + f(c) = f(c)
+    \end{align*}
+\end{proof}
+
+\subsection{Weierstrass' function}
+
+Continuity seems to be a prerequisite for the differentiation of a function. However, we may be tempted to take it as a sufficient condition, which unfortunately is not the case. This behaviour can be seen by an example.
+
+\paragraph{Example} Consider $f(x) = |x|$. Then, $f$ is not differentiable at $0$, even though it is continuous at $0$.
+
+\begin{proof}
+    Consider a sequence $\{x_n\}$ such that $x_n \to 0$ and
+    \begin{equation*}
+        \lim \limits_{n \to \infty} \frac{f(x_n) - f(0)}{x_n - 0}
+    \end{equation*}
+    does not exist. Let $x_n = (-1)^n/n$. Then, $x_n \to 0$ and 
+    \begin{equation*}
+        \frac{f(x_n)-f(0)}{x_n - 0} = \frac{|(-1)^n/n|}{(-1)^n/n} =(-1)^n
+    \end{equation*}
+    Hence, $\lim_{n \to \infty} (-1)^n$ does not exist.
+\end{proof}
+
+It is clear that a function may be continuous, and yet non-differentiable at some point. However, if $f: \R \to \R$ is continuous at $\R$, is there a point $c \in \R$ such that $f$ is differentiable at $c$. The answer is no. There exists a function everywhere continuous and nowhere differentiable, called the Weierstrass' function.
+
+In order to prove such function exists and fulfils the description above it is necessary to gather some tools, the following theorems are presented with this goal.
+
+\begin{theorem}
+    For the cosine function, it is true that:
+    \begin{enumerate}
+        \item $\forall x, y \in \R, |\cos x - \cos y| \leq |x - y|$
+        \item For $c \in \R$ and $k \in \N$, $\exists y \in (c + \pi/k, c + 3\pi/k)$ such that $|\cos(kc) - \cos(ky)| \leq 1$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    For $a, b, c \in \R, |a + b + c| \leq |a| - |b| - |c|$.
+\end{theorem}
+
+\begin{proof}
+    This follows from the triangle inequality:
+    \begin{equation*}
+        |a| = |a + b + c + (-b) + (-c)| \leq |a + b + c| + |b + c| \leq |a + b + c| + |b| + |c|
+    \end{equation*}
+\end{proof}
+
+\begin{theorem}
+    Consider the function:
+    \begin{equation}
+        f(x) = \sum \limits_{k = 0}^\infty \frac{\cos (160^k x)}{4^k}
+    \end{equation}
+    Then,
+    \begin{enumerate}
+        \item $\forall x \in \R, f(x)$ is absolutely convergent,
+        \item $f(x)$ is bounded and continuous.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Proving each statement:
+    \begin{enumerate}
+        \item First, note that
+            \begin{equation*}
+                \left | \frac{\cos (160^k x)}{4^k}\right | \leq 4^{-k}, \forall k \in \N
+            \end{equation*}
+            Hence, the the comparison test, 
+            \begin{equation*}
+                \sum \limits_{k=0}^\infty \left | \frac{\cos (160^k x)}{4^k}\right |
+            \end{equation*}
+            converges.
+        \item We begin by noticing:
+        \begin{equation*}
+            |f(x)| \leq \sum \limits_{k=0}^\infty \frac{|\cos (160^k)|}{4^k} \leq \sum \limits_{k=0}^\infty \frac{1}{4^k} = \frac{4}{3}
+        \end{equation*}
+        Hence, $f$ is bounded.\\
+        Next, suppose $c \in \R$ and $x_n \to c$. Note that $\{|f(x_n) - f(c)|\}$ is bounded. Thus,
+        \begin{equation*}
+            \lim \limits_{n \to \infty} |f(x_n) - f(c)| = 0 \Longleftrightarrow \limsup \limits_{n \to \infty} |f(x_n) - f(c)| = 0
+        \end{equation*}
+        It is necessary to show $\limsup_{n \to \infty} |f(x_n) - f(c)| \leq \varepsilon, \forall \varepsilon > 0$. Choose $N_0 \in \N$ such that $\sum_{k=N_0 + 1}^\infty 4^{-k} < \varepsilon/2$. Then,
+        \begin{align*}
+            &\limsup \limits_{n \to \infty} |f(x_n) - f(c)| \\
+            &= \limsup \limits_{n \to \infty} \left |
+                \sum \limits_{k=0}^{N_0} \frac{\cos (160^k x_n)}{4^k} - \frac{\cos (160^k c)}{4^k} + 
+                \sum \limits_{k=N_0 + 1}^\infty \frac{\cos (160^k x_n)}{4^k} - \frac{\cos (160^k c)}{4^k}
+            \right | \\
+            &\leq \limsup \limits_{n \to \infty} \sum \limits_{k = 0}^{N_0} 4^{-k} |\cos (160^k x) - \cos( 160^k c) + \sum \limits_{k = N_0 + 1}^\infty 4^{-k} |\cos (160^k x) - \cos( 160^k c) \\
+            &\leq \limsup \limits_{n \to \infty} \left ( \sum \limits_{k=0}^{N_0} 4^{-k}\right) |x_n - c| + \varepsilon = \varepsilon
+        \end{align*}
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[Weierstrass function]
+    The function:
+    \begin{equation}
+        f(x) = \sum \limits_{k = 0}^\infty \frac{\cos(160^k x)}{4^k}
+    \end{equation}
+    is nowhere differentiable.
+\end{theorem}
+
+\begin{proof}
+    Consider $c \in \R$, our goal is to find a sequence $\{x_n\}$ with $x_n \to c$ such that
+    \begin{equation*}
+        \left \{
+            \frac{f(x_n) - f(c)}{x_n - c}
+        \right \}
+    \end{equation*}
+    is unbounded. From one of the previous theorem, $\forall n \in \N, \exists x_n$ such that $\pi/160^n < x_n - c < 3\pi/160^n$ and $|\cos (160^n c) - \cos (160^n x_n)| \geq 1$. So, $x_n \neq 0, \forall n \in \N$ and $|x_n - c| \leq 3 \pi/160^n \to 0$. Define:
+    \begin{equation*}
+        f_k(x) = \frac{\cos (160^k x)}{4^k}
+    \end{equation*}
+    So, $f(x) = \sum f_k(x)$. Thus, define:
+    \begin{align*}
+        f(c) - f(x_n) &= f_n(c) - f_n(x_n) + \sum \limits_{k=0}^{n-1}(f_k(c) - f_k(x_n)) + \sum \limits_{k=n}^\infty(f_k(c) - f_k(x_n)) \\
+        &= a_n + b_n + c_n
+    \end{align*}
+    Then, $|a_n| = 4^{-n} |\cos (160^k x_n) - \cos (160^k c)| \geq 4^{-n}$. And,
+    \begin{align*}
+        |b_n| &\leq \sum \limits_{k=0}^{n-1} 4^{-k}|\cos (160^k c) - \cos (160^k x_n)|) \\
+        &\leq \sum \limits_{k=0}^{n-1}4^{-k} 160^k |x_n - c| \\ 
+        &\leq \frac{3 \pi}{160^n} \sum \limits_{k=0}^{n-1}40^k \\
+        &= \frac{3 \pi}{160^n} \frac{40^n - 1}{39} \leq \frac{4^{-n+1}}{13}
+    \end{align*}
+    And,
+    \begin{align*}
+        |c_n| &\leq \sum \limits_{k = n+1}^\infty 4^{-k}(|\cos(160^k c)| + |\cos (160^k x_n)|) \\
+        &\leq 2 \sum \limits_{k = n+1}^\infty 4^{-k} \\
+        &= 2\cdot 4^{-n+1}\frac{4}{3} = 4^{-n} \frac{2}{3}
+    \end{align*}
+    Combining the former inequalities, we obtain:
+    \begin{equation*}
+        |f(c) - f(x_n)| \geq 4^{-n} \left(1 - \frac{4}{13} - \frac{2}{3} \right) = 4^{-n}\frac{1}{39}
+    \end{equation*}
+    Therefore,
+    \begin{equation*}
+        \frac{|f(c) - f(x_n)|}{|c-x_n|} \geq \frac{160^n}{3\pi} 4^{-n}\frac{1}{39} = \frac{40^n}{117 \pi}
+    \end{equation*}
+    Thus, the sequence is unbound and therefore does not converge for any $x \in \R$ and the derivative does not exist.
+\end{proof}
