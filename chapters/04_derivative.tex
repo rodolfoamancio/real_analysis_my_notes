@@ -552,3 +552,36 @@ In order to prove such function exists and fulfils the description above it is n
         g'(c) = 0 = f'(c) - \frac{f(b) - f(a)}{b-a}
     \end{equation*}
 \end{proof}
+
+\begin{theorem}
+    If $f: I \to \R$ is differentiable and $f'(x) = 0, \forall x \in I$ then $f$ is constant.
+\end{theorem}
+
+\begin{proof}
+    Let $a,b \in I$ with $a < b$. Then, $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$. So, by the previous theorem, $\exists c \in (a,b)$ such that $f(b) - f(a) = (b-a)f'(c) = 0$. Hence, $f(b) = f(a), \forall a, b \in I$ such that $a < b$.
+\end{proof}
+
+\begin{theorem}
+    Consider $f: I \to \R$ differentiable, then:
+    \begin{enumerate}
+        \item $f$ is increasing if, and only if, $f'(x) \geq 0, \forall x \in I$, and
+        \item $f$ is decreasing if, and only if, $f'(x) \leq 0, \forall x \in I$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Proving $f$ is increasing if $f'(x) \geq 0$.
+    \begin{itemize}
+        \item $(\Longleftarrow)$: Suppose $f'(x) \geq 0, \forall x \in I$. Then, let $a,b \in I$ with $a < b$. By the mean value theorem, $\exists c \in (a,b)$ such that $f(b) - f(a) = (b-a)f'(c) \geq 0 \Longrightarrow f(a) \leq f(b)$.
+        \item $(\Longrightarrow)$: Suppose $f$ is increasing. Let $c \in $ and $\{x_n\}$ be a sequence in $I$ such that $x_n \to c$, with $x_n < c, \forall n \in \N$. Then, $f(x_n) - f(c) \leq 0, \forall n \in N$, and by consequence:
+            \begin{equation*}
+                f'(c) = \lim \limits_{n \to \infty} \frac{f(x_n) - f(c)}{x_n - c} \geq 0
+            \end{equation*}
+            On the other hand, if $\{x_n\}$ is such that $x_n \to c$ and $x_n > c, \forall n \in \N$ then: $f(x_n) - f(c) \geq 0, \forall n \in \N$, and:
+            \begin{equation*}
+                f'(c) = \lim \limits_{n \to \infty} \frac{f(x_n) - f(c)}{x_n - c} \geq 0
+            \end{equation*}
+            In either case, $f'(c) \geq 0$.
+    \end{itemize}
+    The proof for the decreasing function follows from taking $-f$ increasing, which is equivalent to $f$ decreasing.
+\end{proof}
