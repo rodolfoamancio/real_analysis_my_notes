@@ -10,7 +10,7 @@ Here, I try to organize my studies, notes and thoughts on the topic of Real anal
 Here is the list of topics I plan to organize on chapters:
 - [X] The real numbers
 - [X] Sequences and series
-- [ ] Differentiation
+- [X] Differentiation
 - [ ] Integration
 - [ ] Advanced topics
 
