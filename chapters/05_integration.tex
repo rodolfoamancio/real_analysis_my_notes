@@ -1,1 +1,103 @@
 \chapter{Integration}
+
+\section{The Riemann Integral}
+
+The Riemann integral is the first rigorous theory of `area', and it is the inverse of differentiation. However, it is not a complete theory of `area', the problems it fails to solve are addressed Lebesque integration.
+
+First, we will define and calculate integrals of continuous function on the interval $[a,b]$. In order to avoid writing it every time, we define:
+
+\begin{definition}
+    Define: $C([a,b]) = \{f: [a,b] \to \R: f \text{ is continuous on } [a,b]\}$.
+\end{definition}
+
+The Riemann integral will be defined over a partition of an interval, we define:
+
+\begin{definition}[Partition]
+    A partition $\underline{x}$ of $[a,b]$ is a set $\underline{x} = \{a = x_0 < x_1 < ... < x_n = b \}$. The norm of $\underline{x}$ is denoted by $||\underline{x}||$ and defined by $||\underline{x}||:= \max \{x_1 - x_0, x_2 - x_1, ..., x_n - x_{n-1} \}$.
+\end{definition}
+
+\begin{definition}[Tag]
+    If $\underline{x}$ is a partition, the tag of $\underline{x}$ is defined as a finite set $\underline{\xi} = \{ \xi_1, \xi_2, ..., \xi_n\}$ such that $a = x_0 \leq \xi_1 \leq x_1 \leq \xi_2 \leq x_2 \leq ... \leq x_{n-1} \leq \xi_n \leq x_n = b$. The pair $(\underline{x}, \underline{\xi})$ is called tagged partition.
+\end{definition}
+
+\begin{definition}[Riemann sum]
+    Consider $f \in C([a,b])$. Then, the Riemann sum corresponding to the tagged partition $(\underline{x}, \underline{\xi})$ is the number:
+    \begin{equation}
+        S_f(\underline{x}, \underline{\xi}):= \sum \limits_{k=1}^n f(\xi_k)(x_k - x_{k-1})
+    \end{equation}
+\end{definition}
+
+The Riemann sum can be understood as an approximation for the area under the graph of the function $f$. As $||\underline{x}|| \to 0$ we expect this number to converge to $A$, which we interpret as the area under the curve of $f$ on the interval $[a,b]$.
+
+\newpage
+
+\begin{theorem}[Riemann Integral]
+    Consider $f \in C([a,b])$. Then, there exists a unique number denoted $\int_{a}^b f(x)\dint x \in \R$ with the property that all sequences of tagged partition $\{(\underline{x}^r, \underline{\xi}^r)\}$ such that $||\underline{x}^r|| \to 0$ then:
+    \begin{equation}
+        \lim \limits_{r \to \infty} S_f(\underline{x}^r, \underline{\xi}^r) = \int_{a}^b f(x) \dint x
+    \end{equation}
+\end{theorem}
+
+Next, the derivation of this theorem will be shown. The uniqueness of the integral follows immediately from the uniqueness of the limit, and need not be proven here. In order to prove it, a few tools are presented ahead:
+
+\begin{definition}[Modulus of continuity]
+    Consider $f \in C([a,b])$, and $\eta >0$. Then, the modulus of continuity $\omega_f(\eta)$ is defined as: $\omega_f(\eta) = \sup \{|f(x) - f(y)|:|x-y| \leq \eta\}$.
+\end{definition}
+
+\begin{theorem}[Theorem I]
+    \begin{equation}
+        \lim \limits_{\eta \to 0} \omega_f(\eta) = 0, \forall f \in C([a,b])
+    \end{equation}
+    Putting it into words: for any continuous function $f \in C([a,b])$, for all $\varepsilon > 0$, there exists $\delta > 0$ such that $\forall \eta < \delta, \omega_f(\eta)<\varepsilon$.
+\end{theorem}
+
+\begin{proof}
+    Consider $\varepsilon > 0$. Since $f \in C([a,b])$ then $f$ is uniformly continuous on $[a,b]$. Thus, $\exists \delta > 0$ such that $|f(x) - f(y)| < \varepsilon/2, \forall |x-y| < \delta$. Take $\eta < \delta$, then if $|x-y| \leq \eta < \delta$ we have $|f(x) - f(y)| < \varepsilon/2$. So, $\varepsilon/2$ is an upper bound for $\{|f(x) - f(y)|:|x-y|\leq \eta\}$. Therefore, $\omega_f(\eta) \leq \varepsilon/2 < \varepsilon$.
+\end{proof}
+
+\begin{theorem}[Theorem II]
+    If $(\underline{x}, \underline{\xi})$ and $(\underline{x}', \underline{\xi}')$ are tagged partitions of $[a,b]$ such that $\underline{x} \subseteq \underline{x}'$, then if $f \in C([a,b])$ we have $|S_f(\underline{x}, \underline{\xi} - S_f(\underline{x}', \underline{\xi}') \leq \omega_f(||\underline{x}||)(b-a)$.
+\end{theorem}
+
+\begin{definition}[Refinement]
+    If $(\underline{x}, \underline{\xi})$ and $(\underline{x}', \underline{\xi}')$ are tagged partitions of $[a,b]$ such that $\underline{x} \subseteq \underline{x}'$, then $\underline{x}$ is a refinement of $\underline{x}'$.
+\end{definition}
+
+\begin{proof}
+    For $k = 1, ..., n$. let:
+    \begin{eqnarray*}
+        \underline{y}(k) &=& \{ x_{k-1} = x_l', x_{l+1}', ..., x_m' = x_k\} \\
+        \underline{\eta}(k) &=& \{ \xi_{l+1}', \xi_{l+2}', ..., \xi_{m}'\}
+    \end{eqnarray*}
+    Then,
+    \begin{align*}
+        |f(\xi_k)(x_k - x_{k-1}) - S_f(\underline{y}(k), \underline{\eta}(k))| &= \left |
+            f(\xi_k) - \sum \limits_{j=l+1}^m f(\xi_j')(x_j' -x_{j-1}') 
+        \right | \\
+        &= 
+        \left |
+            \sum \limits_{j=l+1}^m (f(\xi_k) - f(\xi_j'))(x_j' -x_{j-1}') 
+        \right |
+    \end{align*}
+    Since $\sum_{j=1}^m x_j' - x_{j-1}' = x_m - x_l' = x_k - x_{k-1}$:
+    \begin{align*}
+        |f(\xi_k)(x_k - x_{k-1}) - S_f(\underline{y}(k), \underline{\eta}(k))| &\leq \sum \limits_{j=l+1}^m |f(\xi_k) - f(\xi_j')|(x_j' - x_{j-1}') \\
+        &\leq \sum \limits_{j=l+1}^m \omega_f(|x_k - x_{k-1}|)(x_j' - x_{j-1}') \\
+        &\leq \omega_f(||\underline{x}||)(x_k - x_{k-1})
+    \end{align*}
+    Therefore,
+    \begin{align*}
+        |S_f(\underline{x}, \underline{\xi}) - S_f(\underline{x}', \underline{\xi}')| &= 
+        \left |
+            \sum \limits_{k=1}^m (f(\xi_k)(x_k - x_{k-1}) - S_j(\underline{y}(k), \underline{\eta}(k)))
+        \right | \\
+        & \leq
+        \sum \limits_{k=1}^m |f(\xi_k)(x_k - x_{k-1}) - S_f(\underline{y}(k), \underline{\eta}(k))| \\
+        & \leq \omega_f(||\underline{x}||)\sum \limits_{k=1}^n x_k - x_{k-1} \\
+        &= \omega_f(||\underline{x}||)(b-a)
+    \end{align*}
+\end{proof}
+
+\begin{theorem}[Theorem III]
+    If $(\underline{x}, \underline{\xi})$ and $(\underline{x}', \underline{\xi}')$ are two tagged partitions of $[a,b]$, and $f \in C([a,b])$, then $|S_f(\underline{x}, \underline{\xi}) - S_f(\underline{x}', \underline{\xi}')| \leq (\omega_f(||\underline{x}||) + \omega_f(||\underline{x}'||))(b-a)$.
+\end{theorem}
