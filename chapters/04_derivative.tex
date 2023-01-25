@@ -627,3 +627,20 @@ In order to prove such function exists and fulfils the description above it is n
     \end{equation*}
     
 \end{proof}
+
+\begin{theorem}[Second derivative test]
+    Suppose $f: (a,b) \to \R$ has two continuous derivatives. If $x_0 \in (a,b)$ is such that $f'(x_0) = 0$ then:
+    \begin{itemize}
+        \item If $f''(x_0) > 0$, then $f$ has a relative minimum at $x_0$,
+        \item If $f''(x_0) < 0$, then $f$ has a relative maximum at $x_0$,
+        \item If $f''(x_0) = 0$, then $f$ is an inflection point.
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+    Proving only the first result: if $f''$ is continuous at $x_0$ and $\lim_{c \to x_0} f''(c) = f''(x_0) > 0$. Then, $\exists \delta > 0$ such that $f''(c) > 0, \forall c \in (x_0 - \delta, x_0 + \delta)$. Take $ x \in (x_0 - \delta, x_0 + \delta)$, then, by Taylor's theorem, $\exists c \in (x, x_0)$ and $c \in (x_0 - \delta, x_0 + \delta)$ by consequence, such that:
+    \begin{equation*}
+        f(x) = f(x_0) + \frac{f''(c)}{2}(x-x_0)^2 \geq f(x_0)
+    \end{equation*}
+    With $f(x) > f(x_0)$ if $x \neq x_0$.
+\end{proof}
