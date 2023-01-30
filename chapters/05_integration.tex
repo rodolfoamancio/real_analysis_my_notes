@@ -101,3 +101,32 @@ Next, the derivation of this theorem will be shown. The uniqueness of the integr
 \begin{theorem}[Theorem III]
     If $(\underline{x}, \underline{\xi})$ and $(\underline{x}', \underline{\xi}')$ are two tagged partitions of $[a,b]$, and $f \in C([a,b])$, then $|S_f(\underline{x}, \underline{\xi}) - S_f(\underline{x}', \underline{\xi}')| \leq (\omega_f(||\underline{x}||) + \omega_f(||\underline{x}'||))(b-a)$.
 \end{theorem}
+
+\begin{proof}
+    Let $\underline{x}'' = \underline{x} \cup \underline{x}'$ and $\underline{\xi}''$ a tag of $\underline{x}''$. Then, by Theorem II, $|S_f(\underline{x}, \underline{\xi}) - S_f(\underline{x}', \underline{\xi}')| \leq |S_f(\underline{x}, \underline{\xi}) - S_f(\underline{x}'', \underline{\xi}'')| - |S_f(\underline{x}', \underline{\xi}') - S_f(\underline{x}'', \underline{\xi}'')| \leq \omega_f(||\underline{x}||)(b-a) + \omega_f(||\underline{x}'||)(b-a)$
+\end{proof}
+
+Finally, we can return to the derivation of the Riemann integral, as desired.
+
+\begin{proof}
+    Let $\{\underline{y}(r), \underline{\zeta}(r)\}$ be a sequence of tagged partitions with $||\underline{y}(r)|| \to 0$ as $r \to \infty$.
+    First, we prove $\{\underline{y}(r), \underline{\zeta}(r)\}$ is Cauchy: Let $\varepsilon > 0$. By theorem I, $\exists \delta>0$ such that $\forall \eta < \delta$,
+    \begin{equation*}
+        \omega_f(\eta) < \frac{\varepsilon}{2(b-a)}
+    \end{equation*}
+    Since $||\underline{y}(r)|| \to 0, \exists N_0 \in N$ such that $||\underline{y}(r)|| < \delta, \forall r \geq N_0$. For $N = N_0$ with $r,s \geq N$, $|S_f(\underline{y}(r), \underline{\zeta}(r)) - S_f(\underline{y}(s), \underline{\zeta}(r))| \leq (\omega_f(||\underline{y}(r)||) + \omega(||\underline{y}(s)||))(b-a)$, by Theorem III. Hence,
+    \begin{equation*}
+        |S_f(\underline{y}(r), \underline{\zeta}(r)) - S_f(\underline{y}(s), \underline{\zeta}(r))| < \left(
+            \frac{\varepsilon}{2(b-a)} + \frac{\varepsilon}{2(b-a)}
+        \right)(b-a) = \varepsilon
+    \end{equation*}
+    So, since the sequence is Cauhcy, define $L = \lim_{r \to \infty} S_f(\underline{y}(r), \underline{\zeta}(r))$ which exists. \\
+    Next, we prove that $\lim_{r \to \infty} S_f(\underline{y}(r), \underline{\xi}(r)) = L$ for any sequence of partitions $\{(\underline{x}(r), \underline{\xi}(r))\}$ with $||\underline{x}(r)|| \to 0$. \\
+    By the triangle inequatlity and Theorem III,
+    \begin{align*}
+        |S_f(\underline{x}(r), \underline{\xi}(r)) - L| &\leq |S_f(\underline{x}(r), \underline{\xi}(r)) - S_f(\underline{y}(r), \underline{\zeta}(r)| + |S_f(\underline{y}(r), \underline{\zeta}(r)) - L| \\
+        &\leq (\omega_f(||\underline{x}(r)||) + \omega_f(||\underline{y}(r)||))(b-a) + |S_f(\underline{y}(r), \underline{\zeta}(r)) - L| \\
+        &\to 0
+    \end{align*}
+    Thus, by the Squeeze theorem, $|S_f(\underline{x}(r), \underline{\xi}(r)) - L| \to 0$ as $r \to \infty$.
+\end{proof}
