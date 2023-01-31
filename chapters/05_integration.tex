@@ -130,3 +130,45 @@ Finally, we can return to the derivation of the Riemann integral, as desired.
     \end{align*}
     Thus, by the Squeeze theorem, $|S_f(\underline{x}(r), \underline{\xi}(r)) - L| \to 0$ as $r \to \infty$.
 \end{proof}
+
+\section{Properties of the Riemann integral}
+
+\begin{theorem}
+    If $f, g \in C([a,b])$ and $\alpha \in \R$, then
+    \begin{enumerate}
+        \item
+            \begin{equation}
+                \int_a^b (\alpha f) \dint x = \alpha \int_a^b f \dint x
+            \end{equation}
+        \item
+            \begin{equation}
+                \int_a^b (f + g)\dint x = \int_a^b f \dint x + \int_a^b g \dint x
+            \end{equation}
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+     Let $\{\underline{x}(r), \underline{\xi}(r)\}$ be a sequence of tagged partitions such that $||\underline{x}(r)|| \to 0$. Then,
+    \begin{enumerate}
+        \item
+            \begin{equation*}
+                S_{\alpha f} (\underline{x}(r), \underline{\xi}(r))  = \alpha S_f(\underline{x}(r), \underline{\xi}(r))
+            \end{equation*}
+            So,
+            \begin{align*}
+                \int_a^b \alpha f \dint x &= \lim \limits_{r \to \infty} S_{\alpha f}(\underline{x}(r), \underline{\xi}(r)) \\
+                &= \lim \limits_{r \to \infty} \alpha S_f(\underline{x}(r), \underline{\xi}(r)) \\
+                &= \alpha \int_a^b f \dint x
+            \end{align*}
+        \item 
+            \begin{equation*}
+                S_{f + g}(\underline{x}(r), \underline{\xi}(r)) = S_f(\underline{x}(r), \underline{\xi}(r)) + S_g(\underline{x}(r), \underline{\xi}(r))
+            \end{equation*}
+            So,
+            \begin{align*}
+                \int_a^b (f+g) \dint x &= \lim \limits_{r \to \infty}S_{f + g}(\underline{x}(r), \underline{\xi}(r)) \\
+                &= \lim \limits_{r \to \infty}[ S_f(\underline{x}(r), \underline{\xi}(r)) + S_g(\underline{x}(r), \underline{\xi}(r))] \\
+                &= \int_a^b f \dint x + \int_a^b g \dint x
+            \end{align*}
+    \end{enumerate}
+\end{proof}
