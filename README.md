@@ -11,7 +11,7 @@ Here is the list of topics I plan to organize on chapters:
 - [X] The real numbers
 - [X] Sequences and series
 - [X] Differentiation
-- [ ] Integration
+- [X] Integration
 - [ ] Advanced topics
 
 ## References

@@ -305,3 +305,76 @@ Finally, we can return to the derivation of the Riemann integral, as desired.
         Hence, $G'(x) = f(x)$.
     \end{enumerate}
 \end{proof}
+
+\section{Integration methods}
+
+\begin{theorem}[Integration by parts]
+    Suppose $f, g \in C([a,b])$ and $f', g' \in C([a,b])$. Then,
+    \begin{equation*}
+        \int_a^b f'(x)g(x) \dint x = (f(b)g(b) - f(a)g(a)) - \int_a^b f(x) g'(x) \dint x
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    From the derivation properties we have: $(f(x)g(x))' = f'(x)g(x) - f(x)g'(x)$. Therefore, by the Fundamental theorem of calculus:
+    \begin{equation*}
+        (f(b)g(b) - f(a)g(a)) = \int_a^b f'(x)g(x) \dint + \int_a^b f(x)g'(x) \dint x
+    \end{equation*}
+\end{proof}
+
+\begin{lemma}[Riemman-Lebesgue]
+    Consider $f \in C([-\pi, \pi])$, $f' \in C([a,b])$ and $f$ even periodic with period $2 \pi$, \emph{i.e.} $f(-\pi) = f(\pi)$. For $n \in \N \cup \{0\}$, define:
+    \begin{eqnarray*}
+        a_n &=& \frac{1}{\pi} \int_{-\pi}^\pi f(x) \sin(n x) \dint x \\
+        b_n &=& \frac{1}{\pi} \int_{-\pi}^\pi f(x) \cos(n x) \dint x \\
+    \end{eqnarray*}
+    Then,
+    \begin{equation*}
+        \lim \limits_{n \to \infty} a_n  = \lim \limits_{n \to \infty} b_n  = 0
+    \end{equation*}
+\end{lemma}
+
+\begin{definition}[Fourier coefficients]
+    The terms $a_n$ and $b_n$ in the previous lemma are called \emph{Fourier coefficients} of $f$.
+\end{definition}
+Returning to the proof of the Riemman-Lebesgue lemma:
+\begin{proof}
+    Using integration by parts,
+    \begin{align*}
+        |b_n| &= \frac{1}{\pi} \left |
+            \int_{-\pi}^\pi f(x) \cos (nx) \dint x
+        \right | \\
+        &= \frac{1}{\pi} \left |
+            \int_{-\pi}^\pi \left( \frac{1}{n} \sin (nx)\right)' f(x) \dint x
+        \right | \\
+        &= \left |
+            \frac{1}{n}(f(\pi)\sin(n\pi) - f(-\pi)\sin(n(-\pi))) - \frac{1}{n} \int_{-\pi}^\pi \sin(n x) f'(x) \dint x
+        \right |
+    \end{align*}
+    Notice that $\sin(n \pi) = \sin(n(-\pi)) = 0, \forall n \in \N$. Hence,
+    \begin{align*}
+        |b_n| &\leq \frac{1}{n} \int_{-\pi}^\pi |\sin(nx)||f'(x)| \dint x \\
+        &\leq \frac{1}{n} \int_{-\pi}^\pi |f'| \to 0
+    \end{align*}
+    So, $|b_n| \to 0$. A similar argument holds for $a_n$.
+\end{proof}
+
+\begin{theorem}[Change of variables]
+    Consider $\phi: [a,b] \to [c,d]$ to be continuously differentiable with $\phi > 0$ on $[a,b], \phi(a) = c$, and $\phi(b) = d$. Then,
+    \begin{equation*}
+        \int_c^d f(u) \dint u = \int_a^b f(\phi(x))\phi'(x)\dint x
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Consider $F: [a,b] \to \R$ such that $F'(x) = f(x)$, then $F(\phi(x))' = f(\phi(x))$. Hence, by the Fundamental theorem of calculus,
+    \begin{align*}
+        \int_a^b f(\phi(x))\phi'(x) \dint x &= \int_a^b F(\phi(x))' \dint x \\
+        &= F(\phi(b)) - F(\phi(a))  \\
+        &= F(d) - F(c)
+    \end{align*}
+    Furthermore,
+    \begin{equation*}
+        \int_c^d f(u) \dint u = \int_c^d F(u)'\dint u = F(d)- F(c)
+    \end{equation*}
+\end{proof}
