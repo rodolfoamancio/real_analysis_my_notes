@@ -136,11 +136,11 @@ Finally, we can return to the derivation of the Riemann integral, as desired.
 \begin{theorem}
     If $f, g \in C([a,b])$ and $\alpha \in \R$, then
     \begin{enumerate}
-        \item
+        \item Linearity
             \begin{equation}
                 \int_a^b (\alpha f) \dint x = \alpha \int_a^b f \dint x
             \end{equation}
-        \item
+        \item Additivity
             \begin{equation}
                 \int_a^b (f + g)\dint x = \int_a^b f \dint x + \int_a^b g \dint x
             \end{equation}
@@ -170,5 +170,138 @@ Finally, we can return to the derivation of the Riemann integral, as desired.
                 &= \lim \limits_{r \to \infty}[ S_f(\underline{x}(r), \underline{\xi}(r)) + S_g(\underline{x}(r), \underline{\xi}(r))] \\
                 &= \int_a^b f \dint x + \int_a^b g \dint x
             \end{align*}
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    Consider $f \in C([a,b])$, and
+    \begin{eqnarray*}
+        m_f &=& \inf \{ f(x) : a \leq x \leq b \} \in \R \\
+        M_f &=& \sup \{ f(x) : a \leq x \leq b \} \in \R \\
+    \end{eqnarray*}
+    Then,
+    \begin{equation*}
+        m_f(b-a) \leq \int_a^b f(x)\dint x \leq M_f(b-a)
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Consider $\{ (\underline{x}(r), \underline{\xi}(r)\}$ a sequence of tagged partitions such that $|| \underline{x}(r) || \to 0$ as $r \to \infty$. Then,
+    \begin{equation*}
+        S_f(\underline{x}(r), \underline{\xi}(r)) = \sum \limits_{k=1}^n f(\xi_k(r))(x_k(r) - x_{k-1}(r)) \geq m_f \sum \limits_{k=1}^n (x_k(r) - x_{k-1}(r)) = m_f(b-a)
+    \end{equation*}
+    And,
+    \begin{equation*}
+        S_f(\underline{x}(r), \underline{\xi}(r)) = \sum \limits_{k=1}^n f(\xi_k(r))(x_k(r) - x_{k-1}(r)) \leq M_f \sum \limits_{k=1}^n (x_k(r) - x_{k-1}(r)) = M_f(b-a)
+    \end{equation*}
+    Therefore,
+    \begin{equation*}
+        m_f(b-a) \leq S_f(\underline{x}(r), \underline{\xi}(r)) \leq M_f(b-a), \forall r
+    \end{equation*}
+    Taking $\lim_{r \to \infty}$:
+    \begin{equation*}
+        m_f(b-a) \leq \int_a^b f(x) \dint x \leq M_f(b-a)
+    \end{equation*}
+\end{proof}
+
+\begin{theorem}
+    Consider $f, g \in C([a,b])$ with $f(x) \leq g(x), \forall x \in [a,b]$, then:
+    \begin{equation*}
+        \int_a^b f(x) \dint x \leq \int_a^b f(x) \dint x
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Consider $\{\underline{x}(r), \underline{\xi}(r)\}$ a sequence of tagged partitions, such that $||\underline{x}(r)|| \to 0$ with $r \to \infty$. Then,
+    \begin{align*}
+        S_f(\underline{x}(r), \underline{\xi}(r)) &= \sum \limits_{j=1}^n f(\xi_j(r)(x_j(r) - x_{j-1}(r)) \\
+        &\leq \sum \limits_{j=1}^n g(\xi_j(r))(x_j(r) - x_{j-1}(r)) \\
+        &=S_g(\underline{x}(r), \underline{\xi}(r))
+    \end{align*}
+    Taking the limit as $r \to \infty$
+    \begin{equation*}
+        \int_a^b f(x) \dint x \leq \int_a^b g(x) \dint x
+    \end{equation*}
+\end{proof}
+
+\begin{theorem}
+    Consider $f \in C([a,b])$, then:
+    \begin{equation*}
+        \left |
+            \int_a^b f(x) \dint x
+        \right | \leq
+        \int_a^b |f(x)| \dint x
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Notice $\pm f(x) \leq |f(x)|, \forall x \in [a,b]$, so:
+    \begin{equation*}
+        \pm \int_a^b f(x) \dint x \leq \int_a^b f(x) \dint x \Longrightarrow -\int_a^b f(x) \dint x \leq \int_a^b f(x) \dint x \leq \int_a^b |f(x)| \dint x 
+    \end{equation*}
+\end{proof}
+
+\section{Fundamental theorem of calculus}
+
+\begin{theorem}[Fundamental theorem of calculus]
+    Consider $f \in C([a,b])$.
+    \begin{enumerate}
+        \item If $F:[a,b] \to \R$ is differentiable and $F'(x) = f(x)$, then
+            \begin{equation*}
+                \int_a^b f(x) \dint x = F(b) - F(a)
+            \end{equation*}
+        \item The function 
+            \begin{equation*}
+                G(x) := \int_a^x f(t) \dint t
+            \end{equation*}
+            is differentiable on $[a,b]$ and
+            \begin{equation*}
+                \begin{cases}
+                    G'(x) = f(x) \\
+                    G(a) = 0
+                \end{cases}
+            \end{equation*} 
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Proving each statement:
+    \begin{enumerate}
+        \item Consider $\{\underline{x}(r)\}$ a sequence of partitions with $||\underline{x}|| \to 0$ as $r \to \infty$. Then, by the Mean Value Theorem, $\exists \xi_j(r) \in [x_{j-1}(r), x_j(r)], \forall r, j$ such that $F(x_j(r)) - F(x_{j-1}(r)) = F'(\xi_j(r))(x_j(r) - x_{j-1}(r)) = f(\xi_j(r))(x_j(r) - x_{j-1}(r))$. Thus,
+        \begin{align*}
+            \int_a^b f(x) \dint x &= \lim \limits_{r \to \infty} \sum \limits_{j=1}^{n(r)} f(\xi_j(r))(x_j(r) - x_{j-1}(r)) \\
+            &= \lim \limits_{r \to \infty} \sum \limits_{j=1}^{n(r)} [F(x_j(r)) - F(x_{j-1}(r))] \\
+            &= \lim \limits_{r \to \infty} F(b) - F(a) \\
+            &= F(b) - F(a)
+        \end{align*}
+        \item Consider $c \in [a,b]$ and let $\varepsilon > 0$, since $f$ is continuous at $c$, $\exists \delta > 0$ such that $|f(t) - f(c)| < \varepsilon/2, \forall t \in (c - \delta, c + \delta)$. \\
+        Suppose $0 < x - c < \delta$, if $t \in [c,x]$, then $|t-c| \leq |x-c| < \delta$. Thus,
+        \begin{align*}
+            \left |
+                \frac{1}{x-c} \int_c^x f(t) \dint t - f(c)
+            \right | &= \left |
+                \frac{1}{x-c} \int_c^x f(t) \dint t -  \frac{1}{x-c} \int_c^x f(c) \dint t
+            \right | \\
+            &= \frac{1}{x-c} \left |
+                \int_c^x (f(t) - f(c)) \dint t
+            \right | \\
+            &\leq \frac{1}{x-c} \int_c^x |f(t) - f(c)| \dint t \\
+            &\leq \frac{1}{x-c} \int_c^x \frac{\varepsilon}{2} \dint t \\
+            &= \frac{1}{x-c}\frac{\varepsilon}{2}(x-c) \\
+            &= \frac{\varepsilon}{2}
+        \end{align*}
+        A similar result can be found for $0 < c - x < \delta$. Thus,
+        \begin{equation*}
+            \left |
+                \frac{1}{x-c} \left(\int_a^x f(t) \dint t - \int_a^c f(t) \dint t\right) - f(c)
+            \right |
+            \leq \frac{\varepsilon}{2}
+            < \varepsilon, \forall x \in (c - \delta, c + \delta)
+        \end{equation*}
+        So,
+        \begin{equation*}
+            G'(c) = \lim \limits_{x \to c} \frac{1}{x-c} \left(\int_a^x f(t) \dint t - \int_a^c f(t) \dint t\right) = f(c), \forall c \in [a,b]
+        \end{equation*}
+        Hence, $G'(x) = f(x)$.
     \end{enumerate}
 \end{proof}
