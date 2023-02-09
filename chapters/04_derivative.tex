@@ -490,17 +490,47 @@ In order to prove such function exists and fulfils the description above it is n
             \end{equation*}
         Considering the algebraic properties of limits.
         \item Again, from the definition:
-            \begin{equation*}
-                (f + g)'(c) = \lim \limits_{x \to c}\frac{(f + g)(x) - (f + g)(c)}{x - c} = \lim \limits_{x \to c} \frac{f(x) - f(c)}{x-c} + \lim \limits_{x \to c}\frac{g(x) - g(c)}{x-c} = f'(c)+g'(c)
-            \end{equation*}
+            \begin{align*}
+                (f + g)'(c) &= \lim \limits_{x \to c}\frac{(f + g)(x) - (f + g)(c)}{x - c} = \lim \limits_{x \to c} \frac{f(x) - f(c)}{x-c} + \lim \limits_{x \to c}\frac{g(x) - g(c)}{x-c} \\
+                &= f'(c)+g'(c)
+            \end{align*}
         \item First, note:
             \begin{equation*}
                 \frac{f(x)g(x) - f(c)g(c)}{x - c} = \frac{f(x) - f(c)}{x- c}g(x) + f(c) \frac{g(x) - g(c)}{x - c}
             \end{equation*}
             Then, taking $\lim_{x \to c}$, we obtain: $ (fg)'(c) = f'(c)g(c) + f(c)g'(c)$.
-        \item Consider $h(x) = 1/g(x)$. By the chain rule $h'(c) = -g'(c)/[g(c)]^2$. Then, $(f/g)'(c) = (fh)'(c) = f'(c)h(c) + f(c)h'(c) = [f'(c)/g(c) - f(c)[g(c)]^2/g'(c)] = [f'(c)g(c) - f(c)g'(c)]/[g(c)]^2$.
+        \item Consider $h(x) = 1/g(x)$. By the chain rule $h'(c) = -g'(c)/[g(c)]^2$. Then, 
+        \begin{align*}
+            (f/g)'(c) &= (fh)'(c) = f'(c)h(c) + f(c)h'(c) = [f'(c)/g(c) - f(c)[g(c)]^2/g'(c)] \\
+            &= [f'(c)g(c) - f(c)g'(c)]/[g(c)]^2   
+        \end{align*}
+        
     \end{enumerate}
 \end{proof}
+
+\begin{theorem}
+    Consider $f: [a,b] \to \R$ to be a bijective function, and define $f^{-1}$, the inverse function such that $f^{-1}(y) = x$. If $f(x)$ is differentiable on $[a,b]$ and $f(x) \neq 0, \forall x \in [a,b]$ then:
+    \begin{equation*}
+        (f^{-1})'(y) = \frac{1}{f'(x)} \text{ where } y = f(x)
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Since $f^{-1}(y) = x$ then $y = f(x)$. Taking the derivative with respect to $y$ on both sides:
+    \begin{equation*}
+        1 = f'(x) \frac{\dint x}{\dint y}
+    \end{equation*}
+    Thus,
+    \begin{equation*}
+        \frac{\dint x}{\dint y} = \frac{1}{f'(x)}
+    \end{equation*}
+    But $x = f^{-1}(y)$, so:
+    \begin{equation*}
+        (f^{-1})'(y) = \frac{1}{f'(x)}
+    \end{equation*}
+\end{proof}
+
+\subsection{Mean value theorem}
 
 \begin{definition}[Relative maximum/minimum]
     Consider $S \subseteq \R$ and $f: S \to \R$. Then, $f$ has a relative maximum at $c \in S$ if $\exists \delta > 0$ such that $\forall x \in S: |x-c| < \delta$ then $f(x) \leq f(c)$. The definition of minimum follows analogously.
@@ -553,6 +583,26 @@ In order to prove such function exists and fulfils the description above it is n
     \end{equation*}
 \end{proof}
 
+\begin{corollary}
+    If $f: [a,b] \to \R$ is differentiable on $[a,b]$ and $f'(x) = 0, \forall x \in (a,b)$ then $f(x) = K$ for some constant $K \in \R$.
+\end{corollary}
+
+\begin{proof}
+    Take $x_1, x_2 \in [a,b]$ and assume $x_1 < x_2$. Applying the Mean value theorem on $[x_1, x_2]$:
+    \begin{equation*}
+        f'(c) = \frac{f(x_2) - f(x_1)}{x_2 - x_1}
+    \end{equation*}
+    for some $c \in [x_1, x_2]$. On the other hand $f'(x) = 0 \forall x \in [a,b]$, so $f'(c) = 0$ which  implies $f(x_2) = f(x_1)$. Define $K = f(x_1) = f(x_2)$. Since $x_1, x_2$ are arbitrary, $f(x) = K, \forall x \in [a,b]$.
+\end{proof}
+
+\begin{corollary}
+    If $f: S_1 \to \R$ and $g: S_2 \to \R$ are differentiable on $[a,b] \subseteq S_1 \cup S_2$ and $f'(x) = g'(x), \forall x \in [a,b]$ then $f(x) = g(x) + K$ with $K \in \R$ constant.
+\end{corollary}
+
+\begin{proof}
+    Define $h(x) = f(x) - g(x)$. Then $h'(x) = f'(x) - g'(x) = 0 \forall x \in [a,b]$. So, from the previous theorem $h(x) = K$ which implies $f(x) = g(x) + K$.
+\end{proof}
+
 \begin{theorem}
     If $f: I \to \R$ is differentiable and $f'(x) = 0, \forall x \in I$ then $f$ is constant.
 \end{theorem}
@@ -586,10 +636,47 @@ In order to prove such function exists and fulfils the description above it is n
     The proof for the decreasing function follows from taking $-f$ increasing, which is equivalent to $f$ decreasing.
 \end{proof}
 
+\begin{theorem}[Generalised mean value theorem]
+    If $f: S_1 \to \R$ and $g: S_2 \to \R$ are continuous on $[a,b] \subseteq S_1 \cap S_2$ and differentiable on $(a,b)$ then, there exists a point $c \in (a,b)$ such that:
+    \begin{equation*}
+        [f(b) - f(a)]g'(c) = [g(b) - g(a)]f'(c)
+    \end{equation*}
+    If $g'(c) \neq 0, \forall c \in (a,b)$ then:
+    \begin{equation*}
+        \frac{f'(c)}{g'(c)} = \frac{f(b) - f(a)}{g(b) - g(a)}
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Consider $h(x) = [f(b) - f(a)]g(x) - [g(b) - g(a)]f(x)$, then from the Mean value theorem $\exists c \in (a,b)$ such that:
+    \begin{equation*}
+        h'(c) = \frac{h(b) - h(a)}{b-a}
+    \end{equation*}
+    From the definition of $h(x)$, substituting $h(a)$ and $h(b)$:
+    \begin{align*}
+        h'(c) &= \frac{[f(b) - f(a)]g(b) - [g(b) - g(a)]f(b) - [f(b) - f(a)]g(a) + [g(b) - g(a)]f(a)}{b-a} \\
+        &= \frac{f(b)g(b) - f(a)g(b) - g(b)f(b) + g(a)f(b) - f(b)g(a) + f(a)g(a) + g(b)f(a) - g(a)f(a)}{b-a} \\
+        &= \frac{0}{b-a} \\
+        &= 0
+    \end{align*}
+    On the other hand,
+    \begin{equation*}
+        h'(c) = [f(b) - f(a)]g'(c) - [g(b) - g(a)]f'(c)
+    \end{equation*}
+    So,
+    \begin{equation*}
+        [f(b) - f(a)]g'(c) = [g(b) - g(a)]f'(c)
+    \end{equation*}
+    If $g'(c) \neq 0, \forall c \in (a,b)$ then:
+    \begin{equation*}
+        \frac{f'(c)}{g'(c)} = \frac{f(b) - f(a)}{g(b) - g(a)}
+    \end{equation*}
+\end{proof}
+
 \subsection{Smoothness and Taylor's theorem}
 
 \begin{definition}
-    Consider $f: I \to \R$. Then, $f$ is $n$ times differentiable on $J \subseteq I$ if $f'$, $f''$, ..., $f^(n)$ exist at every point of $J$. The $n$ derivative of $f$ is denoted by $f^(n)$.
+    Consider $f: I \to \R$. Then, $f$ is $n$ times differentiable on $J \subseteq I$ if $f'$, $f''$, ..., $f^{(n)}$ exist at every point of $J$. The $n$ derivative of $f$ is denoted by $f^(n)$.
 \end{definition}
 
 \begin{theorem}[Taylor's theorem]
