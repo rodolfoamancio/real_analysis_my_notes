@@ -748,23 +748,43 @@ provided $\lim_{x \to c} g(x) \neq 0$. It is not difficult to argue that if the 
     So, it is necessary $x$ such that $g(c + \delta_1) > g(x)$. Define $\delta_2$ such that $g(c + \delta_1) > g(x), \forall x \in (c, c+\delta_2)$. We obtain:
     \begin{equation*}
         \left( L - \frac{\varepsilon}{2} \right)
-        \left( 1 - \frac{f(c+\delta_1)}{g(x)} \right)
+        \left( \frac{g(c+\delta_1)}{g(x)} - 1 \right)
         <
         \frac{f(c+\delta_1) - f(x)}{g(x)}
         <
         \left( L + \frac{\varepsilon}{2} \right)
-        \left( 1 - \frac{f(c+\delta_1)}{g(x)} \right)
+        \left( \frac{g(c+\delta_1)}{g(x)} - 1 \right)
     \end{equation*}
     which leads to:
     \begin{equation*}
-        L - \frac{\varepsilon}{2} - L \frac{f(c+\delta_1)}{g(x)} + \frac{\varepsilon}{2}\frac{f(c+\delta_1)}{g(x)}
+        L\frac{g(c+\delta_1)}{g(x)} - \frac{\varepsilon}{2}\frac{g(c+\delta_1)}{g(x)}
+        - L + \frac{\varepsilon}{2}
         <
         \frac{f(c+\delta_1) - f(x)}{g(x)}
         <
-        L + \frac{\varepsilon}{2} - L \frac{f(c+\delta_1)}{g(x)} - \frac{\varepsilon}{2}\frac{f(c+\delta_1)}{g(x)}
+        L\frac{g(c+\delta_1)}{g(x)} + \frac{\varepsilon}{2}\frac{g(c+\delta_1)}{g(x)}
+        - L - \frac{\varepsilon}{2}
     \end{equation*}
     \begin{equation*}
-        L - \frac{\varepsilon}{2} + \frac{f(c + \delta_1)}{}
+        L + \frac{\varepsilon}{2} - \frac{Lg(c+\delta_1) + \frac{\varepsilon}{2} - f(c+\delta_1)}{g(x)}
+        <
+        \frac{f(x)}{g(x)}
+        <
+        L - \frac{\varepsilon}{2} - \frac{Lg(c+\delta_1) - \frac{\varepsilon}{2} - f(c+\delta_1)}{g(x)}
+    \end{equation*}
+    Define $\delta_3$ such that:
+    \begin{equation*}
+        \frac{Lg(c+\delta_1) + \frac{\varepsilon}{2} - f(c+\delta_1)}{g(x)} < \varepsilon
+    \end{equation*}
+    And
+    \begin{equation*}
+        \frac{Lg(c+\delta_1) - \frac{\varepsilon}{2} - f(c+\delta_1)}{g(x)} < \varepsilon
+    \end{equation*}
+    for all $x \in (c, c+ \delta_3)$. Then, for $\delta = \min \{ \delta_1, \delta_2, \delta_3 \}$,
+    \begin{equation*}
+        \left |
+            \frac{f(x)}{g(x)} - L
+        \right | < \varepsilon
     \end{equation*}
 \end{proof}
 
