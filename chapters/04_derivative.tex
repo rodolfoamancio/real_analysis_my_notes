@@ -673,6 +673,46 @@ In order to prove such function exists and fulfils the description above it is n
     \end{equation*}
 \end{proof}
 
+\subsubsection{L'Hospital's Rules}
+
+From the algebraic limit theorem,
+
+\begin{equation*}
+    \lim \limits_{x \to c} \frac{f(x)}{g(x)} = \frac{\lim \limits_{x \to c} f(x)}{\lim \limits_{x \to c} g(x)}
+\end{equation*}
+
+provided $\lim_{x \to c} g(x) \neq 0$. It is not difficult to argue that if the numerator tends to any number different from zero, while the denominator tends to zero the quotient explodes to infinity (positive or negative). However, there may be cases where both the numerator and denominator tend to zero, or alternatively where both terms tend to infinity. L'Hospital's rules provide an important tool for dealing with these cases.
+
+\begin{theorem}[L'Hospital's rule: $0/0$ case]
+    Consider $f: S_1 \to \R$ and $g: S_2 \to \R$ continuous with both functions differentiable on $A \subseteq S_1 \cap S_2$ with the possible exception of $a \in A$. If $f(a) = g(a) = 0$ and $g'(x) \neq 0, \forall x \neq a$, then:
+    \begin{equation*}
+        \lim \limits_{x \to a} \frac{f(x)}{g(x)} = \lim \limits_{x \to a} \frac{f'(x)}{g'(x)} =  L
+    \end{equation*}
+    provided $\lim_{x \to a} f'(x)/g'(x)$ exists. 
+\end{theorem}
+
+\begin{proof}
+    From the Generalised mean value theorem:
+    \begin{equation*}
+        \frac{f'(c)}{g'(c)} = \frac{f(b) - f(a)}{g(b) - g(a)}
+    \end{equation*}
+    Taking the limit of $b \to a$ we have:
+    \begin{enumerate}
+        \item Since $c \in (a,b)$ then $a < c < b$. So, $a - b < c - b < 0$. $a - b \to 0$ as $ b \to a$. From the Squeeze theorem, $c \to b$ as $b \to a$. So, for the left-hand side of the Generalised mean value theorem stated above:
+            \begin{equation*}
+                \frac{f'(b)}{g'(b)}
+            \end{equation*}
+        \item For the right-hand side, since $f(a) = f(b) = 0$:
+            \begin{equation*}
+                \frac{f(b)}{g(b)}
+            \end{equation*}
+    \end{enumerate}
+    So, 
+    \begin{equation*}
+        \lim \limits_{b \to a} \frac{f'(b)}{g'(b)} = \lim \limits_{b \to a} \frac{f(b)}{g(b)}
+    \end{equation*}
+\end{proof}
+
 \subsection{Smoothness and Taylor's theorem}
 
 \begin{definition}
