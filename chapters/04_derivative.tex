@@ -713,6 +713,61 @@ provided $\lim_{x \to c} g(x) \neq 0$. It is not difficult to argue that if the 
     \end{equation*}
 \end{proof}
 
+\begin{definition}
+    Given a function $f: A \to \R$ and a point $a \in A$, then we denote $\lim_{x \to a} f(x) = +\infty$ if $\forall N > 0, \exists \delta > 0$ such that $f(x) > N, \forall x \in (a - \delta, a + \delta)$.
+    Similarly, we can define $\lim_{x \to a} = - \infty$.
+\end{definition}
+
+\begin{theorem}[L'Hospital's rule: $\infty/\infty$ case]
+    Consider $f: S_1 \to \R$ and $g: S_2 \to \R$ to be differentiable on $(a,b) \in S_1 \cap S_2$. If $g'(x) \neq 0, \forall x \in (a,b)$, $\lim_{x \to c} f(x)= \infty$ or ($-\infty$) and $\lim_{x \to c} g(x) = \infty$ or ($-\infty$), for $c \in (a,b)$, then:
+    \begin{equation*}
+        \lim \limits_{x \to c} \frac{f(x)}{g(x)} = \lim \limits_{x \to c} \frac{f'(x)}{g'(x)} = L
+    \end{equation*}
+    provided $\lim_{x \to c} f'(x)/g'(x)$ exist.
+\end{theorem}
+
+\begin{proof}
+    Let $\varepsilon > 0$, since $\lim_{x \to c} f'(x)/g'(x) = L$, there exists $\delta_1$ such that:
+    \begin{equation*}
+        \left |
+            \frac{f'(x)}{g'(x)} - L
+        \right | < \frac{\varepsilon}{2}, \forall x \in (c-\delta_1, c+\delta_1)
+    \end{equation*}
+    Applying the Generalised mean theorem for $[x, c + \delta_1]$:
+    \begin{equation*}
+        \frac{f(c + \delta_1) - f(x)}{g(c + \delta_1) - g(x)} = \frac{f'(d)}{g'(d)}
+    \end{equation*}
+    for $d \in (x, c + \delta_1)$. So,
+    \begin{equation*}
+        L -  \frac{\varepsilon}{2} < \frac{f(c + \delta_1) - f(x)}{g(c + \delta_1) - g(x)} < L + \frac{\varepsilon}{2}, \forall x \in (c, c+\delta_1)
+    \end{equation*}
+    In order to isolate $f(x)/g(x)$ in the previous equation it is necessary to multiply the inequality by $(g(c+\delta_1) - g(x))/g(x)$. However, first this last term must be show to be strictly positive. We begin by noticing,
+    \begin{equation*}
+        \frac{g(c+\delta_1) - g(x)}{g(x)} = \frac{g(c+\delta_1)}{g(x)} - \frac{g(x)}{g(x)} > 0 \Longrightarrow \frac{g(c+\delta_1)}{g(x)} > 1
+    \end{equation*}
+    So, it is necessary $x$ such that $g(c + \delta_1) > g(x)$. Define $\delta_2$ such that $g(c + \delta_1) > g(x), \forall x \in (c, c+\delta_2)$. We obtain:
+    \begin{equation*}
+        \left( L - \frac{\varepsilon}{2} \right)
+        \left( 1 - \frac{f(c+\delta_1)}{g(x)} \right)
+        <
+        \frac{f(c+\delta_1) - f(x)}{g(x)}
+        <
+        \left( L + \frac{\varepsilon}{2} \right)
+        \left( 1 - \frac{f(c+\delta_1)}{g(x)} \right)
+    \end{equation*}
+    which leads to:
+    \begin{equation*}
+        L - \frac{\varepsilon}{2} - L \frac{f(c+\delta_1)}{g(x)} + \frac{\varepsilon}{2}\frac{f(c+\delta_1)}{g(x)}
+        <
+        \frac{f(c+\delta_1) - f(x)}{g(x)}
+        <
+        L + \frac{\varepsilon}{2} - L \frac{f(c+\delta_1)}{g(x)} - \frac{\varepsilon}{2}\frac{f(c+\delta_1)}{g(x)}
+    \end{equation*}
+    \begin{equation*}
+        L - \frac{\varepsilon}{2} + \frac{f(c + \delta_1)}{}
+    \end{equation*}
+\end{proof}
+
 \subsection{Smoothness and Taylor's theorem}
 
 \begin{definition}
