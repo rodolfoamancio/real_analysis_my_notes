@@ -93,8 +93,58 @@ We start from framework more general than power series.
         \end{equation*}
 \end{enumerate}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\textwidth]{images/06_sequence_functions.pdf}
-    \centering
-\end{figure}
+\begin{definition}[Uniform convergence]
+    For $n \in \N$, define $f_n: S \to \R$ and $f: S \to \R$. Then, $f_n$ \emph{converges uniformly} to $f$ if $\forall \varepsilon > 0, \exists N \in \N$ such that $|f_n(x) - f(x)| < \varepsilon, \forall n \geq N, \forall x \in S$.
+\end{definition}
+
+\begin{theorem}
+    Consider $f_n: S \to \R$ and $f: S \to \R$. Then, if $f_n$ converges to $f$ uniformly it also converges to $f$ pointwise.
+\end{theorem}
+
+\begin{proof}
+    Consider $c \in S$ and let $\varepsilon > 0$. Then, if $f_n \to f$ uniformly, $\exists N \in \N$ such that $|f_n(x) - f(x)| < \varepsilon, \forall n \geq N, \forall x \in S$. So, $\lim_{n \to \infty} f_n(c) = f(c), \forall c \in S$. Therefore, $f_n$ converges to $f$ pointwise.
+\end{proof}
+
+\begin{theorem}[Weierstrass M-test]
+    Define $f_i: S \to \R$ and suppose $\exists M_i > 0$ such that:
+    \begin{itemize}
+        \item $|f_i(x)| < M_i, \forall x \in S$,
+        \item $\sum_{i=1}^\infty M_i$
+    \end{itemize}
+    Then,
+    \begin{enumerate}
+        \item $\sum_{i=1}^\infty f_i(x)$ converge absolutely for all $x \in S$,
+        \item Define $f(x) = \sum_{i = 1}^\infty f_i(x), \forall x \in S$, then $\sum_{i=1}^n f_i$ converges uniformly to $f$ on $S$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Proving each statement:
+    \begin{enumerate}
+        \item The first item implies the sequence $\{|f_i(x)|\}_i$ is bounded for all $x \in S$ by $M_i$. So,
+            \begin{equation*}
+                \sum \limits_{i=1}^n |f_i(x)| \leq \sum \limits_{i=1}^n M_i
+            \end{equation*}
+        By the comparison test, the sequence $\{\sum_{i=1}^n |f_i(x)|\}_n$ converges absolutely, since $\sum_{i=1}^\infty M_i$ converges. Hence, $\sum_{i=1}^\infty f_i(x)$ converges absolutely for all $ x \in S$.
+        \item Let $\varepsilon > 0$. Since $\sum M_i$ converges, then $\exists N_0 \in \N$ such that:
+            \begin{equation*}
+                \sum \limits_{i = n+1}^\infty M_i = \left |
+                    \sum \limits_{i = 1}^\infty M_i
+                    - \sum \limits_{i = 1}^n M_i
+                \right | < \varepsilon, \forall n \geq N_0
+            \end{equation*}
+            Take $N = N_0$. Then,
+            \begin{align*}
+                \left |
+                    f(x) - \sum \limits_{i = 1}n f_i(x)
+                \right |
+                &= \left |
+                    \sum \limits_{i = n+1}^\infty f_i(x)
+                \right | \\
+                &\leq \sum \limits_{i = n+1}^\infty |f_i(x)| \\
+                &\leq \sum \limits_{i = n+1}^\infty M_j \\
+                &< \varepsilon, \forall n \geq N, \forall x \in S
+            \end{align*}
+            So, $\sum_{i=1}^n f_i(x) \to f(x), \forall x \in S$.
+    \end{enumerate}
+\end{proof}
