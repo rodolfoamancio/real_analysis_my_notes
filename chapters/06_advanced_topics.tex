@@ -345,3 +345,62 @@ Next, we must show the answer to the previous questions is positive in the case 
         \item $\forall \delta \in (0,1), Q_n \to 0$ uniformly on $\delta \leq |x| \leq 1$.
     \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+    Proving each statement:
+    \begin{enumerate}
+        \item $\int_{-1}^1 Q_n(x) \dint x = c_n \int_{-1}^1 (1 - x^2)^n \dint x = 1$ by definition of $c_n$,
+        \item Since $c_n$ is strictly positive, notice $(1 - x^2) \geq 0, \forall x \in [-1,1]$. Any non-negative number to the $n$-th power will result in a non-negative number (since $n \in \N $). So $Q_n(x) \geq 0, \forall n \in \N, \forall x \in [-1, 1]$,
+        \item First, notice:
+            \begin{equation*}
+                (1 - x^2)^n \geq 1 - nx^2, \forall n \in \N, \forall x \in [-1, 1]
+            \end{equation*}
+            This can be proven by induction, beyond the scope of this particular proof. And $g(x) = (1 - x^2)^n - (1 - n x^2)$ satisfies $g(0) = 0$. Additionally, $g'(x) = n 2 x (1 - (1 - x^2)^{n-1}) \geq 0$ in $[0,1]$. Thus, $g(x) \geq 0$ by the Mean value theorem. So,
+            \begin{align*}
+                \frac{1}{c+n} &= \int_{-1}^1 (1 - x^2)^n \dint x \\
+                &= 2 \int_0^1 (1 - x^2)^n \dint x \\
+                &> 2 \int_0^{1/\sqrt{n}}(1 - x^2)^n \dint x \\
+                &\geq 2 \int_0^{1/\sqrt{n}}(1 - n x^2) \dint x \\
+                &= 2 \left(
+                    \frac{1}{\sqrt{n}} - \frac{n}{3}n^{-3/2}
+                \right) \\
+                &= \frac{4}{3}\sqrt{n}
+                &>\sqrt{n}
+            \end{align*}
+            Therefore $c_n < \sqrt{n}$. Let $\delta > 0$. First, notice $\lim_{n \to \infty} \sqrt{n}(1 - \delta^2)^n = 0$. By the root test,
+            \begin{align*}
+                \lim \limits_{n \to \infty} (\sqrt{n} (1 - \delta^2)^n)^{1/n} &= \lim \limits_{n \to \infty} (n^{1/n})^{1/2}(1 - \delta^2) \\
+                &= 1 - \delta^2 \\
+                &< 1
+            \end{align*}
+            So, $\lim_{n \to \infty} \sqrt{n}(1 - \delta^2)^n = 0$. Let $\varepsilon > 0$ and choose $N \in \N$ such that $\sqrt{n}(1 - \delta^2)^n < \varepsilon, \forall n \geq N$. Then, $\forall n \geq N, \forall \delta \leq |x| \leq 1, |c_n(1-x^2)^n| < sqrt{n}(1 - x^2)^n \leq \sqrt{n}(1 - \delta^2)^n < \varepsilon$.
+    \end{enumerate}
+\end{proof}
+\vspace{1em}
+Finally, we return to proving Weierstrass approximation theorem.
+\begin{proof}
+    Suppose $f \in C([0, 1])$, with $f(0) = f(1) = 0$. $f$ can be extended to $C(\R)$ by setting $f(x) = 0, \forall x \not \in [0,1]$. Define:
+    \begin{align*}
+        P_n(x) &= \int_0^1 f(t) Q_n(t - x) \dint t \\
+        &= \int_0^1 f(t) c_n (1 - (t - x)^2)^n \dint t
+    \end{align*}
+    Note that $P_n(x)$ is in fact a polynomial. Additionally, note that for $x \in [0,1]$,
+    \begin{align*}
+        P_n(x) &= \int_0^1 f(t) Q_n(t - x) \dint t \\
+        &= \int_{-x}^{1 - x} f(x + t)Q_n(t) \dint t \\
+        &= \int_{-1}^1 f(x + t)Q_n(t)\dint t
+    \end{align*}
+    The second equality follows from change of variables, the third one comes from $f(x + t) = 0, \forall t \not \in [-x, 1 - x]$.
+    Now, it is necessary to show $P_n \to f$ uniformly on $[0,1]$. Let $\varepsilon > 0$, since $f$ is uniformly continuous on $[0,1], \exists \delta > 0$ such that $\forall |x-y| \leq \delta, |f(x) - f(y)| < \varepsilon/2$. Let $C = \sup \{f(x):x \in [0,1]\}$, which exists by the Min/Max theorem. Choose $N \in \N$ such that $\sqrt{n}(1 - \delta^2)^n < \varepsilon/(8C)$. Thus, $\forall n \geq N, \forall x \in [0,1]$,
+    \begin{align*}
+        |P_n(x) - f(x)| &= \left |
+            \int_{-1}^1 (f(x-t) - f(t))Q_n(t) \dint t
+        \right | \\
+        & \leq \int_{-1}^1 |f(x - t) - f(x)| Q_n(t) \dint t \\
+        & \leq \int_{|t| \leq \delta} |f(x - t) - f(x)| Q_n(t) \dint t + \int_{\delta \leq |t| \leq 1} |f(x - t) - f(x)| Q_n(t) \dint t \\
+        & \leq \frac{\varepsilon}{2}\int_{|t| \leq \delta} Q_n(t) \dint t + \sqrt{n}(1 - \delta^2)^n \int_{\delta \leq |t| \leq 1} 2C \dint t \\
+        &< \frac{\varepsilon}{2} + 4C \sqrt{n}(1 - \delta^2)^n \\
+        &< \frac{\varepsilon}{2} + \frac{\varepsilon}{2} \\
+        &= \varepsilon
+    \end{align*}
+\end{proof}
