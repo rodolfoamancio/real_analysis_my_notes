@@ -148,3 +148,200 @@ We start from framework more general than power series.
             So, $\sum_{i=1}^n f_i(x) \to f(x), \forall x \in S$.
     \end{enumerate}
 \end{proof}
+
+\subsection{Interchange of limits}
+
+
+\begin{remark}
+    In general, interchanging limits leads to different results.    
+\end{remark}
+
+
+\begin{eg}
+    For instance, consider:
+    \begin{eqnarray*}
+        \lim \limits_{n \to \infty} \lim \limits_{k \to \infty} \frac{n/k}{n/k + 1} &=& \lim \limits_{n \to \infty} \frac{0}{0+1} = 0 \\
+        \lim \limits_{k \to \infty} \lim \limits_{n \to \infty} \frac{n/k}{n/k + 1} &=& \lim \limits_{k \to \infty} 1 = 1
+    \end{eqnarray*}
+\end{eg}
+
+So, there are a few questions that could be made about interchanging limits applied to sequences of functions:
+\begin{enumerate}
+    \item If $f_n: S \to \R$ is a sequence of continuous functions such that $f_n$ converges to $f$ pointwise or uniformly, then is $f$ continuous?
+    \item If $f_n: [a,b] \to \R$ is a sequence of continuous differentiable functions such that $f_n$ converges to $f$ and $f'_n \to g$, then is $f$ differentiable and does $g(x) = f'(x)$?
+    \item If $f_n: [a,b] \to \R$ with $f_n$ and $f$ continuous such that $f_n$ converges to $f$, then does
+        \begin{equation*}
+            \int_a^b f_n(x) \dint x = \int_a^b f(x) \dint x \text{ ?}
+        \end{equation*}
+\end{enumerate}
+
+The answer to the previous questions is yes, provided the convergence is uniform. Else, the answer is no if the convergence is pointwise. This last result can be proved by counterexamples:
+
+\begin{eg}
+    \begin{enumerate}
+        \item Consider $f_n(x) = x^n$ on $[0,1]$. Then $f_n(x)$ is continuous for all $n$. As discussed earlier:
+            \begin{equation*}
+                f_n(x) \to f(x) = \begin{cases}
+                    0 \text{ if } x \in [0,1) \\
+                    1 \text{ if } x = 1
+                \end{cases}
+            \end{equation*}
+        Notice $f(x)$ is not continuous, so the answer to the first of the three previous questions is negative.
+        \item Consider $f_n(x) = \frac{x^{n+1}}{n+1}$ on $[0,1]$. Then $f_n(x)$ converges to $0$ pointwise on $[0,1]$. On the other hand,
+            \begin{equation*}
+                f'_n(x) \to g(x) = \begin{cases}
+                    0 \text{ if } x \in [0,1) \\
+                    1 \text{ if } x = 1
+                \end{cases}
+            \end{equation*}
+            Thus, $g(x) \neq (0)' = 0$ at $x=1$. So, the second question has a negative answer for pointwise convergence.
+        \item Consider
+            \begin{equation*}
+                f_n(x) = \begin{cases}
+                    4n^2x \qquad \:\:\: \text{ if } x \in \left [ 0, \frac{1}{2n} \right ) \\
+                    4n - 4n^2x \ \text{ if } x \in \left [\frac{1}{2n}, \frac{1}{n} \right ) \\
+                    0 \qquad \qquad \: \text{ if } x \in \left [ \frac{1}{n}, 1 \right ]
+                \end{cases}
+            \end{equation*}
+            Then $f_n(x)$ converges to $0$ pointwise on $[0,1]$. However,
+            \begin{equation*}
+                \int_0^1 f_n(x) \dint x = \frac{1}{2n}2n = 0 \not \to 0 = \int_0^1 0 \dint x
+            \end{equation*}
+            So, the answer to the third question is no for the case of pointwise convergence.
+    \end{enumerate}
+\end{eg}
+\vspace{1em}
+Next, we must show the answer to the previous questions is positive in the case of uniform convergence.
+
+\begin{theorem}
+    If $f_n:S \to \R$ is continuous for all $n \in \N$. And $f: S \to \R$, such that $f_n$ converges to $f$ uniformly, then $f$ is continuous.
+\end{theorem}
+
+\begin{proof}
+    Let $c \in S$ and $\varepsilon > 0$. Since $f_n$ converges to $f$ uniformly, $\exists N \in \N$ such that $|f_n(y) - f(y)| < \varepsilon/3, \forall n \geq N, \forall y \in S$. Since $f_N: S \to \R$ is continuous then $\exists \varepsilon_0 > 0$ such that $|f_N(x) - f_N(c)| < \varepsilon/3, \forall x \in (c - \delta_0, c + \delta_0)$. Choose $\delta = \delta_0$, then:
+    \begin{align*}
+        |f(x) - f(c)| &\leq |f(x) - f_N(x)| + |f_N(c) - f(c)| + |f_N(x) - f_N(c)| \\
+        &< \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} \\
+        &= \varepsilon
+    \end{align*}
+\end{proof}
+
+\begin{theorem}
+    If $f_n: [a,b] \to \R$ is a sequence of continuous functions such that $f_n$ converges to $f: [a,b] \to \R$ uniformly then
+    \begin{equation*}
+        \int_a^b f_n(x) \dint x \to \int_a^b f(x) \dint x
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Let $\varepsilon > 0$. Since $f_n \to f$ uniformly, then $\exists N \in \N$ such that:
+    \begin{equation*}
+        |f_n(x) - f(x)| < \frac{\varepsilon}{b-a}, \forall n \geq N, \forall x \in [a,b]
+    \end{equation*}
+    Then,
+    \begin{equation*}
+        \left |
+            \int_a^b f_n(x) \dint x- \int_a^b f(x) \dint x 
+        \right | \leq 
+        \int_a^b |f_n(x) - f(x)| \dint x 
+        <
+        \int_a^b \frac{\varepsilon}{b-a} = \varepsilon
+    \end{equation*}
+\end{proof}
+
+\begin{remark}
+    Notationally, this is equivalent to:
+    \begin{equation*}
+        \lim \limits_{n \to \infty} \int_a^b f_n(x) \dint x = 
+        \int_a^b \lim \limits_{n \to \infty} f_n(x) \dint x = 
+        \int_a^b f(x) \dint x
+    \end{equation*}
+\end{remark}
+
+\begin{theorem}
+    If $f_n: [a,b] \to \R$ is a sequence of continuous differentiable functions, $f: [a,b] \to \R$, $g:[a,b] \to \R$, and:
+    \begin{enumerate}
+        \item $f_n$ converges to $f$ pointwise,
+        \item $f'_n$ converges to $g$ uniformly,
+    \end{enumerate}
+    then $f$ is continuously differentiable on $[a,b]$ and $g(x) = f'(x)$.
+\end{theorem}
+
+\begin{proof}
+    By the Fundamental theorem of Calculus,
+    \begin{equation*}
+        f_n(x) - f(x) = \int_a^x f'_n(t)\dint t, \forall n \in \N, \forall x \in [a,b]
+    \end{equation*}
+    Thus, by the previous two theorems,
+    \begin{align*}
+        f(x) - f(a) &= \lim \limits_{n \to \infty} (f_n(x) - f_n(a)) \\
+        &= \lim \limits_{n \to \infty} \int_a^x f'_n(t) \dint t \\
+        &= \int_a^x g(t) \dint t
+    \end{align*}
+    Therefore, $f(x) = f(a) + \int_a^x g(t) \dint t$. Thus, by the Fundamental theorem of calculus, $f$ is differentiable and $f'(x) = (\int_a^x g(t) \dint t)' = g(x)$.
+\end{proof}
+
+\section{Power series}
+
+\begin{theorem}
+    Let $\sum_{i=0}^\infty a_i(x - x_0)^i$ be a power series with radius of convergence $p \in (0, \infty]$. Then,  $\forall r \in (0, p), \sum_{i=0}^\infty a_i(x - x_0)^i$ converges uniformly on $[x_0 - r, x_0 + r]$.
+\end{theorem}
+
+\begin{proof}
+    Let $r \in [0, p)$. Then, $\forall i \in \N \cup \{0\}, \forall x \in [x_0 - r, x_0 + r], |a_i(x-x_0)^i| \leq |a_i|r^i = M_i$. Now,
+    \begin{equation*}
+        \lim \limits_{i \to \infty} M_i^{1/i} = \lim \limits_{i \to \infty} |a_i|^{1/i} r = \begin{cases}
+            \frac{r}{p} \text{ if } p < \infty \\
+            0 \text{ if } p = \infty
+        \end{cases}
+    \end{equation*}
+    since $1/p = \lim_{i \to \infty} |a_i|^{1/i}$. Since $r < p$,
+    \begin{equation*}
+        \lim \limits_{i \to \infty} M_i^{1/i} < 1 \Longrightarrow \sum \limits_{i=1}^\infty M_i \text{ converges.}
+    \end{equation*}
+    By the Weierstrass M-test, $\sum_{i=0}^\infty a_i(x-x_0)^i$ converges uniformly on $[x_0 - r, x_0 + r]$.
+\end{proof}
+
+\begin{theorem}
+    Consider $\sum_{i=0}^\infty a_i(x - x_0)^i$, a power series with radius of convergence $p \in (0, \infty]$. Then,
+    \begin{enumerate}
+        \item $\forall c \in (x_0 - p, x_0 + p), \sum_{i=0}^\infty a_i(x - x_0)^i$ is differentiable at $c$ and:
+            \begin{equation*}
+                \frac{\dint}{\dint x} \sum \limits_{i=0}^\infty a_i(x - x_0)^i = \sum \limits_{i=0}^\infty i a_i (x - x_0)^{i-1}
+            \end{equation*}
+        \item $\forall a, b$ such that $x_o - p < a <  b < x_0 + p$, then:
+            \begin{equation*}
+                \int_a^b \sum \limits_{i = 0}^\infty a_i(x- x_0)^i = \sum \limits_{i=0}^\infty \left(
+                    \frac{(b-x_0)^{i+1}}{i+1} - \frac{(a - x_0)^{i+1}}{i + 1}
+                \right)
+            \end{equation*}
+    \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+    Since 
+    \begin{equation*}
+        \lim \limits_{i \to \infty} ((i+1)|a_{i+1}|)^{1/i} = \lim \limits_{i\to \infty} \left(
+            (i+1)|a_{i+1}|^{1/(i+1)}
+        \right)^{(i+1)/i} = \lim \limits_{k \to \infty} |a_k|^{1/k} = p
+    \end{equation*}
+    the first result of the previous theorem implies $\sum a_i(x - x_0)^i$ is infinitely differentiable and:
+    \begin{equation*}
+        k! a_k = \left(
+            \frac{\dint^k}{\dint x^k} \sum a_i (x - x_0)^i
+        \right) \Bigg |_{x = x_0}
+    \end{equation*}
+\end{remark}
+
+\begin{theorem}[Weierstrass approximation theorem]
+    If $f \in C([a,b])$, there exists a sequence of polynomials $\{ P_n\}$ such that $P_n \to f$ uniformly on $[a,b]$.
+\end{theorem}
+
+\begin{theorem}
+    Define $c_n := (\int_{-1}^1 (1 - x^2)^n \dint x)^{-1} > 0$, and let $Q_n(x) = c_n(1 - x^2)^n$. Then:
+    \begin{enumerate}
+        \item $\int_{-1}^1 Q_n(x) \dint x = 1, \forall n \in \N$,
+        \item $Q_n(x) \geq 0, \forall n \in \N, \forall x \in [-1, 1]$, and
+        \item $\forall \delta \in (0,1), Q_n \to 0$ uniformly on $\delta \leq |x| \leq 1$.
+    \end{enumerate}
+\end{theorem}
