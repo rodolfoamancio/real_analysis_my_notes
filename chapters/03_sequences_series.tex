@@ -8,7 +8,7 @@ Basically a series is a sum of infinite terms. On the following example, some pr
     \sum \limits_{n=1}^\infty \frac{(-1)^{n+1}}{n} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + ...
 \end{equation}
 
-We can consider the partial sum, $s_n$, \emph{i.e.} the sum of the $n$ first terms of the series. In this case we would obtain: $s_1 = 1$, $s_2 = 1/2$, $s_3 = 5/6$,... and so on. Interestingly, the odd sums decrease ($s_1 > s_3 > s_5 > ...$), while the even sums increase ($s_2 < s_4 < s_6 < ...$). It gives the idea that $\{s_n\}$ converges to some number $S$. And we may feel tempted to write:
+We can consider the partial sum, $s_n$, \emph{i.e.} the sum of the $n$ first terms of the series. In this case we would obtain: $s_1 = 1$, $s_2 = 1/2$, $s_3 = 5/6$,... and so on. Interestingly, the odd sums decrease ($s_1 > s_3 > s_5 > ...$), while the even sums increase ($s_2 < s_4 < s_6 < ...$). It gives the idea that $(s_n)$, the sequence of partial sums, converges to some number $S$. And we may feel tempted to write:
 
 \begin{equation*}
     S = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + ...
@@ -47,26 +47,24 @@ In order to deal with the tricks hidden in infinite series, we begin by discussi
 \subsection{Convergent sequences}
 
 \begin{definition}[Sequence]
-    A sequence is a function, $f$, whose domain is $\N$. In this way, $f: \N to \R$. Hence, $f(n)$ is the $n$-th term of the sequence. Notation: usually, a sequence is presented in the form $\{ x_n \}$, or $\{ x_n \}_{n=1}^\infty$, or $ x_1, x_2, x_3, ...$.
+    A sequence is a function, $f$, whose domain is $\N$. In this way, $f: \N \to \R$. Hence, $f(n)$ is the $n$-th term of the sequence. Notation: usually, a sequence is presented in the form $(x_n)$, or $(x_n)_{n=1}^\infty$, or $ x_1, x_2, x_3, ...$.
 \end{definition}
 
 \begin{definition}[Convergence of a sequence]
-    A sequence $\{x_n \}$ converges to $x$ if $\forall \varepsilon > 0, \exists N \in N$ such that $|x_n - x| < \varepsilon, \forall n \geq N$. There are a few different ways to denote convergence, such as $\{ x_n\} \to x$, $\lim \limits_{n \to \infty} x_n = x$ or $x_n \to x$.
+    A sequence $(x_n)$ converges to $x$ if $\forall \varepsilon > 0, \exists N \in N$ such that $|x_n - x| < \varepsilon, \forall n \geq N$. There are a few different ways to denote convergence, such as $(x_n) \to x$, $\lim \limits_{n \to \infty} x_n = x$ or $x_n \to x$.
 \end{definition}
 
 The negation of the convergence of a sequence would be:
 
 \begin{definition}
-    A sequence  $\{ x_n\}$ does not converge to $x$ if $\exists \varepsilon_0 > 0$ such that $\exists m \in \N$ such that $|x_n - x| \geq \varepsilon, \forall n \geq m$.
+    A sequence  $( x_n)$ does not converge to $x$ if $\exists \varepsilon_0 > 0$ such that $\exists m \in \N$ such that $|x_n - x| \geq \varepsilon, \forall n \geq m$.
 \end{definition}
 
-\paragraph{Example}
-
-\begin{equation*}
-    \lim \limits_{n \to \infty} \frac{1}{n^2 + 30n + 1} = 0
-\end{equation*}
-
-\begin{proof}
+\begin{eg}
+    \begin{equation*}
+        \lim \limits_{n \to \infty} \frac{1}{n^2 + 30n + 1} = 0
+    \end{equation*}
+    Solution:\\   
     We need to find $N \in \N$ such that
     \begin{equation*}
         \frac{1}{n^2 + 30n + 1} < \varepsilon, \forall n \geq N
@@ -79,8 +77,8 @@ The negation of the convergence of a sequence would be:
     Let $\varepsilon > 0$, set $N \in \N$ such that $1/N < \varepsilon$. Then, for all $n \geq N$:
     \begin{equation*}
         \left| \frac{1}{n^2+30n+1} - 0\right| = \frac{1}{n^2+30n+1} \leq  \frac{1}{30n} \leq \frac{1}{n} \leq \frac{1}{N} < \varepsilon
-    \end{equation*}
-\end{proof}
+    \end{equation*}     
+\end{eg}
 
 \begin{definition}[Bounded sequences]
     A sequence $\{x_n\}$ is bounded if there exists a number $M > 0$ such that $|x_n| < M, \forall n \in \N$.
