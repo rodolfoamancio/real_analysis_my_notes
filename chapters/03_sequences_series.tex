@@ -73,7 +73,7 @@ The negation of the convergence of a sequence would be:
     \begin{equation*}
         \frac{1}{n^2 + 30n + 1} \leq \frac{1}{n^2 + 30n} \leq \frac{1}{30n} \leq \frac{1}{n}
     \end{equation*}
-    Hence, if $1/n < \varepsilon$ then we would obtain the initial inequality. \\
+    Hence, if $1/n < \varepsilon$ the initial inequality is immediately satisfied. \\
     Let $\varepsilon > 0$, set $N \in \N$ such that $1/N < \varepsilon$. Then, for all $n \geq N$:
     \begin{equation*}
         \left| \frac{1}{n^2+30n+1} - 0\right| = \frac{1}{n^2+30n+1} \leq  \frac{1}{30n} \leq \frac{1}{n} \leq \frac{1}{N} < \varepsilon
@@ -81,19 +81,19 @@ The negation of the convergence of a sequence would be:
 \end{eg}
 
 \begin{definition}[Bounded sequences]
-    A sequence $\{x_n\}$ is bounded if there exists a number $M > 0$ such that $|x_n| < M, \forall n \in \N$.
+    A sequence $(x_n)$ is bounded if there exists a number $M > 0$ such that $|x_n| < M, \forall n \in \N$.
 \end{definition}
 
 \begin{theorem}
-    If $\{ x_n\}$ is convergent, then $\{ x_n\}$ is bounded.
+    If $( x_n)$ is convergent, then $( x_n)$ is bounded.
 \end{theorem}
 
 \begin{proof}
-    Suppose $\{ x_n\} \to x$, then $\exists N \in \N$ such that $\forall n \geq N, |x_n - x| < \varepsilon, \forall \varepsilon > 0$. Regardless if $x$ is positive or negative, we can write $|x_n| < |x| + \varepsilon$. Define $M = \max \{||x_1|, |x_2|, ..., |x_{N-1}|, |x| + \varepsilon \}$. Then, $|x_n| \leq M, \forall n \in \N$. 
+    Suppose $( x_n) \to x$, then $\exists N \in \N$ such that $\forall n \geq N, |x_n - x| < \varepsilon, \forall \varepsilon > 0$. Regardless if $x$ is positive or negative, we can write $|x_n| < |x| + \varepsilon$. Define $M = \max (||x_1|, |x_2|, ..., |x_{N-1}|, |x| + \varepsilon )$. Then, $|x_n| \leq M, \forall n \in \N$. 
 \end{proof}
 
 \begin{definition}
-    A sequence $\{ x_n \}$ is:
+    A sequence $( x_n )$ is:
     \begin{enumerate}
         \item Monotone increasing, if $x_n \leq x_{n+1}, \forall n \in \N$,
         \item Monotone decreasing, if $x_n \geq x_{n+1}, \forall n \in \N$,
@@ -106,40 +106,40 @@ The negation of the convergence of a sequence would be:
 \end{theorem}
 
 \begin{proof}
-    Suppose $\{ x_n\}$ is a monotonic increasing sequence. Then,
+    Suppose $( x_n)$ is a monotonic increasing sequence. Then,
     \begin{enumerate}
         \item $( \Rightarrow )$ follows from the previous theorem.
-        \item $( \Leftarrow )$. Suppose $ \{x_n \} $ is bounded. Then, $ \{ x_n: n \in \N\} \subseteq \R$ is a bounded set. Let $x = \sup \{ x_n: n \in \R\}$. We claim 
+        \item $( \Leftarrow )$. Suppose $ (x_n ) $ is bounded. Then, $ ( x_n: n \in \N) \subseteq \R$ is a bounded set. Let $x = \sup ( x_n: n \in \R)$. We claim 
         \begin{equation*}
             x = \lim \limits_{n\to \infty} x_n
         \end{equation*}
-        Let $\varepsilon > 0$. Since $x - \varepsilon$ is not an upper bound for $\{ x_n: n \in \N\}$, $\exists M_0 \in \N$ such that $x_n - \varepsilon < x_{M_0} < x$. Choose $M = M_0$, then $\forall n \geq M, x-\varepsilon < x_{M_0} < x_n \leq x + \varepsilon$, or $x-\varepsilon < x_M < x+\varepsilon$.
+        Let $\varepsilon > 0$. Since $x - \varepsilon$ is not an upper bound for $( x_n: n \in \N)$, $\exists M_0 \in \N$ such that $x_n - \varepsilon < x_{M_0} < x$. Choose $M = M_0$, then $\forall n \geq M, x-\varepsilon < x_{M_0} < x_n \leq x + \varepsilon$, or $x-\varepsilon < x_M < x+\varepsilon$.
     \end{enumerate}
 \end{proof}
 
 \begin{theorem}[Algebraic limit theorem]
-    Let $\{ a_n\} \to a$ and $\{ b_n\} to b$. Then,
+    Let $( a_n) \to a$ and $( b_n) to b$. Then,
     \begin{enumerate}
-        \item $\{ ca_n\} \to ca, \forall c \in \R$
-        \item $\{ a_n + b_n\} \to a + b$
-        \item $\{ a_nb_n\} \to ab $
-        \item $\{a_n/b_n\} \to a/b$, given $b \ne 0$
+        \item $( ca_n) \to ca, \forall c \in \R$
+        \item $( a_n + b_n) \to a + b$
+        \item $( a_nb_n) \to ab $
+        \item $(a_n/b_n) \to a/b$, given $b \ne 0$
     \end{enumerate}
 \end{theorem}
 
 \begin{proof}
     Let's take each item individually:
     \begin{enumerate}
-        \item First, note $|ca_n - ca| = |c||a_n - a|$. Hence, for $\varepsilon > 0$ we have $|ca_n - ca| < \varepsilon \Leftrightarrow |a_n-a| < \varepsilon/|c|$. Since $\{ a_n \} \to a$ then $\exists N \in \N$ such that $|a_n - a| < \varepsilon / |c|$, so $|ca_n - ca| = |c||a_n-a| < |c|\varepsilon/|c|, \forall n \geq N$.
-        \item From the triangle inequality, $|(a_n+b_n)-(a-b)| \leq |a_n-a|+|b_n-b|$. Set $N_1 \in \N$ such that $|a_n-a|< \varepsilon/2, \forall n \geq N_1$ with $\varepsilon > 0$. And set $N_2 \in \N$ such that $|b_n-b| < \varepsilon/2, \forall n \geq N_2$. Then, for $N = \max \{ N_1, N_2\}$ we obtain: $|(a_n+b_n)-(a+b)| \leq |a_n-a| + |b_n-b| < \varepsilon/2 + \varepsilon/2 = \varepsilon$.
-        \item First, $|a_nb_n - ab| = |a_nb_n -ab_n + ab_n - ab| \leq |a_nb_n-ab_n| + |ab_n - ab| = |b_n||a_n-a| + |a||b_n-b|$. Take $N_1 \in \N$ such that $|b_n-b| < \varepsilon/(2|a|), \forall n \geq N_1$ with $\varepsilon > 0$. Since every convergent sequence is bounded, take $M > 0$ so that $|b_n| < M, \forall n \in \N$. Then, set $N_2 \in \N$ such that $|a_n-a| < \varepsilon/(2M), \forall n \geq N_2$. Finally, for $N = \max \{ N_1, N_2\}$ we obtain $|a_nb_n - ab| \leq |b_n||a_n-a| + |a||b_n-b| < M\varepsilon/(2M) + |a|\varepsilon/(2|a|) = \varepsilon$.
-        \item $\{ a_n/b_n\} \to a/b$ follows from the previous result by noting $\{(1/b_n)\} \to 1/b$, provided $b \ne 0$. So,
+        \item First, note $|ca_n - ca| = |c||a_n - a|$. Hence, for $\varepsilon > 0$ we have $|ca_n - ca| < \varepsilon \Leftrightarrow |a_n-a| < \varepsilon/|c|$. Since $( a_n ) \to a$ then $\exists N \in \N$ such that $|a_n - a| < \varepsilon / |c|$, so $|ca_n - ca| = |c||a_n-a| < |c|\varepsilon/|c|, \forall n \geq N$.
+        \item From the triangle inequality, $|(a_n+b_n)-(a-b)| \leq |a_n-a|+|b_n-b|$. Set $N_1 \in \N$ such that $|a_n-a|< \varepsilon/2, \forall n \geq N_1$ with $\varepsilon > 0$. And set $N_2 \in \N$ such that $|b_n-b| < \varepsilon/2, \forall n \geq N_2$. Then, for $N = \max ( N_1, N_2)$ we obtain: $|(a_n+b_n)-(a+b)| \leq |a_n-a| + |b_n-b| < \varepsilon/2 + \varepsilon/2 = \varepsilon$.
+        \item First, $|a_nb_n - ab| = |a_nb_n -ab_n + ab_n - ab| \leq |a_nb_n-ab_n| + |ab_n - ab| = |b_n||a_n-a| + |a||b_n-b|$. Take $N_1 \in \N$ such that $|b_n-b| < \varepsilon/(2|a|), \forall n \geq N_1$ with $\varepsilon > 0$. Since every convergent sequence is bounded, take $M > 0$ so that $|b_n| < M, \forall n \in \N$. Then, set $N_2 \in \N$ such that $|a_n-a| < \varepsilon/(2M), \forall n \geq N_2$. Finally, for $N = \max ( N_1, N_2)$ we obtain $|a_nb_n - ab| \leq |b_n||a_n-a| + |a||b_n-b| < M\varepsilon/(2M) + |a|\varepsilon/(2|a|) = \varepsilon$.
+        \item $( a_n/b_n) \to a/b$ follows from the previous result by noting $((1/b_n)) \to 1/b$, provided $b \ne 0$. So,
         \begin{equation*}
             \left |
             \frac{1}{b_n} - \frac{1}{b}
             \right | = \frac{|b -b_n|}{|b||b_n|}
         \end{equation*}
-        $|b_n-b|$ can be made arbitrarily small. On the other hand, considering $\varepsilon_0 = |b|/2$, define $N_1 \in \N$ such that $|b_n-b|<|b|/2, \forall n \geq N_1$, hence $|b_n| > |b|/2, \forall n \geq N_1$. Now, set $N_2 \in \N$ such that $|b_n-b| < \varepsilon|b|^2/2$. Taking $N = \max \{ N_1, N_2\}$ leads to
+        $|b_n-b|$ can be made arbitrarily small. On the other hand, considering $\varepsilon_0 = |b|/2$, define $N_1 \in \N$ such that $|b_n-b|<|b|/2, \forall n \geq N_1$, hence $|b_n| > |b|/2, \forall n \geq N_1$. Now, set $N_2 \in \N$ such that $|b_n-b| < \varepsilon|b|^2/2$. Taking $N = \max ( N_1, N_2)$ leads to
         \begin{equation*}
             \left|
                 \frac{1}{b_n} - \frac{1}{b}
@@ -150,7 +150,7 @@ The negation of the convergence of a sequence would be:
 \end{proof}
 
 \begin{theorem}[Order limit theorem]
-    Assume $\{a_n\} \to a$ and $\{ b_n\} \to b$, then:
+    Assume $(a_n) \to a$ and $( b_n) \to b$, then:
     \begin{enumerate}
         \item If $a_n \geq 0, \forall n \in \N \Rightarrow a \geq 0$,
         \item If $a_n \leq b_n, \forall n \in \N \Rightarrow a \leq b$,
@@ -161,8 +161,8 @@ The negation of the convergence of a sequence would be:
 \begin{proof}
     Proof for each statement:
     \begin{enumerate}
-        \item Assume $a < 0$. Consider $\varepsilon  = |a|$, since $\{ a_n\} \to a$ we have $|a_n - a|< |a|, \forall n \geq N$. In particular, $|a_N - a|<|a|$ hence $a_N < 0$ which is a contradiction. Therefore, $a \geq 0$.
-        \item From the algebraic theorem,  $\{ b_n - a_n\} \to a-b$. Since $b_n-a_n \geq 0$ from the previous result, we get $b - a \geq 0$.
+        \item Assume $a < 0$. Consider $\varepsilon  = |a|$, since $( a_n) \to a$ we have $|a_n - a|< |a|, \forall n \geq N$. In particular, $|a_N - a|<|a|$ hence $a_N < 0$ which is a contradiction. Therefore, $a \geq 0$.
+        \item From the algebraic theorem,  $( b_n - a_n) \to a-b$. Since $b_n-a_n \geq 0$ from the previous result, we get $b - a \geq 0$.
         \item Take $a_n = c, \forall n \in \N$. From the previous theorem, if $c \leq b_n$ then $b-c \geq 0$. Hence, $b \geq c$.
     \end{enumerate}
 \end{proof}
@@ -172,37 +172,34 @@ The negation of the convergence of a sequence would be:
 In order to find out if a sequence converges, and to what value, there are a few tools at our disposal. We begin with the very popular Squeeze theorem, sometimes refered here as ST.
 
 \begin{theorem}[Squeeze theorem]
-    Let $\{a_n\}, \{b_n\}, \{x_n\}$ be sequences such that $\forall n \in \N$, $a_n \leq x_n \leq b_n$. Suppose $\{a_n\}$ and $\{b_n\}$ both converge and
+    Let $(a_n), (b_n), (x_n)$ be sequences such that $\forall n \in \N$, $a_n \leq x_n \leq b_n$. Suppose $(a_n)$ and $(b_n)$ both converge and
     \begin{equation*}
         \lim \limits_{n \to \infty} a_n = x = \lim \limits_{n \to \infty} b_n
     \end{equation*}
-    So, $\{x_n\} \to x$.
+    So, $(x_n) \to x$.
 \end{theorem}
 
 \begin{proof}
-    Let $\varepsilon > 0$. Since $\{a_n\} \to x$, $\exists M_0 \in \N$ such that $\forall n \geq M_0, |a_n-x| < \varepsilon \Rightarrow x-\varepsilon < a_n$.\\
-    Since $\{b_n\} \to x$, then $\exists M_1 \in \N$ such that $\forall n \geq M_1, |b_n-x|<\varepsilon \Rightarrow b_n < x + \varepsilon$. \\
-    Choose $M = \max\{ M_0, M_1\}$. Then, if $n \geq M, x-\varepsilon < a_n \leq x_n \leq b_n < x-\varepsilon \Rightarrow |x_n-x|>\varepsilon$.
+    Let $\varepsilon > 0$. Since $(a_n) \to x$, $\exists M_0 \in \N$ such that $\forall n \geq M_0, |a_n-x| < \varepsilon \Rightarrow x-\varepsilon < a_n$.\\
+    Since $(b_n) \to x$, then $\exists M_1 \in \N$ such that $\forall n \geq M_1, |b_n-x|<\varepsilon \Rightarrow b_n < x + \varepsilon$. \\
+    Choose $M = \max( M_0, M_1)$. Then, if $n \geq M, x-\varepsilon < a_n \leq x_n \leq b_n < x-\varepsilon \Rightarrow |x_n-x|>\varepsilon$.
 \end{proof}
 
 The limit of a function can be also expressed in another form, which can be pretty useful.
 
 \begin{theorem}
-    Another way to check if $\{x_n\} \to x$ would be
+    Another way to check if $(x_n) \to x$ would be
     \begin{equation*}
         \lim \limits_{n \to \infty} x_n = x \Longleftrightarrow \lim \limits_{n \to \infty} |x_n - x| = 0
     \end{equation*}
 \end{theorem}
 
-\paragraph{Example}
-
-Show that 
-
-\begin{equation*}
-    \lim \limits_{n \to \infty} \frac{n^2}{n^2+n+1} = 1
-\end{equation*}
-
-\begin{proof}
+\begin{eg}
+    Show that:
+    \begin{equation*}
+        \lim \limits_{n \to \infty} \frac{n^2}{n^2+n+1} = 1
+    \end{equation*}    
+    Solution:\\
     We have
     \begin{equation*}
         \left |
@@ -229,12 +226,12 @@ Show that
         \right | = 0
     \end{equation*}
     by the Squeeze theorem.
-\end{proof}
+\end{eg}
 
 \subsection{Some special sequences}
 
 \begin{theorem}
-    If $\{x_n\}$ is a convergent sequence such that $\forall n \in \N, x_n \geq 0$, then $\{\sqrt{x_n}\}$ is convergent and
+    If $(x_n)$ is a convergent sequence such that $\forall n \in \N, x_n \geq 0$, then $(\sqrt{x_n})$ is convergent and
     \begin{equation}
         \lim \limits_{n \to \infty} \sqrt{x_n} = \sqrt{\lim \limits_{n \to \infty} x_n}
     \end{equation}
@@ -243,7 +240,7 @@ Show that
 \begin{proof}
     Let $x = \lim \limits_{n \to infty} x_n$, then:
     \begin{enumerate}
-        \item If $x = 0$. Let $\varepsilon > 0$ then, since $\{x_n\} \to 0$, $\exists N_0 \in \N$ such that $x_n = |x_n-0| \varepsilon^2, \forall n \geq N_0$. Choose $N = N_0$, then $\sqrt{x_n}-\sqrt{0} = \sqrt{x_n} < \sqrt{\varepsilon^2} = \varepsilon$
+        \item If $x = 0$. Let $\varepsilon > 0$ then, since $(x_n) \to 0$, $\exists N_0 \in \N$ such that $x_n = |x_n-0| \varepsilon^2, \forall n \geq N_0$. Choose $N = N_0$, then $\sqrt{x_n}-\sqrt{0} = \sqrt{x_n} < \sqrt{\varepsilon^2} = \varepsilon$
         \item If $ x > 0$. Then, 
         
         \begin{align}
@@ -263,7 +260,7 @@ Show that
 \end{proof}
 
 \begin{theorem}
-    If $\{x_n\}$ is convergent and $\lim \limits_{n\to\infty} x_n = x$, then $\{|x_n|\}$ is convergent and $\lim \limits_{n \to \infty} |x_n| = |x|$.
+    If $(x_n)$ is convergent and $\lim \limits_{n\to\infty} x_n = x$, then $(|x_n|)$ is convergent and $\lim \limits_{n \to \infty} |x_n| = |x|$.
 \end{theorem}
 
 \begin{proof}
@@ -274,7 +271,7 @@ Show that
 \end{proof}
 
 \begin{theorem}
-    If $x \in (0,1)$ then $\lim \limits_{n \to \infty} c^n = 0$. If $c > 1$ then $\{c^n\}$ is unbounded.
+    If $x \in (0,1)$ then $\lim \limits_{n \to \infty} c^n = 0$. If $c > 1$ then $(c^n)$ is unbounded.
 \end{theorem}
 
 \begin{proof}
@@ -285,7 +282,7 @@ Show that
             \item Base case, consider $0 < c^2 < c < 1$, since $0 < c < 1$.
             \item Inductive case, consider $0 < c^{m+1} < c^m < 1$ to be true. Multiplying the former inequality by $c$ we obtain $0 < c^{m+2} < c^{m+1}$.
         \end{itemize}
-        Thus, $\{c^n\}$ is monotone decreasing sequence and is bounded below, which implies $\{c^n\}$ is convergent. Set $L = \lim \limits_{n \to \infty} c^n$. Take $\varepsilon > 0$, then $\exists N \in \N$ such that
+        Thus, $(c^n)$ is monotone decreasing sequence and is bounded below, which implies $(c^n)$ is convergent. Set $L = \lim \limits_{n \to \infty} c^n$. Take $\varepsilon > 0$, then $\exists N \in \N$ such that
         
         \begin{align*}
             (1-c)|L| &= |L-cL| = |L - c^{M+1} + c^{M+1} - cL| \\
@@ -295,7 +292,7 @@ Show that
         \end{align*}
         
         Hence, $|L| < \varepsilon, \forall \varepsilon>0 \longrightarrow L = 0$.
-        \item For $c > 1$. Note that $\forall B \geq 0, \exists n \in \N$ such that $c^n > B$. For $n \in \N$ such that $n > B/(c-1)$ then $c^n = (1+(1-c))^n \geq 1 + n(c-1) \geq n(c-1) > B$. Hence, $\{c^n\}$ is unbounded $\forall c > 1$ and the sequence does not converge.
+        \item For $c > 1$. Note that $\forall B \geq 0, \exists n \in \N$ such that $c^n > B$. For $n \in \N$ such that $n > B/(c-1)$ then $c^n = (1+(1-c))^n \geq 1 + n(c-1) \geq n(c-1) > B$. Hence, $(c^n)$ is unbounded $\forall c > 1$ and the sequence does not converge.
     \end{enumerate}
 \end{proof}
 
@@ -322,21 +319,21 @@ Show that
 \subsection{Subsequences and Bolzano–Weierstrass theorem}
 
 \begin{definition}[Subsequence]
-    Let $\{x_n\}$ be a sequence of real numbers, and $\{n_k\}$ be a strictly increasing sequence of natural numbers. Then, $\{x_{n_k}\}_{k=1}^\infty$ is called a subsequence of $\{x_n\}$.
+    Let $(x_n)$ be a sequence of real numbers, and $(n_k)$ be a strictly increasing sequence of natural numbers. Then, $(x_{n_k})_{k=1}^\infty$ is called a subsequence of $(x_n)$.
 \end{definition}
 
 \begin{theorem}
-    If $\{x_n\}$ converges to $x$ then any subsequence of $\{x_n\}$ will converge to $x$.
+    If $(x_n)$ converges to $x$ then any subsequence of $(x_n)$ will converge to $x$.
 \end{theorem}
 
 \begin{proof}
-    Suppose $\{x_n\} \to x$. Let $\varepsilon > 0$, then $\exists M_0 \in \N$ such that $\forall n \geq M_0, |x_n-x| < \varepsilon$. Choose, $M=M_0$. If $k \geq M$, then $n_k \geq k \geq M = M_0$, hence for $\varepsilon>0, \exists M \in \N$ such that $|x_{n_k}-x| < \varepsilon, \forall n_k \geq M$.
+    Suppose $(x_n) \to x$. Let $\varepsilon > 0$, then $\exists M_0 \in \N$ such that $\forall n \geq M_0, |x_n-x| < \varepsilon$. Choose, $M=M_0$. If $k \geq M$, then $n_k \geq k \geq M = M_0$, hence for $\varepsilon>0, \exists M \in \N$ such that $|x_{n_k}-x| < \varepsilon, \forall n_k \geq M$.
 \end{proof}
 
 From the decision of subsequence we may ask: ``does a bounded sequence have a convergent subsequence?''. The answer is yes, before we show it, we need to define some specific limits.
 
 \begin{definition}[Limsup/liminf]
-    Let $\{x_n\}$ be a bounded sequence. If the limit exists, we can define:
+    Let $(x_n)$ be a bounded sequence. If the limit exists, we can define:
     \begin{itemize}
         \item Limit superior: $\limsup \limits_{n \to \infty} x_n = \lim \limits_{n \to \infty} \left( \sup \{ x_k: k \geq n\}\right)$
         \item Limit inferior: $\liminf \limits_{n \to \infty} x_n = \lim \limits_{n \to \infty} \left( \inf \{ x_k: k \geq n\}\right)$
@@ -346,15 +343,15 @@ From the decision of subsequence we may ask: ``does a bounded sequence have a co
 Now we proceed to show an interesting result: these limits always exist.
 
 \begin{theorem}
-    Let $\{x_n\}$ be a bounded sequence, and
+    Let $(x_n)$ be a bounded sequence, and
     \begin{itemize}
         \item $a_n = \sup\{x_k: k \geq n\}$
         \item $b_n = \inf\{x_k: k \geq n\}$
     \end{itemize}
     Then, the following statements are true:
     \begin{enumerate}
-        \item $\{a_n\}$ is monotone decreasing and bounded,
-        \item $\{b_n\}$ is monotone increasing and bounded,
+        \item $(a_n)$ is monotone decreasing and bounded,
+        \item $(b_n)$ is monotone increasing and bounded,
         \item $\liminf \limits_{n\to \infty} x_n \leq \limsup_{n \to \infty} x_n$
     \end{enumerate}
 \end{theorem}
@@ -363,14 +360,14 @@ Now we proceed to show an interesting result: these limits always exist.
     Proving each of the results:
     \begin{enumerate}
         \item First, $\{x_k:k \geq n+1\} \subseteq \{x_k: k \geq n\}, \forall n \in N$, so $a_{n+1} = \sup \{x_k: k \geq n+1\} \leq \sup \{x_k: k \geq n\} = a_n$.
-        \item Similarly, $b_{n+1} \geq b_n, \forall n \in \N$. Since $\{x_n\}$ is bounded, $\exists M \geq 0$ such that $-B \leq x_n \leq B, \forall n \in \N$. So, $-B \leq b_n \leq a_n \leq B$.
+        \item Similarly, $b_{n+1} \geq b_n, \forall n \in \N$. Since $(x_n)$ is bounded, $\exists M \geq 0$ such that $-B \leq x_n \leq B, \forall n \in \N$. So, $-B \leq b_n \leq a_n \leq B$.
         \item By the previous result, $b_n \leq a_n, \forall n \in \N \Longrightarrow \liminf \limits_{n \to \infty} x_n = \lim \limits_{n \to \infty} b_n \leq \lim \limits_{n \to \infty} a_n = \limsup \limits_{n \to \infty} x_n$
     \end{enumerate}
 \end{proof}
 
-\paragraph{Example} Consider the series $\{x_n\}$ with $x_n=(-1)^n$. Calculate the limit superior and limit inferior.
-
-\begin{proof}
+\begin{eg}
+    Consider the sequence $(x_n)$ with $x_n=(-1)^n$. Calculate the limit superior and limit inferior.\\
+    \textbf{Solution}: \\
     First, notice that $\{ (-1)^k: k \geq n\} = \{-1, 1\}, \forall n \in \N$. Hence, the supremum is always $1$ and the infimum is always $-1$. So,
     \begin{equation*}
         \limsup \limits_{n \to \infty} = 1
@@ -378,7 +375,8 @@ Now we proceed to show an interesting result: these limits always exist.
     \begin{equation*}
         \liminf \limits_{n \to \infty} = -1
     \end{equation*}
-\end{proof}
+\end{eg}
+
 
 \begin{theorem}[Bolzano-Weierstrass]
     Every bounbed sequence has a convergent subsequence.
@@ -389,7 +387,10 @@ Now we proceed to show an interesting result: these limits always exist.
 \end{proof}
 
 \begin{theorem}
-    Let $\{x_n\}$ be a bounded subsequence. Then, $\{x_n\}$ converges if, and only if,$\liminf \limits_{n \to \infty} x_n = \limsup \limits_{n \to \infty} x_n$.
+    Let $(x_n)$ be a bounded subsequence. Then, $(x_n)$ converges if, and only if:
+    \begin{equation*}
+        \liminf \limits_{n \to \infty} x_n = \limsup \limits_{n \to \infty} x_n
+    \end{equation*}
 \end{theorem}
 
 \begin{proof}
@@ -403,11 +404,12 @@ Now we proceed to show an interesting result: these limits always exist.
 \subsection{Cauchy sequences}
 
 \begin{definition}[Cauchy sequence]
-    A sequence $\{x_n\}$ is Cauchy if $\forall \varepsilon > 0, \exists N \in \N$ such that $|x_n-x_k| < \varepsilon, \forall n,k \geq N$.
+    A sequence $(x_n)$ is Cauchy if $\forall \varepsilon > 0, \exists N \in \N$ such that $|x_n-x_k| < \varepsilon, \forall n,k \geq N$.
 \end{definition}
 
-\paragraph{Example} Show $x_n = 1/n$ is Cauchy.
-\begin{proof}
+\begin{eg}
+    Show $x_n = 1/n$ is Cauchy. \\
+    \textbf{Solution}: \\
     Let $\varepsilon > 0$, take $N \in \N$ such that $1/N < \varepsilon/2$. Then,
     \begin{equation*}
         \left |
@@ -416,10 +418,10 @@ Now we proceed to show an interesting result: these limits always exist.
         \frac{1}{n} + \frac{1}{k} \leq
         \frac{2}{N} < \varepsilon
     \end{equation*} 
-\end{proof}
+\end{eg}
 
 \begin{theorem}
-    If $\{x_n\}$ is Cauchy, then $\{x_n\}$ is bounded.
+    If $(x_n)$ is Cauchy, then $(x_n)$ is bounded.
 \end{theorem}
 
 \begin{proof}
@@ -427,23 +429,23 @@ Now we proceed to show an interesting result: these limits always exist.
 \end{proof}
 
 \begin{theorem}
-    IF $\{x_n\}$ is Cauchy and a subsequence $\{x_{n_k}\}$ converges, then $\{x_n\}$ converges.
+    IF $(x_n)$ is Cauchy and a subsequence $(x_{n_k})$ converges, then $(x_n)$ converges.
 \end{theorem}
 
 \begin{proof}
-    Suppose $\{x_{n_k}\}$ is a subsequence of $\{x_n\}$ such that $\lim \limits_{n \to \infty} x_n = x$. Let $\varepsilon > 0$, then $\exists N_1 \in \N$ such that $|x_{n_k} - x| < \varepsilon/2, \forall k \geq N_1$. Since $\{x_n\}$ is Cauchy, $\exists N_2 \in \N$ such that $|x_n-x_m| < \varepsilon/2, \forall n, m \geq M_1$.\\
+    Suppose $(x_{n_k})$ is a subsequence of $(x_n)$ such that $\lim \limits_{n \to \infty} x_n = x$. Let $\varepsilon > 0$, then $\exists N_1 \in \N$ such that $|x_{n_k} - x| < \varepsilon/2, \forall k \geq N_1$. Since $(x_n)$ is Cauchy, $\exists N_2 \in \N$ such that $|x_n-x_m| < \varepsilon/2, \forall n, m \geq M_1$.\\
     Take $N = \max \{N_1, N_2\}$. Then, $|x_n-x| \leq |x_n-x_{n_N}| + |x_{n_M} - x| < \varepsilon/2  + \varepsilon/2 = \varepsilon$.
 \end{proof}
 
 \begin{theorem}
-    A sequence $\{x_n\}$ is Cauchy if, and only if, it is convergent.
+    A sequence $(x_n)$ is Cauchy if, and only if, it is convergent.
 \end{theorem}
 
 \begin{proof}
     Proving each direction of the theorem:
     \begin{itemize}
-        \item $(\Longrightarrow)$: if $\{x_n\}$ is Cauchy then it is bounded. So, by the Bolzano-Weierstrass theorem, there exists a convergent subsequence. From the previous theorem, if a sequence is Cauchy and has a convergent subsequence, then it is convergent. So, $\{x_n\}$ is convergent.
-        \item $(\Longleftarrow)$: Suppose $\{x_n\}$ is convergent and $\{x_n\} \to x$. Let $\varepsilon > 0$, then $\exists N_0 \in \N$ such that $|x_n - x| < \varepsilon/2, \forall n \geq N_0$. Choose $N = N_0$, then $|x_n-x_k| \leq |x_n-x| + |x_k-x| < $
+        \item $(\Longrightarrow)$: if $(x_n)$ is Cauchy then it is bounded. So, by the Bolzano-Weierstrass theorem, there exists a convergent subsequence. From the previous theorem, if a sequence is Cauchy and has a convergent subsequence, then it is convergent. So, $(x_n)$ is convergent.
+        \item $(\Longleftarrow)$: Suppose $(x_n)$ is convergent and $(x_n) \to x$. Let $\varepsilon > 0$, then $\exists N_0 \in \N$ such that $|x_n - x| < \varepsilon/2, \forall n \geq N_0$. Choose $N = N_0$, then $|x_n-x_k| \leq |x_n-x| + |x_k-x| < $
     \end{itemize}
 \end{proof}
 
@@ -454,18 +456,18 @@ Now we proceed to show an interesting result: these limits always exist.
 As pointed out by David Bressoud in `` A radical approach to real analysis'', the infinite summation is in itself an oxymoron. That is, the sum is the process of adding up, or reaching the totality. On the other hand, infinite means never-ending. Weird things can happen as we deal with series. The formal treatment of real analysis aims to safeguard us against danger. 
 
 \begin{definition}[Series convergence]
-    Given the sequence, $\{x_n\}$, the series associated with it is the summation of its terms, denoted as $\sum \limits_{n=1}^\infty x_n = \sum x_n$. The series converges the sequence of partial sums
+    Given the sequence, $(x_n)$, the series associated with it is the summation of its terms, denoted as $\sum \limits_{n=1}^\infty x_n = \sum x_n$. The series converges the sequence of partial sums
     \begin{equation}
-        \left \{
+        \left (
             s_m = \sum \limits_{n=1}^m x_n
-        \right \} _{m=1}^\infty
+        \right ) _{m=1}^\infty
     \end{equation}
     converges. If $\lim \limits_{m \to \infty} s_m = s$ we write $\sum x_n = s$ and treat $\sum x_n$ as a number.
 \end{definition}
 
-\paragraph{Example} Prove that the series $\sum _{n=1}^\infty 1/(n(n+1))$ converges.
-
-\begin{proof}
+\begin{eg}
+    Prove that the series $\sum _{n=1}^\infty 1/(n(n+1))$ converges. \\
+    \textbf{Solution}: \\
     First, note that
     \begin{align*}
         s_m = \sum \limits_{n=1}^\infty \frac{1}{n(n+1)} &= \sum \limits_{n=1}^\infty \frac{1}{n} - \frac{1}{n+1} \\
@@ -478,7 +480,7 @@ As pointed out by David Bressoud in `` A radical approach to real analysis'', th
         &= 1 -\frac{1}{m+1}
     \end{align*}
     Thus, $s_m = 1 - \frac{1}{m+1} \to 1$ and the series converges.
-\end{proof}
+\end{eg}
 
 \begin{theorem}[Geometric series convergence]
     If $|x| < 1$ then $\sum _{n=0}^\infty r^n$ converges and
@@ -499,7 +501,7 @@ As pointed out by David Bressoud in `` A radical approach to real analysis'', th
 \end{proof}
 
 \begin{theorem}
-    Consider the sequence $\{x_n\}$ and let $N \in \N$. Then, $\sum_{n=1}^\infty x_n$ converges if and only if $\sum_{n=N}^\infty x_n$ converges.
+    Consider the sequence $(x_n)$ and let $N \in \N$. Then, $\sum_{n=1}^\infty x_n$ converges if and only if $\sum_{n=N}^\infty x_n$ converges.
 \end{theorem}
 
 \begin{proof}
@@ -510,7 +512,7 @@ As pointed out by David Bressoud in `` A radical approach to real analysis'', th
 \end{proof}
 
 \begin{definition}
-    The series $\sum x_n$ is Cauchy if the sequence of partial sums $\{s_m = \sum_{n=1}^m x_n\}$ is Cauchy.
+    The series $\sum x_n$ is Cauchy if the sequence of partial sums $(s_m = \sum_{n=1}^m x_n)$ is Cauchy.
 \end{definition}
 
 \begin{theorem}
@@ -522,58 +524,29 @@ As pointed out by David Bressoud in `` A radical approach to real analysis'', th
 \end{proof}
 
 \begin{theorem}
-    The series $\sum x_n$ is Cauchy $\forall \varepsilon > 0, \exists N \in \N$ such that $\forall m \geq N$ and $l \geq m$,
+    The series $\sum x_n$ is Cauchy if, and only if, $\forall \varepsilon > 0, \exists N \in \N$ such that $\forall m \geq N$ and $l \geq m$,
     \begin{equation*}
         \left |
-            \sum \limits_{n=m+1}^l x_n < \varepsilon
+            \sum \limits_{n=m+1}^l x_n 
         \right |
+        < \varepsilon
     \end{equation*}
 \end{theorem}
 
 \begin{proof}
     $(\Longrightarrow)$ If $\sum x_n$ is Cauchy, let $\varepsilon > 0$ then $\exists N_0 \in \N$ such that $|s_m-s_l| < \varepsilon, \forall m,l \geq N_0$, where $s_m$ is the partial sum of the first $m$ terms. Hence, for $N = N_0$ if $m \geq N$ and $l > m$ we obtain:
     \begin{equation*}
-        \left |
-            \sum \limits_{n=m+1}^l x_n = |s_l - s_m| < \varepsilon
+        |s_l - s_m| 
+        =\left |
+            \sum \limits_{n=m+1}^l x_n 
         \right |
+        < \varepsilon
     \end{equation*}
-    $(\Longleftarrow)$ If $\forall \varepsilon > 0, \exists m \in \N$ such that if $m \geq N$ and $l > m$
-    \begin{equation*}
-        \left |
-            \sum \limits_{n=m+1}^l x_n < \varepsilon
-        \right |
-    \end{equation*}
-    Note also,
-    \begin{equation*}
-        \left |
-            \sum \limits_{n=m+1}^l x_n
-        \right | = |s_l -s_m| < \varepsilon
-    \end{equation*}
-    So, since the sum can be split we have for $m+1 \leq k \leq l$:
-    \begin{align*}
-        \left |
-            \sum \limits_{n=m+1}^l x_n
-        \right | &= 
-        \left |
-            \sum \limits_{n=m+1}^k x_n + 
-            \sum \limits_{n=k}^l x_n 
-        \right | \\
-        &= 
-        \left |
-            \sum \limits_{n=1}^k x_n -
-            \sum \limits_{n=1}^{m} x_n + 
-            \sum \limits_{n=1}^l x_n -
-            \sum \limits_{n=1}^{k-1} x_n 
-        \right | \\
-        &= | s_k - s_m + s_l - s_{k-1}| \\
-        &\leq |s_k - s_{k-1}| + |s_l - s_m| \\
-        &< |s_k - s_{k-1}| + \varepsilon
-    \end{align*}
-    Since $|s_l -s_m| < \varepsilon$, $|s_l -s_m| < |s_k - s_{k-1}| + \varepsilon$ and $\varepsilon$ can be made arbitrary small, so can $|s_k - s_{k-1}|$.
+    $(\Longleftarrow)$ To-do
 \end{proof}
 
 \begin{theorem}
-    If $\sum x_n$ converges, then $\{x_n\} \to 0$.
+    If $\sum x_n$ converges, then $(x_n) \to 0$.
 \end{theorem}
 
 \begin{proof}
@@ -583,13 +556,14 @@ As pointed out by David Bressoud in `` A radical approach to real analysis'', th
             \sum \limits_{n=m+1}^l x_n
         \right | < \varepsilon
     \end{equation*}
-    For $N  = N_0 + 1$ we have $m \geq N$ which implies $m-1 \geq N_0$ so for $l=m$,
+    For $N  = N_0 + 1$, then $m \geq N$ implies $m-1 \geq N_0$. For $l = m$:
     \begin{equation*}
-        |x_m| = \left |
-            \sum \limits_{n=m}^m x_n < \varepsilon
+        |s_m| = \left |
+            \sum \limits_{n=m}^m x_n
         \right |
+        < \varepsilon
     \end{equation*}
-    And since $\varepsilon$ can be made arbitrarily small $\{x_n\} \to 0$.
+    And since $\varepsilon$ can be made arbitrarily small $(x_n) \to 0$.
 \end{proof}
 
 \begin{theorem}
@@ -604,7 +578,7 @@ As pointed out by David Bressoud in `` A radical approach to real analysis'', th
     The series $\sum _{n=0}^\infty \alpha \cdot x^n$ converges if, and only if, $|x| < 1$.
 \end{corollary}
 
-First, let's revisit one of the last results, namely that for a convergent series $\sum x_n$ we have $\{x_n\} \to x$. Is the converse true? That is, if $\{x_n\} \to 0$ can we conclude $\sum x_n$ converges? The answer is no, we will show it with a counter-example.
+First, let's revisit one of the last results, namely that for a convergent series $\sum x_n$ we have $(x_n) \to x$. Is the converse true? That is, if $(x_n) \to 0$ can we conclude $\sum x_n$ converges? The answer is no, we will show it with a counter-example.
 
 \begin{theorem}[Divergence of the harmonic series]
     The harmonic series $\sum_{n=1}^\infty 1/n$ does not converge.
@@ -622,7 +596,7 @@ First, let's revisit one of the last results, namely that for a convergent serie
         &= 1 + \sum \limits_{\lambda = 1}^l \frac{2^{\lambda-1}}{2^\lambda} \\
         &= 1 + \frac{l}{2}
     \end{align*}
-    Hence, $\{s_{2^l}\}_{l=1}^\infty$ is unbounded and by consequence $\{ s_{2^l}\}$ does not converge.
+    Hence, $(s_{2^l})_{l=1}^\infty$ is unbounded and by consequence $( s_{2^l})$ does not converge.
 \end{proof}
 
 \subsection{Properties of series}
@@ -638,13 +612,13 @@ First, let's revisit one of the last results, namely that for a convergent serie
 \begin{proof}
     Proving each of the statements:
     \begin{enumerate}
-        \item First, note that the sequence of partial sums takes the form $t_m = c x_1 + c x_2 + ... + c x_m$, which is equivalent to $t_m = c s_m$ where $s_m = x_1 + x_2 + ... + x_m$. By the algebraic limit theorem, if the sequence $\{s_m\} \to x$ then $\{t_m\} = \{c s_m\} \to c X$.
-        \item Equivalently, we have $s_m = x_1 + x_2 + ... + x_3$ and $t_m = y_1 + y_2 + ... + y_m$. And, $u_m = (x_1+y_1) + (x_2+y_2) + ... + (x_m+y_m) $, which is equivalent to $u_m = s_m + t_m$. Since $\{s_m\} \to X$ and $\{t_m\} \to Y$, then by the algebraic limit theorem $\{u_m\} = \{s_m + t_m\} \to X + Y$.
+        \item First, note that the sequence of partial sums takes the form $t_m = c x_1 + c x_2 + ... + c x_m$, which is equivalent to $t_m = c s_m$ where $s_m = x_1 + x_2 + ... + x_m$. By the algebraic limit theorem, if the sequence $(s_m) \to x$ then $(t_m) = (c s_m) \to c X$.
+        \item Equivalently, we have $s_m = x_1 + x_2 + ... + x_3$ and $t_m = y_1 + y_2 + ... + y_m$. And, $u_m = (x_1+y_1) + (x_2+y_2) + ... + (x_m+y_m) $, which is equivalent to $u_m = s_m + t_m$. Since $(s_m) \to X$ and $(t_m) \to Y$, then by the algebraic limit theorem $(u_m) = (s_m + t_m) \to X + Y$.
     \end{enumerate}
 \end{proof}
 
 \begin{theorem}
-    If $x_n \geq 0, \forall n \in \N$ then $\sum x_n$ converges if, and only if, the sequence of partial sums, $\{s_m\}$, is bounded.
+    If $x_n \geq 0, \forall n \in \N$ then $\sum x_n$ converges if, and only if, the sequence of partial sums, $(s_m)$, is bounded.
 \end{theorem}
 
 \begin{proof}
@@ -652,7 +626,7 @@ First, let's revisit one of the last results, namely that for a convergent serie
     \begin{equation*}
         s_{m+1} = \sum \limits_{n=1}^{m+1} x_n = \sum \limits_{n=1}^m + x_{m+1} = s_m + x_{m+1} \geq s_m
     \end{equation*}
-    Which implies $\{s_m\}$ is a monotone increasing sequence, which converges if, and only if, it is bounded.
+    Which implies $(s_m)$ is a monotone increasing sequence, which converges if, and only if, it is bounded.
 \end{proof}
 
 \begin{definition}[Absolute convergence]
@@ -664,7 +638,7 @@ First, let's revisit one of the last results, namely that for a convergent serie
 \end{theorem}
 
 \begin{proof}
-    If $\sum |x_n|$ converges then from the previous theorem $\{s_m\}$ is bounded, since $|x_n| \geq 0, \forall n \in \N$ and $s_m = \sum_{n=1}^m |x_n|$. From the previous result $s_{m+1} \geq s_m$. Since $\sum |x_n|$ converges by the initial hypothesis that means $\sum |x_n|$ is Cauchy. So, $\forall \varepsilon > 0, \exists N_0 \in \N$ such that:
+    If $\sum |x_n|$ converges then from the previous theorem $(s_m)$ is bounded, since $|x_n| \geq 0, \forall n \in \N$ and $s_m = \sum_{n=1}^m |x_n|$. From the previous result $s_{m+1} \geq s_m$. Since $\sum |x_n|$ converges by the initial hypothesis that means $\sum |x_n|$ is Cauchy. So, $\forall \varepsilon > 0, \exists N_0 \in \N$ such that:
     \begin{equation*}
         \sum \limits_{n=m+1}^l |x_n| < \varepsilon, \forall l > m \geq N_0
     \end{equation*}
@@ -680,17 +654,42 @@ First, let's revisit one of the last results, namely that for a convergent serie
 \end{proof}
 
 From the previous theorem, we may be tempted to ask `` If a series converges, does it mean it also converges absolutely?''. We will show this is not the case by a counter-example:
-\paragraph{Example} Consider the series
-\begin{equation*}
-    \sum \limits_{n=1}^\infty \frac{(-1)^n}{n}
-\end{equation*}
-This series converges, as we will see in a while. Now, show it does not converge absolutely.
 
-\begin{proof}
+\begin{eg}
+    Consider the series
+    \begin{equation*}
+        \sum \limits_{n=1}^\infty \frac{(-1)^n}{n}
+    \end{equation*}
+    This series converges, as we will see in a while. Now, show it does not converge absolutely.\\
+    \textbf{Solution:}\\
     Note that the sum of absolute values is exactly the harmonic series, which we have already seen does not converge. 
-\end{proof}
+\end{eg}
 
 \subsection{Convergence tests}
+
+\begin{theorem}[Comparison test]
+    Suppose $0 \leq x_n \leq y_n, \forall n \in \N$, then:
+    \begin{enumerate}
+        \item if $\sum y_n$ converges, then $\sum x_n$ converges,
+        \item if $\sum x_n$ diverges, then $\sum y_n$ diverges.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Proving each statement:
+    \begin{enumerate}
+        \item If $\sum y_n$ converges, then the sequence of partial, $(\sum_{n=1}^m y_n)$ , sums is bounded. So, $\exists M \geq 0$ such that:
+        \begin{equation}
+            \sum \limits_{n=1}^m y_n \leq B, \forall m \in \N
+        \end{equation}
+        Hence, $0 \leq x_n \leq y_n, \forall n \in \N \Longrightarrow 0 \leq \sum_{n=1}^m x_n \leq \sum_{n=1}^m y_n \leq B, \forall m \in \N$, which implies $(\sum_{n=1}^m x_n)$ is bounded and therefore it converges.
+        \item if $\sum x_n$ diverges, then $(\sum_{n=1}^m x_n)$ is unbounded. Let $M \geq 0$, then:
+        \begin{equation}
+            \sum \limits_{n=1}^m x_n \geq M, \forall m \in \N
+        \end{equation}
+        Therefore, $\sum_{n=1}^m y_n \geq \sum_{n=1}^m x_n \geq M$. which implies $(\sum_{n=1}^m y_n)$ is unbounded and therefore diverges.
+    \end{enumerate}
+\end{proof}
 
 \begin{theorem}[Ratio test]
     Consider the series $\sum x_n$ and $x_n \neq 0, \forall n \in \N$. Suppose
@@ -715,19 +714,19 @@ This series converges, as we will see in a while. Now, show it does not converge
             &\leq \sum \limits_{n=1}^{N_0-1}|x_n| + |x_{N_0}| \sum \limits_{l=0}^{\infty} \alpha^l \\
             &= \sum \limits_{n=1}^{N_0-1}|x_n| + \frac{|x_{N_0}|}{1-\alpha}
         \end{align*}
-        Therefore, $\{ \sum_{n=1}^m |x_n|\}_{m=1}^\infty$ is bounded and $\sum |x_n|$ converges.
+        Therefore, $( \sum_{n=1}^m |x_n|)_{m=1}^\infty$ is bounded and $\sum |x_n|$ converges.
         \item For $L > 1$, take $\alpha \in (1, L)$. Then, $\exists N_0 \in \N$ such that $|x_{n+1}|/|x_n| \geq \alpha > 1, \forall n \geq N_0$. Which means $|x_{n+1}| \geq |x_n|, \forall n \geq N_0$. Hence, $\lim_{n \to \infty} |x_n| \neq 0$ and $\sum x_n$ diverges.
     \end{enumerate}
 \end{proof}
 
-\paragraph{Example} Consider the series
-\begin{equation*}
-    \sum \limits_{n=1}^\infty \frac{(-1)^n}{n^2+1}
-\end{equation*}
-Use the ratio test to verify it converges absolutely.
-
-\begin{proof}
-    We bein by noticing:
+\begin{eg}
+    Consider the series
+    \begin{equation*}
+        \sum \limits_{n=1}^\infty \frac{(-1)^n}{n^2+1}
+    \end{equation*}
+    Use the ratio test to verify it converges absolutely. \\
+    \textbf{Solution}: \\
+    We begin by noticing:
     \begin{equation*}
         \left |
             \frac{(-1)^n}{n^2+1}
@@ -747,7 +746,7 @@ Use the ratio test to verify it converges absolutely.
         \lim \limits_{n \to \infty} \frac{n^2}{(n+1)^2} = 1
     \end{equation*}
     Since the limit is less then $1$, the series converges absolutely by the ration test.
-\end{proof}
+\end{eg}
 
 \begin{theorem}[Root test]
     Consider the series $\sum x_n$ and suppose the limit
@@ -765,7 +764,7 @@ Use the ratio test to verify it converges absolutely.
 \begin{proof}
     Proving the first two assertions:
     \begin{enumerate}
-        \item Take $r \in (L, 1)$. Since $\{|x_n|^{1/n} \to L\}, \exists N \in \N$ such that $|x_n|^{1/n} < r, \forall n \geq N$ which is equivalent to $|x_n| \leq r^n, \forall n \geq N$. So,
+        \item Take $r \in (L, 1)$. Since $(|x_n|^{1/n} \to L), \exists N \in \N$ such that $|x_n|^{1/n} < r, \forall n \geq N$ which is equivalent to $|x_n| \leq r^n, \forall n \geq N$. So,
         \begin{align*}
             \sum \limits_{n=1}^n|x_n| &= \sum \limits_{n=1}^{N-1}|x_n| + \sum \limits_{n=N}^{m}|x_n| \\
             &\leq \sum \limits_{n=1}^{N-1}|x_n| + \sum \limits_{n=N}^{m}r^n \\
@@ -773,29 +772,29 @@ Use the ratio test to verify it converges absolutely.
             &= \sum \limits_{n=1}^{N-1}|x_n| + \frac{1}{1-r}
         \end{align*}
         Thus, the sequence of partial sums of absolute values is bounded and the series converges absolutely.
-        \item Since $\{|x_n|^{1/n}\} \to L > 1, \exists N \in \N$ such that $|x_n|^{1/n} > 1, \forall n \geq N$, which is equivalent to $|x_n| > 1, \forall n \geq N$ and $\lim_{n \to \infty} x_n \neq 0$ and the series diverges.
+        \item Since $(|x_n|^{1/n}) \to L > 1, \exists N \in \N$ such that $|x_n|^{1/n} > 1, \forall n \geq N$, which is equivalent to $|x_n| > 1, \forall n \geq N$ and $\lim_{n \to \infty} x_n \neq 0$ and the series diverges.
     \end{enumerate}
 \end{proof}
 
 \begin{theorem}[Alternating series test]
-    Consider the sequence $\{x_n\}$ to be monotone decreasing, with $x_n \to x$. Then $\sum (-1)^n x_n$ converges.
+    Consider the sequence $(x_n)$ to be monotone decreasing, with $x_n \to x$. Then $\sum (-1)^n x_n$ converges.
 \end{theorem}
 
 \begin{proof}
-    Considering $\{x_n\}$ is monotone decreasing, then for the partial sums:
+    Considering $(x_n)$ is monotone decreasing, then for the partial sums:
     \begin{align*}
         s_{2k} &= \sum \limits_{n=1}^{2k} (-1)^n x_n \\
         &= (x_2-x_1) + (x_4-x_3) + ... + (x_{2k} - x_{2k-1}) \\
         &\geq (x_2-x_1) + (x_4-x_3) + ... + (x_{2k} - x_{2k-1}) + (x_{2k+2} - x_{2k+1}) \\
         &= s_{2(k+1)}
     \end{align*}
-    Hence, $\{s_{2k}\}$ is monotone decreasing. And, $s_{2k} = -x_1 + (x_2-x_3) + (x_4-x_5) + ... + (x_{2k-2}-x_{2k-1}) + x_{2k} \geq -x_1$. So $\{s_{2k}\}$ is monotone decreasing and bounded below. Therefore it converges.  \\
-    Take $s = \lim_{k\to \infty} s_{2k}$ and $\varepsilon > 0$. Since $s_{2k} \to s, \exists N_1 \in \N$ such that $|s_{2k} - s| < \varepsilon/2, \forall k \geq N_1$. On the other hand, since $x_n \to 0, \exists N_2 \in \N$ such that $|x_n| < \varepsilon/2, \forall n \geq N_2$. Choose $N = \max\{2N_1 + 1, N_2\}$, then $|s_m-s| = |s_{2m/2}-s| < \varepsilon/2 < \varepsilon, \forall m \in \geq N$, with $m$ even and $m/2 \geq N_1 + 1/2 \geq M_0$. \\
+    Hence, $(s_{2k})$ is monotone decreasing. And, $s_{2k} = -x_1 + (x_2-x_3) + (x_4-x_5) + ... + (x_{2k-2}-x_{2k-1}) + x_{2k} \geq -x_1$. So $(s_{2k})$ is monotone decreasing and bounded below. Therefore it converges.  \\
+    Take $s = \lim_{k\to \infty} s_{2k}$ and $\varepsilon > 0$. Since $s_{2k} \to s, \exists N_1 \in \N$ such that $|s_{2k} - s| < \varepsilon/2, \forall k \geq N_1$. On the other hand, since $x_n \to 0, \exists N_2 \in \N$ such that $|x_n| < \varepsilon/2, \forall n \geq N_2$. Choose $N = \max(2N_1 + 1, N_2)$, then $|s_m-s| = |s_{2m/2}-s| < \varepsilon/2 < \varepsilon, \forall m \in \geq N$, with $m$ even and $m/2 \geq N_1 + 1/2 \geq M_0$. \\
     If $m$ is even, take $k=(m-1)/2$ so $m = 2k + 1$. Then, $|s_m-s| = |s_{m-1} + x_m - s| \leq |s_{2k} - s + x_m| \leq |s_{2k} - s| + |x_m| < \varepsilon/2 + \varepsilon/2 = \varepsilon$.
     Thus, $s_m \to s$ and $\sum (-1)^n x_n$ converges.
 \end{proof}
-
-From the previous theorem it is clear that $\sum (-1)^n/n$ converges since $\{1/n\}$ is monotone decreasing, however as it was shown before it does not converge absolutely as the sum of the absolute terms of the series is excatly the harmonic series, which does not converge.
+\vspace{1em}
+From the previous theorem it is clear that $\sum (-1)^n/n$ converges since $(1/n)$ is monotone decreasing, however as it was shown before it does not converge absolutely as the sum of the absolute terms of the series is excatly the harmonic series, which does not converge.
 
 \begin{theorem}
     Suppose $\sum x_n$ converges absolutely to $X$. Consider $f: \N \to \N$ a bijective function, then $\sum x_{f(n)}$ converges absolutely and $\sum x_{f(n)}$ converges to $X$. In other words ``If a series converges absolutely, then any rearrangement of its terms also converges to the same limit''.
@@ -806,9 +805,9 @@ From the previous theorem it is clear that $\sum (-1)^n/n$ converges since $\{1/
     \begin{equation*}
         \sum \limits_{n=1}^l |x_n| \leq M, \forall l \in \N
     \end{equation*}
-    Let $m \in \N$, then $f(\{1, 2, ..., m\})$ is a finite subset of $\N$, so $\exists l \in \N$ such that $f(\{1, 2, ..., m\}) \subseteq \{1, 2, ..., l\}$. And,
+    Let $m \in \N$, then $f((1, 2, ..., m))$ is a finite subset of $\N$, so $\exists l \in \N$ such that $f((1, 2, ..., m)) \subseteq (1, 2, ..., l)$. And,
     \begin{equation*}
-        \sum \limits_{n=1}^n |x_{f(n)}| = \sum \limits_{n \in f(\{1, 2, ..., m\})} |x_n| \leq \sum \limits_{n=1}^l |x_n| \leq B
+        \sum \limits_{n=1}^n |x_{f(n)}| = \sum \limits_{n \in f((1, 2, ..., m))} |x_n| \leq \sum \limits_{n=1}^l |x_n| \leq B
     \end{equation*}
     So, $\sum |x_{f(n)}|$ converges. Let $\varepsilon  > 0$ then $\exists N_0 \in \N$ such that:
     \begin{equation*}
@@ -820,7 +819,7 @@ From the previous theorem it is clear that $\sum (-1)^n/n$ converges since $\{1/
     \begin{equation*}
         \sum \limits_{n=m+1}^m |x_n| < \varepsilon/2, \textnormal{ with } l > m > N_1
     \end{equation*}
-    Take $N_2 = \max\{N_0, N_1\}$, then:
+    Take $N_2 = \max(N_0, N_1)$, then:
     \begin{equation*}
         \left |
             \sum \limits_{n=1}^m x_n - X
@@ -830,22 +829,22 @@ From the previous theorem it is clear that $\sum (-1)^n/n$ converges since $\{1/
         \textnormal{ and }
         l > m \geq N_2
     \end{equation*}
-    Since $f^{-1}(\{1, ..., N_2\})$ is finite, set $N \in \N$ such that $\{1, ..., N_2\} \subseteq \{1, ..., N\}$, then:
+    Since $f^{-1}((1, ..., N_2))$ is finite, set $N \in \N$ such that $(1, ..., N_2) \subseteq (1, ..., N)$, then:
     \begin{align*}
         \left |
             \sum \limits_{n'=1}^{m'} x_{f(n')} - X
         \right | &= 
         \left |
-            \sum \limits_{n \in f(\{ 1, ..., m'\})} x_n - X
+            \sum \limits_{n \in f(( 1, ..., m'))} x_n - X
         \right | \\
         &= \left |
             \sum \limits_{n=1}^N x_n - X
-            + \sum \limits_{n \in f(\{1, ..., m'\}) \setminus \{1, ..., N\}} x_n
+            + \sum \limits_{n \in f((1, ..., m')) \setminus (1, ..., N)} x_n
         \right | \\
         &\leq
         \left |
             \sum \limits_{n=1}^N x_n - X
-        \right | + \sum \limits_{n=N+1}^{\max \{f(\{1, ..., m'\})} |x_n|  \\
+        \right | + \sum \limits_{n=N+1}^{\max (f((1, ..., m'))} |x_n|  \\
         &\leq 
         \left |
             \sum \limits_{n=1}^N x_n - X
