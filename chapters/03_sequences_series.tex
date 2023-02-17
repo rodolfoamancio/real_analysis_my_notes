@@ -794,7 +794,10 @@ From the previous theorem, we may be tempted to ask `` If a series converges, do
     Thus, $s_m \to s$ and $\sum (-1)^n x_n$ converges.
 \end{proof}
 \vspace{1em}
-From the previous theorem it is clear that $\sum (-1)^n/n$ converges since $(1/n)$ is monotone decreasing, however as it was shown before it does not converge absolutely as the sum of the absolute terms of the series is excatly the harmonic series, which does not converge.
+
+\begin{remark}
+    From the previous theorem it is clear that $\sum (-1)^n/n$ converges since $(1/n)$ is monotone decreasing, however as it was shown before it does not converge absolutely as the sum of the absolute terms of the series is exactly the harmonic series, which does not converge.
+\end{remark}
 
 \begin{theorem}
     Suppose $\sum x_n$ converges absolutely to $X$. Consider $f: \N \to \N$ a bijective function, then $\sum x_{f(n)}$ converges absolutely and $\sum x_{f(n)}$ converges to $X$. In other words ``If a series converges absolutely, then any rearrangement of its terms also converges to the same limit''.
@@ -807,7 +810,7 @@ From the previous theorem it is clear that $\sum (-1)^n/n$ converges since $(1/n
     \end{equation*}
     Let $m \in \N$, then $f((1, 2, ..., m))$ is a finite subset of $\N$, so $\exists l \in \N$ such that $f((1, 2, ..., m)) \subseteq (1, 2, ..., l)$. And,
     \begin{equation*}
-        \sum \limits_{n=1}^n |x_{f(n)}| = \sum \limits_{n \in f((1, 2, ..., m))} |x_n| \leq \sum \limits_{n=1}^l |x_n| \leq B
+        \sum \limits_{n=1}^n |x_{f(n)}| = \sum \limits_{n \in f((1, 2, ..., m))} |x_n| \leq \sum \limits_{n=1}^l |x_n| \leq M
     \end{equation*}
     So, $\sum |x_{f(n)}|$ converges. Let $\varepsilon  > 0$ then $\exists N_0 \in \N$ such that:
     \begin{equation*}
