@@ -796,7 +796,7 @@ From the previous theorem, we may be tempted to ask `` If a series converges, do
 \vspace{1em}
 
 \begin{remark}
-    From the previous theorem it is clear that $\sum (-1)^n/n$ converges since $(1/n)$ is monotone decreasing, however as it was shown before it does not converge absolutely as the sum of the absolute terms of the series is exactly the harmonic series, which does not converge.
+    From the previous theorem, it is clear that $\sum (-1)^n/n$ converges since $(1/n)$ is monotone decreasing, however as it was shown before it does not converge absolutely as the sum of the absolute terms of the series is exactly the harmonic series, which does not converge.
 \end{remark}
 
 \begin{theorem}
@@ -855,3 +855,35 @@ From the previous theorem, we may be tempted to ask `` If a series converges, do
         &< \varepsilon/2 + \varepsilon/2 = \varepsilon
     \end{align*} 
 \end{proof}
+
+\section{Double summation}
+
+For a given doubly indexed array of real numbers, $\{ a_{ij} : i, j \in \N\}$, it is possible to define a summation over all terms:
+
+\begin{eqnarray*}
+    \sum \limits_{i=1}^\infty \sum \limits_{j=1}^\infty a_{ij} \\
+    \sum \limits_{j=1}^\infty \sum \limits_{i=1}^\infty a_{ij}
+\end{eqnarray*}
+
+The multiple possibilities for writing the summations begs the question: ``is it the case that taking the summation in different orders will lead to the same result?'': not necessarily.
+
+Before we proceed to calculate the infinite sum result, we can start by definining the partial sum:
+
+\begin{definition}[Partial sum of double summation]
+    Consider $\{a_{ij}: i,j \in \N\}$ a doubly index array of real numbers. Then, the partial sum, $s_{mn}$, is defined:
+    \begin{equation*}
+        s_{mn} = \sum \limits_{i=1}^m \sum \limits_{j=1}^n a_{ij}
+    \end{equation*}
+\end{definition}
+
+\begin{remark}
+    Since the partial sum is finite, the result is independent of the order, \emph{i.e.}:
+    \begin{equation*}
+        \sum \limits_{i=1}^m \sum \limits_{j=1}^n a_{ij}
+        = \sum \limits_{j=1}^n \sum \limits_{i=1}^m a_{ij}
+    \end{equation*}
+\end{remark}
+
+\vspace{1em}
+
+The double summation has some similarities with the 
