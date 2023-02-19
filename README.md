@@ -12,6 +12,8 @@ Here is the list of topics I plan to organize on chapters:
 - [X] Sequences and series
 - [X] Differentiation
 - [X] Integration
+- [ ] Sequences and series of functions
+- [ ] Basic topology
 - [ ] Advanced topics
 
 ## References
