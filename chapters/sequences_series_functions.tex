@@ -1,97 +1,32 @@
 \chapter{Sequences and series of functions}
 
-\section{Sequences of functions}
+\section{Pointwise and uniform convergence}
 
-\begin{definition}[Power series]
-    A power series about $x_0$ is series of the form:
-    \begin{equation*}
-        \sum \limits_{n = 0}^\infty a_n(x - x_0)^n
-    \end{equation*}
-\end{definition}
-
-\begin{theorem}
-    Suppose $\{|a_n|^{1/n}\}$ converges, \emph{i.e.}:
-    \begin{equation*}
-        R = \lim \limits_{n \to \infty} |a_n|^{n/n}
-    \end{equation*}
-    and define $p$, the \emph{radius of convergence}, as:
-    \begin{equation*}
-        p = \begin{cases}
-            \frac{1}{R} \text{ if } R > 0 \\
-            \infty \text{ if } R = 0
-        \end{cases}
-    \end{equation*}
-    Then:
-    \begin{enumerate}
-        \item If $|x-x_0| < p$, the series $\sum a_n(x - x_0)^n$ converges;
-        \item If $|x-x_0| > p$, the series diverges.
-    \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-    First, notice that:
-    \begin{equation*}
-        \lim \limits_{n \to \infty} |a_n(x-x_0)^n|^{1/n} = R |x-x_0|
-    \end{equation*}
-    So, the theorem is valid from the Root test.
-\end{proof}
-
-Suppose $\sum a_n(x-x_0)^n$ is a power series with radius of convergence $p$. Then, define $f: (x_0 - p, x_0 + p) \to \R$ such that:
-\begin{equation*}
-    f(x) := \sum \limits_{n=0}^\infty a_n (x - x_0)^n
-\end{equation*}
-
-So, $f(x)$ is a limit of a sequence of functions $f_n(x)$, \emph{i.e.}:
-
-\begin{equation*}
-    f(x) = \lim \limits_{m \to \infty} f_m(x)
-\end{equation*}
-
-Where,
-
-\begin{equation*}
-    f_m(x) = \sum \limits_{n=0}^m a_n(x-x_0)^n
-\end{equation*}
-
-The definition of a function in such form leads to a number of questions:
-\begin{enumerate}
-    \item Is $f(x)$ continuous?
-    \item Is $f(x)$ differentiable, and does $f'(x) = \lim_{n \to \infty} f'_m(x)$?
-    \item If $f(x)$ is continuous, does it mean:
-        \begin{equation*}
-            \int_a^b f(x) \dint x = \lim \limits_{n \to \infty} \int_a^b f_m(x) \dint x \text{ ?}
-        \end{equation*}
-\end{enumerate}
-
-In order to answer these questions, some tools must be build first.
-
-\subsection{Pointwise and uniform convergence}
-
-We start from framework more general than power series.
+Previously, we have defined and dealt with the convergence of a sequence of numbers. So, we must begin with an understanding of what it means to a sequence of functions to converge.
 
 \begin{definition}[Pointwise convergence]
-    Define $f:S \to \R$ and $f_n: S \to \R$ with $n \in \N$. The sequence of functions $\{f_n\}$ is said to convergence pointwise to $f$ if:
+    Define $f:S \to \R$ and $f_n: S \to \R$ with $n \in \N$. The sequence of functions $(f_n)$ is said to \emph{converge pointwise} to $f$ if:
     \begin{equation*}
         \lim \limits_{n \to \infty} f_n(x) = f(x), \forall x \in S
     \end{equation*}
 \end{definition}
 
-\paragraph{Examples}
+\begin{eg}
+    \begin{equation*}
+        \lim \limits_{n \to \infty} f_n(x) = \begin{cases}
+            0 \text{ if } x \in [0,1) \\
+            1 \text{ if } x=1
+        \end{cases}
+    \end{equation*}
+    Thus $\{f_n(x)\}$ converges pointwise to the function above, hence a sequence of continuous function may not converge to a continuous function.       
+\end{eg}
 
-\begin{enumerate}
-    \item Consider $f_n(x) = x^n$ on $[0,1]$. Then,
-        \begin{equation*}
-            \lim \limits_{n \to \infty} f_n(x) = \begin{cases}
-                0 \text{ if } x \in [0,1) \\
-                1 \text{ if } x=1
-            \end{cases}
-        \end{equation*}
-        Thus $\{f_n(x)\}$ converges pointwise to the function above, hence a sequence of continuous function may not converge to a continuous function.
-    \item Consider $f_n(x) = \sum_{m=0}^n x^m$ for $x \in (-1,1)$. Then,
-        \begin{equation*}
-            \lim \limits_{n \to \infty} f_n(x) = \lim \limits_{n \to \infty} \sum \limits_{m=0}^n x_m = \frac{1}{1-x}
-        \end{equation*}
-\end{enumerate}
+\begin{eg}
+    Consider $f_n(x) = \sum_{m=0}^n x^m$ for $x \in (-1,1)$. Then,
+            \begin{equation*}
+                \lim \limits_{n \to \infty} f_n(x) = \lim \limits_{n \to \infty} \sum \limits_{m=0}^n x_m = \frac{1}{1-x}
+            \end{equation*}
+\end{eg}
 
 \begin{definition}[Uniform convergence]
     For $n \in \N$, define $f_n: S \to \R$ and $f: S \to \R$. Then, $f_n$ \emph{converges uniformly} to $f$ if $\forall \varepsilon > 0, \exists N \in \N$ such that $|f_n(x) - f(x)| < \varepsilon, \forall n \geq N, \forall x \in S$.
@@ -103,6 +38,36 @@ We start from framework more general than power series.
 
 \begin{proof}
     Consider $c \in S$ and let $\varepsilon > 0$. Then, if $f_n \to f$ uniformly, $\exists N \in \N$ such that $|f_n(x) - f(x)| < \varepsilon, \forall n \geq N, \forall x \in S$. So, $\lim_{n \to \infty} f_n(c) = f(c), \forall c \in S$. Therefore, $f_n$ converges to $f$ pointwise.
+\end{proof}
+
+\begin{theorem}[Cauchy criterion for uniform convergence]
+    Consider $S \subseteq \R$, non-empty. Let $f_n: S \to \R$ be a sequence of functions. Then, $f_n$ converges to $f$ uniformly on $S$ if $\forall \varepsilon > 0, \exists N \in \N$ such that:
+    \begin{equation*}
+        |f_n(x) - f_m(x)| < \varepsilon, \forall n, m \geq N, \forall x \in S
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Suppose $f_n$ converges uniformly to $f$ on $S$, as $n \to \infty$. Then, $\forall \varepsilon > 0, \exists N \in \N$ such that:
+    \begin{equation*}
+        |f_n(x) - f(x)| < \frac{\varepsilon}{2}, \forall n \geq N, \forall x \in S
+    \end{equation*}
+    On the other hand,
+    \begin{align*}
+        |f_n(x) - f_m(x)| &= |f_n(x) - f(x) + f(x) - f_m(x)| \\
+        &\leq |f_n(x) - f(x)| + |f(x) - f_m(x)| \\
+        &\leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2} \\
+        &= \varepsilon
+    \end{align*}
+    If $|f_n(x) - f_m(x)| < \varepsilon, \forall \varepsilon > 0, \forall x \in S$, then $(f_n(x))_n$ is Cauchy. So,
+    \begin{equation*}
+        f(x) := \lim \limits_{n \to \infty} f_n(x), \forall x \in S
+    \end{equation*}
+    from the Cauchy theorem of sequences. Additionally,
+    \begin{equation*}
+        \lim \limits_{m \to \infty} |f_n(x) - f_m(x)| = |f_n(x) - f(x)| < \frac{\varepsilon}{2} < \varepsilon, \forall n \geq N, \forall x \in S
+    \end{equation*}
+    So, from the definition, $f_n \to f$ uniformly.
 \end{proof}
 
 \begin{theorem}[Weierstrass M-test]
@@ -149,13 +114,13 @@ We start from framework more general than power series.
     \end{enumerate}
 \end{proof}
 
-\subsection{Interchange of limits}
+\section{Properties of the convergent sequence of functions}
 
+One of the central problems related to sequences or series of functions focus on whether the limit (or derivative, or integral) can be calculated by the term-by-term operation over the series expansion. As the previous chapters have hopefully shown, derivatives and integrals are limit operations, as is the process of taking the sum of an infinite series. The multiple limit operation over an object can be problematic.
 
 \begin{remark}
     In general, interchanging limits leads to different results.    
 \end{remark}
-
 
 \begin{eg}
     For instance, consider:
@@ -178,6 +143,7 @@ So, there are a few questions that could be made about interchanging limits appl
 The answer to the previous questions is yes, provided the convergence is uniform. Else, the answer is no if the convergence is pointwise. This last result can be proved by counterexamples:
 
 \begin{eg}
+    Finding counterexamples for each question:
     \begin{enumerate}
         \item Consider $f_n(x) = x^n$ on $[0,1]$. Then $f_n(x)$ is continuous for all $n$. As discussed earlier:
             \begin{equation*}
@@ -282,6 +248,57 @@ Next, we must show the answer to the previous questions is positive in the case 
 \end{proof}
 
 \section{Power series}
+
+\begin{definition}[Power series]
+    A power series about $x_0$ is series of the form:
+    \begin{equation*}
+        \sum \limits_{n = 0}^\infty a_n(x - x_0)^n
+    \end{equation*}
+\end{definition}
+
+\begin{theorem}
+    Suppose $(|a_n|^{1/n})$ converges, \emph{i.e.}:
+    \begin{equation*}
+        R = \lim \limits_{n \to \infty} |a_n|^{n/n}
+    \end{equation*}
+    and define $p$, the \emph{radius of convergence}, as:
+    \begin{equation*}
+        p = \begin{cases}
+            \frac{1}{R} \text{ if } R > 0 \\
+            \infty \text{ if } R = 0
+        \end{cases}
+    \end{equation*}
+    Then:
+    \begin{enumerate}
+        \item If $|x-x_0| < p$, the series $\sum a_n(x - x_0)^n$ converges;
+        \item If $|x-x_0| > p$, the series diverges.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    First, notice that:
+    \begin{equation*}
+        \lim \limits_{n \to \infty} |a_n(x-x_0)^n|^{1/n} = R |x-x_0|
+    \end{equation*}
+    So, the theorem is valid from the Root test.
+\end{proof}
+
+Suppose $\sum a_n(x-x_0)^n$ is a power series with radius of convergence $p$. Then, define $f: (x_0 - p, x_0 + p) \to \R$ such that:
+\begin{equation*}
+    f(x) := \sum \limits_{n=0}^\infty a_n (x - x_0)^n
+\end{equation*}
+
+So, $f(x)$ is a limit of a sequence of functions $f_n(x)$, \emph{i.e.}:
+
+\begin{equation*}
+    f(x) = \lim \limits_{m \to \infty} f_m(x)
+\end{equation*}
+
+Where,
+
+\begin{equation*}
+    f_m(x) = \sum \limits_{n=0}^m a_n(x-x_0)^n
+\end{equation*}
 
 \begin{theorem}
     Let $\sum_{i=0}^\infty a_i(x - x_0)^i$ be a power series with radius of convergence $p \in (0, \infty]$. Then,  $\forall r \in (0, p), \sum_{i=0}^\infty a_i(x - x_0)^i$ converges uniformly on $[x_0 - r, x_0 + r]$.
