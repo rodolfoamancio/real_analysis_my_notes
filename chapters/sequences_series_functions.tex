@@ -71,15 +71,15 @@ Previously, we have defined and dealt with the convergence of a sequence of numb
 \end{proof}
 
 \begin{theorem}[Weierstrass M-test]
-    Define $f_i: S \to \R$ and suppose $\exists M_i > 0$ such that:
+    Define $f_n: S \to \R$ and suppose $\exists M_n > 0, \forall n \in \N$ such that:
     \begin{itemize}
-        \item $|f_i(x)| < M_i, \forall x \in S$,
-        \item $\sum_{i=1}^\infty M_i$
+        \item $|f_n(x)| < M_n, \forall x \in S$,
+        \item $\sum_{n=1}^\infty M_n$ converges
     \end{itemize}
     Then,
     \begin{enumerate}
-        \item $\sum_{i=1}^\infty f_i(x)$ converge absolutely for all $x \in S$,
-        \item Define $f(x) = \sum_{i = 1}^\infty f_i(x), \forall x \in S$, then $\sum_{i=1}^n f_i$ converges uniformly to $f$ on $S$.
+        \item $\sum_{n=1}^\infty f_n(x)$ converge absolutely for all $x \in S$,
+        \item Define $f(x) = \sum_{n = 1}^\infty f_n(x), \forall x \in S$, then $\sum_{n=1}^\infty f_n$ converges uniformly to $f$ on $S$.
     \end{enumerate}
 \end{theorem}
 
@@ -329,6 +329,121 @@ Where,
         \lim \limits_{i \to \infty} M_i^{1/i} < 1 \Longrightarrow \sum \limits_{i=1}^\infty M_i \text{ converges.}
     \end{equation*}
     By the Weierstrass M-test, $\sum_{i=0}^\infty a_i(x-x_0)^i$ converges uniformly on $[x_0 - r, x_0 + r]$.
+\end{proof}
+
+\begin{theorem}
+    If a power series $\sum_{n=0}^\infty a_n x^n$ converges absolutely at a point $c > 0$, then the series converges uniformly on a closed interval $[-c, c]$.
+\end{theorem}
+
+\begin{proof}
+    This is a straightforward implication of Weierstrass M-test. First, define $f_n: S \to \R$, with $f_n(x) = a_n x^n$. Then, for $x = c, f_n(c) = a_n c^n$, so $|a_n c^n|$ is finite, hence the sequence $(|f_n|)$ is bounded at $x = c$. We may write:
+    \begin{equation*}
+        |f_n(c)| \leq M_n, \forall n \in \N \cup \{0\}
+    \end{equation*}
+    Since the series converges absolutely at $x = c$, then - by the comparison test - $\sum_{n=1}^\infty M_n$ also converges. \\
+    Furthermore, if $x \in (-c, c)$ then $|a_n x^n| \leq |a_n c^n|$. So, for $S = (-c, c)$
+    \begin{enumerate}
+        \item 
+            \begin{equation*}
+                |f_n(x)| = |a_n x^n| < M_n, \forall x \in S
+            \end{equation*}
+        \item 
+            \begin{equation*}
+                \sum \limits_{n = 1}^\infty M_n \text{ converges}
+            \end{equation*}            
+    \end{enumerate}
+    So, by the Weierstrass M-test:
+    \begin{enumerate}
+        \item $\sum_{n=0}^\infty f_n(x)$ converges absolutely $\forall x \in S$
+        \item Let $f(x) = \sum_{n=0}^\infty f_n(x) = \sum_{n=0}^\infty a_n x^n$, then the series converges uniformly on $S = (-c, c)$.
+    \end{enumerate}
+\end{proof}
+
+It is important to notice, that if a series converges conditionally on $x = c$, then it may diverge on $x = -c$, \emph{e.g.:}
+
+\begin{equation*}
+    \sum \limits_{n=1}^\infty \frac{(-1)^n x^n}{n}
+\end{equation*}
+
+converges on $x = 1$, but not on $x = -1$. More importantly, it converges uniformly on $[0,1]$. 
+
+\begin{lemma}[Abel's lemma]
+    Let $(b_n)$ be a non-negative and monotone decreasing sequence. And consider $\sum_{n=1}^\infty a_n$ a series, whose partial sums are bounded, \emph{i.e.}:
+    \begin{equation*}
+        \left |
+            \sum \limits_{n=1}^m a_n
+        \right |
+        \leq A, \forall m \in N
+    \end{equation*}
+    Then, 
+    \begin{equation*}
+        \left |
+            \sum \limits_{n=1}^m a_n b_n
+        \right |
+        \leq A b_1, \forall m \in \N
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    Let $s_m = \sum_{n=1}^m a_n$ and set $s_0 = 0$, then:
+    \begin{align*}
+        \left |
+            \sum \limits_{i=1}^n a_i b_i
+        \right |
+        &= \left |
+            \sum \limits_{i=1}^{n}b_i (s_i - s_{i-1})
+        \right | \\
+        &= \left |
+            \sum \limits_{i=1}^{n}b_i s_i
+            - \sum \limits_{j=0}^{n-1}b_{j+1} s_{j}
+        \right | \\
+        &= \left |
+            b_n s_n + \sum \limits_{i=1}^{n-1} s_i(b_i - b_{i+1})
+        \right | \\
+        &\leq \left |
+            A b_n + \sum \limits_{i=1}^{n-1} A (b_i - b_{i+1})
+        \right | \\
+        &= \left |
+            A b_n + A (b_1 - b_n)
+        \right | = |A b_1| = A b_1
+    \end{align*}
+\end{proof}
+
+\begin{theorem}[Abel's theorem]
+    Let $f(x) = \sum_{n=0}^\infty a_n x^n$ be a power series which converges on $x = c > 0$. Then, the series converges uniformly on the interval $[0, c]$. \\
+    Similarly, if it converges on $x = -c$, then it converges uniformly on $[-c, 0]$, with $c > 0$. 
+\end{theorem}
+
+\begin{proof}
+    First, notice that:
+    \begin{equation*}
+        f(x) = \sum \limits_{n=0}^\infty a_n x^n = \sum \limits_{n=0}^\infty (a_n c^n) \left(\frac{x}{c}\right)^n
+    \end{equation*}
+    Let $\varepsilon > 0$, then by the Cauchy criterion, the series converges if there exists $N$ such that:
+    \begin{equation*}
+        \left |
+            (a_{m+1}c^{m+1})\left(\frac{x}{c}\right)^{m+1}
+            + ...
+            + (a_{n}c^{n})\left(\frac{x}{c}\right)^{n} 
+        \right |
+        < \varepsilon
+    \end{equation*}
+    with $n > m \geq N$. Because the series converges at $x = c$, then there exists $N$ such that:
+    \begin{equation*}
+        \left |
+            a_{m+1}c^{m+1} + ... + a_n c^n
+        \right | <  \varepsilon
+    \end{equation*}
+    if $n > m \geq N$. First, take $\varepsilon/2$ as a bound for $\sum_{i=1}^\infty a_{m+i}c^{m+i}$. Second, notice $(x/c)^{m+j}$ is monotone decreasing on $x \in [0, c]$. Hence, 
+    \begin{align*}
+        \left |
+            (a_{m+1}c^{m+1})\left(\frac{x}{c}\right)^{m+1}
+            + ...
+            + (a_{n}c^{n})\left(\frac{x}{c}\right)^{n} 
+        \right |
+        &\leq \frac{\varepsilon}{2}\left(\frac{x}{c}\right)^{m+1}\\
+        &< \varepsilon
+    \end{align*}
 \end{proof}
 
 \begin{theorem}
