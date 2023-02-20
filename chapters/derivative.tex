@@ -673,6 +673,27 @@ In order to prove such function exists and fulfils the description above it is n
     \end{equation*}
 \end{proof}
 
+\begin{definition}[Higher-order derivatives]
+    Consider $f: I \to \R$. Then, $f$ is $n$ times differentiable on $J \subseteq I$ if $f'$, $f''$, ..., $f^{(n)}$ exist at every point of $J$. The $n$-th derivative of $f$ is denoted by $f^{(n)}$.
+\end{definition}
+
+\begin{theorem}[Second derivative test]
+    Suppose $f: (a,b) \to \R$ has two continuous derivatives. If $x_0 \in (a,b)$ is such that $f'(x_0) = 0$ then:
+    \begin{itemize}
+        \item If $f''(x_0) > 0$, then $f$ has a relative minimum at $x_0$,
+        \item If $f''(x_0) < 0$, then $f$ has a relative maximum at $x_0$,
+        \item If $f''(x_0) = 0$, then $f$ is an inflection point.
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+    Proving only the first result: if $f''$ is continuous at $x_0$ and $\lim_{c \to x_0} f''(c) = f''(x_0) > 0$. Then, $\exists \delta > 0$ such that $f''(c) > 0, \forall c \in (x_0 - \delta, x_0 + \delta)$. Take $ x \in (x_0 - \delta, x_0 + \delta)$, then, by Taylor's theorem, $\exists c \in (x, x_0)$ and $c \in (x_0 - \delta, x_0 + \delta)$ by consequence, such that:
+    \begin{equation*}
+        f(x) = f(x_0) + \frac{f''(c)}{2}(x-x_0)^2 \geq f(x_0)
+    \end{equation*}
+    With $f(x) > f(x_0)$ if $x \neq x_0$.
+\end{proof}
+
 \subsection{L'Hospital's Rules}
 
 From the algebraic limit theorem,
@@ -692,13 +713,13 @@ provided $\lim_{x \to c} g(x) \neq 0$. It is not difficult to argue that if the 
 \end{theorem}
 
 \begin{proof}
-    From the Generalised mean value theorem:
+    From the Generalized mean value theorem:
     \begin{equation*}
         \frac{f'(c)}{g'(c)} = \frac{f(b) - f(a)}{g(b) - g(a)}
     \end{equation*}
     Taking the limit of $b \to a$ we have:
     \begin{enumerate}
-        \item Since $c \in (a,b)$ then $a < c < b$. So, $a - b < c - b < 0$. $a - b \to 0$ as $ b \to a$. From the Squeeze theorem, $c \to b$ as $b \to a$. So, for the left-hand side of the Generalised mean value theorem stated above:
+        \item Since $c \in (a,b)$ then $a < c < b$. So, $a - b < c - b < 0$. $a - b \to 0$ as $ b \to a$. From the Squeeze theorem, $c \to b$ as $b \to a$. So, for the left-hand side of the Generalized mean value theorem stated above:
             \begin{equation*}
                 \frac{f'(b)}{g'(b)}
             \end{equation*}
@@ -733,7 +754,7 @@ provided $\lim_{x \to c} g(x) \neq 0$. It is not difficult to argue that if the 
             \frac{f'(x)}{g'(x)} - L
         \right | < \frac{\varepsilon}{2}, \forall x \in (c-\delta_1, c+\delta_1)
     \end{equation*}
-    Applying the Generalised mean theorem for $[x, c + \delta_1]$:
+    Applying the Generalized mean theorem for $[x, c + \delta_1]$:
     \begin{equation*}
         \frac{f(c + \delta_1) - f(x)}{g(c + \delta_1) - g(x)} = \frac{f'(d)}{g'(d)}
     \end{equation*}
@@ -788,11 +809,7 @@ provided $\lim_{x \to c} g(x) \neq 0$. It is not difficult to argue that if the 
     \end{equation*}
 \end{proof}
 
-\subsection{Smoothness and Taylor's theorem}
-
-\begin{definition}
-    Consider $f: I \to \R$. Then, $f$ is $n$ times differentiable on $J \subseteq I$ if $f'$, $f''$, ..., $f^{(n)}$ exist at every point of $J$. The $n$-th derivative of $f$ is denoted by $f^{(n)}$.
-\end{definition}
+\subsection{Taylor's theorem}
 
 \begin{theorem}[Taylor's theorem]
     Suppose $f: [a,b] \to \R$ is continuous and has $n$ continuous derivatives on $[a,b]$ such that $f^{(n+1)}$ exists on $(a,b)$. Given $x, x_0 \in [a,b]$, there exists $c \in (a,b)$ such that:
@@ -830,19 +847,21 @@ provided $\lim_{x \to c} g(x) \neq 0$. It is not difficult to argue that if the 
     
 \end{proof}
 
-\begin{theorem}[Second derivative test]
-    Suppose $f: (a,b) \to \R$ has two continuous derivatives. If $x_0 \in (a,b)$ is such that $f'(x_0) = 0$ then:
-    \begin{itemize}
-        \item If $f''(x_0) > 0$, then $f$ has a relative minimum at $x_0$,
-        \item If $f''(x_0) < 0$, then $f$ has a relative maximum at $x_0$,
-        \item If $f''(x_0) = 0$, then $f$ is an inflection point.
-    \end{itemize}
-\end{theorem}
+\subsection{Smoothness Classes}
 
-\begin{proof}
-    Proving only the first result: if $f''$ is continuous at $x_0$ and $\lim_{c \to x_0} f''(c) = f''(x_0) > 0$. Then, $\exists \delta > 0$ such that $f''(c) > 0, \forall c \in (x_0 - \delta, x_0 + \delta)$. Take $ x \in (x_0 - \delta, x_0 + \delta)$, then, by Taylor's theorem, $\exists c \in (x, x_0)$ and $c \in (x_0 - \delta, x_0 + \delta)$ by consequence, such that:
-    \begin{equation*}
-        f(x) = f(x_0) + \frac{f''(c)}{2}(x-x_0)^2 \geq f(x_0)
-    \end{equation*}
-    With $f(x) > f(x_0)$ if $x \neq x_0$.
-\end{proof}
+\begin{definition}[Smoothness classes]
+    Consider $f: S \to \R$ and $k$ a non-negative integer. If the function $f$ is $k$-th order differentiable with $f^{(k)}(x)$ continuous on $S$, then $f$ is of class $\mathcal{C}^k(S)$. \\
+    If $f$ is infinitely differentiable with all derivatives continuous on $S$, then $f$ is called smooth, and belongs to the class $\mathcal{C}^\infty(S)$.
+\end{definition}
+
+\begin{remark}
+    A continuous function belongs to the class $\mathcal{C}^0$.
+\end{remark}
+
+Each class $\mathcal{C}^r(S)$ can be understood as a ``set of functions of class $\mathcal{C}^r(S)$''. In this way,
+
+\begin{equation*}
+    \mathcal{C}^\infty(S) = \bigcap \limits_{r \in \N} \mathcal{C}^r(S) \subseteq \cdot \cdot \cdot \subseteq \mathcal{C}^1(S) \subseteq \mathcal{C}^0(S)
+\end{equation*}
+
+Where each inclusion $\mathcal{C}^i(S) \subseteq \mathcal{C}^{i-1}(S)$ is proper.
