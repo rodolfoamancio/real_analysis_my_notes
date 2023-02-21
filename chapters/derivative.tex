@@ -809,44 +809,6 @@ provided $\lim_{x \to c} g(x) \neq 0$. It is not difficult to argue that if the 
     \end{equation*}
 \end{proof}
 
-\subsection{Taylor's theorem}
-
-\begin{theorem}[Taylor's theorem]
-    Suppose $f: [a,b] \to \R$ is continuous and has $n$ continuous derivatives on $[a,b]$ such that $f^{(n+1)}$ exists on $(a,b)$. Given $x, x_0 \in [a,b]$, there exists $c \in (a,b)$ such that:
-    \begin{equation}
-        f(x) = \sum \limits_{k = 0}^n \frac{1}{k!}f^{(k)}(x_0)(x-x_0)^k + \frac{f^{(n+1)}(c)}{(n+1)!}(x-x_0)^{n+1}
-    \end{equation}
-    Denote the large sum as $P_n(x)$ and the remainder as $R_n(x)$.
-\end{theorem}
-
-\begin{proof}
-    Let $x, x_0 \in [a,b]$. If $x = x_0$ then any $c$ satisfies the theorem. Suppose $x \neq x_0$. Define:
-    \begin{equation*}
-        M_{x, x_0} = \frac{f(x) - P_n(x)}{(x-x_0)^{n+1}}
-    \end{equation*}
-    Then, $f(x) = P_n(x) + M_{x, x_0}(x-x_0)^{n+1}$. And $f^{(k)}(x_0) = P^{(k)}(x_0), \forall 0 \leq k \leq n$. Let $g(s) = f(x) - P_n(s) - M_{x, x_0}(s-x_0)^{n+1}$, then:
-    \begin{eqnarray*}
-        g(x_0) &=& f(x_0) - P_n(x_0) - M_{x,x_0}(x-x_0)^{n+1} = 0 \\
-        g'(x_0) &=& f'(x_0) - P'_n(x_0) - M_{x,x_0}(n+1)(x-x_0)^{n} = 0 \\
-        g''(x_0) &=& f''(x_0) - P''_n(x_0) - M_{x,x_0}(n+1)n(x-x_0)^{n-1} = 0 \\
-        &...& \\
-        g^{(n)}(x_0) &=& f^{(n)}(x_0) - P^{(n)}_n(x_0) - M_{x,x_0}(n+1)!(x-x_0) = 0
-    \end{eqnarray*}
-    Since $g(x) = 0$ and $g(x_0) = 0$, by the Mean value theorem, there exists $x_1 \in (x_0, x)$ such that $g'(x_1) = 0$. Thus, $g'(x_0) = 0$ and $g'(x_1) = 0$. By consequence, there exists $x_2 \in (x_0, x_1)$ such that $g''(x_2) = 0$. Preceding similarly, we find $x_n \in (x_0, x_{n-1})$ such that $g^{(n)}(x_n) = 0$. Finally, $g^{(n)}(x_0) = 0$ and $g^{(n)}(x_n) = 0$ which implies $\exists c \in (x_0, x_n)$ such that $g^{(n+1)}(c) = 0$. So,
-    \begin{equation*}
-        \frac{\dint ^{n+1}}{\dint s^{n+1}} M_{x, x_0}(s - x_0)^{n+1} = M_{x, x_0}(n+1)!
-    \end{equation*}
-    Additionally, $P_n^{(n+1)}(c) = 0$ since $P_n(x)$ is a polynomial with degree $n$. Hence,
-    \begin{equation*}
-        0 = g^{(n+1)}(c) = f^{(n+1)}(c) - M_{x, x_0}(n+1)! \Longrightarrow M_{x, x_0} = \frac{f^{(n+1)}(c)}{(n+1)!}
-    \end{equation*}
-    Thus,
-    \begin{equation*}
-        f(x) = P_n(x) + \frac{f^{(n+1)}(c)}{(n+1)!}(x-x_0)^{n+1}
-    \end{equation*}
-    
-\end{proof}
-
 \subsection{Smoothness Classes}
 
 \begin{definition}[Smoothness classes]
