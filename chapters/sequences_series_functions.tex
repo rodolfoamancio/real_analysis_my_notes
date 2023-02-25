@@ -114,7 +114,7 @@ Previously, we have defined and dealt with the convergence of a sequence of numb
     \end{enumerate}
 \end{proof}
 
-\section{Properties of the convergent sequence of functions}
+\section{Properties of convergent sequence of functions}
 
 One of the central problems related to sequences or series of functions focus on whether the limit (or derivative, or integral) can be calculated by the term-by-term operation over the series expansion. As the previous chapters have hopefully shown, derivatives and integrals are limit operations, as is the process of taking the sum of an infinite series. The multiple limit operation over an object can be problematic.
 
@@ -269,17 +269,17 @@ It is clear from the definition of power series that the series converges for $x
     \begin{equation*}
         R = \lim \limits_{n \to \infty} |a_n|^{1/n}
     \end{equation*}
-    and define $p$, the \emph{radius of convergence}, as:
+    and define $\rho$, the \emph{radius of convergence}, as:
     \begin{equation*}
-        p = \begin{cases}
+        \rho = \begin{cases}
             \frac{1}{R} \text{ if } R > 0 \\
             \infty \text{ if } R = 0
         \end{cases}
     \end{equation*}
     Then:
     \begin{enumerate}
-        \item If $|x-x_0| < p$, the series $\sum a_n(x - x_0)^n$ converges;
-        \item If $|x-x_0| > p$, the series diverges.
+        \item If $|x-x_0| < \rho$, the series $\sum a_n(x - x_0)^n$ converges;
+        \item If $|x-x_0| > \rho$, the series diverges.
     \end{enumerate}
 \end{theorem}
 
@@ -295,12 +295,12 @@ It is clear from the definition of power series that the series converges for $x
     There exists power series which converge only at one point.
 \end{remark}
 
-Suppose $\sum a_n(x-x_0)^n$ is a power series with radius of convergence $p$. Then, define $f: (x_0 - p, x_0 + p) \to \R$ such that:
+Suppose $\sum a_n(x-x_0)^n$ is a power series with radius of convergence $\rho$. Then, define $f: (x_0 - \rho, x_0 + \rho) \to \R$ such that:
 \begin{equation*}
     f(x) := \sum \limits_{n=0}^\infty a_n (x - x_0)^n
 \end{equation*}
 
-So, $f(x)$ is a limit of a sequence of functions $f_n(x)$, \emph{i.e.}:
+So, $f(x)$ is a limit of a sequence of functions $f_m(x)$, \emph{i.e.}:
 
 \begin{equation*}
     f(x) = \lim \limits_{m \to \infty} f_m(x)
@@ -313,18 +313,18 @@ Where,
 \end{equation*}
 
 \begin{theorem}
-    Let $\sum_{i=0}^\infty a_i(x - x_0)^i$ be a power series with radius of convergence $p \in (0, \infty]$. Then,  $\forall r \in (0, p), \sum_{i=0}^\infty a_i(x - x_0)^i$ converges uniformly on $[x_0 - r, x_0 + r]$.
+    Let $\sum_{i=0}^\infty a_i(x - x_0)^i$ be a power series with radius of convergence $\rho \in (0, \infty]$. Then,  $\forall r \in (0, \rho), \sum_{i=0}^\infty a_i(x - x_0)^i$ converges uniformly on $[x_0 - r, x_0 + r]$.
 \end{theorem}
 
 \begin{proof}
     Let $r \in [0, p)$. Then, $\forall i \in \N \cup \{0\}, \forall x \in [x_0 - r, x_0 + r], |a_i(x-x_0)^i| \leq |a_i|r^i = M_i$. Now,
     \begin{equation*}
         \lim \limits_{i \to \infty} M_i^{1/i} = \lim \limits_{i \to \infty} |a_i|^{1/i} r = \begin{cases}
-            \frac{r}{p} \text{ if } p < \infty \\
-            0 \text{ if } p = \infty
+            \frac{r}{p} \text{ if } \rho < \infty \\
+            0 \text{ if } \rho = \infty
         \end{cases}
     \end{equation*}
-    since $1/p = \lim_{i \to \infty} |a_i|^{1/i}$. Since $r < p$,
+    since $1/\rho = \lim_{i \to \infty} |a_i|^{1/i}$. Since $r < \rho$,
     \begin{equation*}
         \lim \limits_{i \to \infty} M_i^{1/i} < 1 \Longrightarrow \sum \limits_{i=1}^\infty M_i \text{ converges.}
     \end{equation*}
@@ -446,36 +446,48 @@ converges on $x = 1$, but not on $x = -1$. More importantly, it converges unifor
     \end{align*}
 \end{proof}
 
+\begin{remark}
+    If a power series $f(x) = \sum_{n=0}^\infty a_n (x - x_0)^n$ converges at some point $x_1 > x_0$, then $f(x)$ converges uniformly on $[x_0, x_1]$ and absolutely on $[x_0, x_1)$. \emph{Id est}, the series may not converge absolutely on $x = x_1$.
+\end{remark}
+
 \begin{theorem}
-    Consider $\sum_{i=0}^\infty a_i(x - x_0)^i$, a power series with radius of convergence $p \in (0, \infty]$. Then,
+    Consider $\sum_{n=0}^\infty a_n(x - x_0)^n$, a power series with radius of convergence $\rho \in (0, \infty]$. Then,
     \begin{enumerate}
-        \item $\forall c \in (x_0 - p, x_0 + p), \sum_{i=0}^\infty a_i(x - x_0)^i$ is differentiable at $c$ and:
+        \item $\forall c \in (x_0 - \rho, x_0 + \rho), \sum_{n=0}^\infty a_n(x - x_0)^n$ is differentiable at $c$ and:
             \begin{equation*}
-                \frac{\dint}{\dint x} \sum \limits_{i=0}^\infty a_i(x - x_0)^i = \sum \limits_{i=0}^\infty i a_i (x - x_0)^{i-1}
+                \frac{\dint}{\dint x} \sum \limits_{n=0}^\infty a_n(x - x_0)^n = \sum \limits_{n=0}^\infty n a_n (x - x_0)^{n-1}
             \end{equation*}
         \item $\forall a, b$ such that $x_o - p < a <  b < x_0 + p$, then:
             \begin{equation*}
-                \int_a^b \sum \limits_{i = 0}^\infty a_i(x- x_0)^i = \sum \limits_{i=0}^\infty \left(
-                    \frac{(b-x_0)^{i+1}}{i+1} - \frac{(a - x_0)^{i+1}}{i + 1}
+                \int_a^b \sum \limits_{n = 0}^\infty a_n(x- x_0)^n = \sum \limits_{n=0}^\infty \left(
+                    \frac{(b-x_0)^{n+1}}{n+1} - \frac{(a - x_0)^{n+1}}{n + 1}
                 \right)
             \end{equation*}
     \end{enumerate}
 \end{theorem}
 
-\begin{remark}
-    Since 
+\begin{corollary}
+    If $f(x) = \sum_{n=0}^\infty a_n (x-x_0)^n$ has a positive radius of convergence, $\rho$, then $f(x) \in \mathcal{C}^\infty(x_0 - \rho, x_0 + \rho)$ and
     \begin{equation*}
-        \lim \limits_{i \to \infty} ((i+1)|a_{i+1}|)^{1/i} = \lim \limits_{i\to \infty} \left(
-            (i+1)|a_{i+1}|^{1/(i+1)}
-        \right)^{(i+1)/i} = \lim \limits_{k \to \infty} |a_k|^{1/k} = p
+        f^{(k)}(x) = \sum \limits_{n = k}^\infty \frac{n!}{(n-k)!}a_n (x - x_0)^{n-k}, \forall x \in (x_0 - \rho, x_0 + \rho) \text{ and } k \in \N
     \end{equation*}
-    the first result of the previous theorem implies $\sum a_i(x - x_0)^i$ is infinitely differentiable and:
+\end{corollary}
+
+\begin{proof}
+    \textbf{Proof by induction:}\\
+    From the previous theorem, and knowing $0! = 1$, then:
     \begin{equation*}
-        k! a_k = \left(
-            \frac{\dint^k}{\dint x^k} \sum a_i (x - x_0)^i
-        \right) \Bigg |_{x = x_0}
+        f^{(1)}(x) = n a_n (x - x_0)^{n-1}
     \end{equation*}
-\end{remark}
+    So, the relation is valid for $k = 1$. If the relation is true for some $k \in \N$ and $x \in (x_0 - \rho, x_0 + \rho)$ then $f^{(k)}(x)$ is a power series with radius of convergence $\rho$, hence:
+    \begin{align*}
+        f^{(k+1)}(x) = (f^{(k)}(x))' &= \left(
+            \sum \limits_{n=k}^\infty \frac{n!}{(n-k)!}a_n (x-x_0)^{n-k}
+        \right)' \\
+        &= \sum \limits_{n = k + 1}^\infty \frac{n!}{(n-k-1)!}a_n (x - x_0)^{n-k-1}, \forall x \in (x_0 - \rho, x_0 + \rho)
+    \end{align*}
+    Hence, by induction the relation is valid for all $k \in \N$.
+\end{proof}
 
 \begin{theorem}[Weierstrass approximation theorem]
     If $f \in C([a,b])$, there exists a sequence of polynomials $\{ P_n\}$ such that $P_n \to f$ uniformly on $[a,b]$.
