@@ -4,6 +4,8 @@
 
 Previously, we have defined and dealt with the convergence of a sequence of numbers. So, we must begin with an understanding of what it means to a sequence of functions to converge.
 
+\subsection{Sequence of functions convergence}
+
 \begin{definition}[Pointwise convergence]
     Define $f:S \to \R$ and $f_n: S \to \R$ with $n \in \N$. The sequence of functions $(f_n)$ is said to \emph{converge pointwise} to $f$ if:
     \begin{equation*}
@@ -39,6 +41,8 @@ Previously, we have defined and dealt with the convergence of a sequence of numb
 \begin{proof}
     Consider $c \in S$ and let $\varepsilon > 0$. Then, if $f_n \to f$ uniformly, $\exists N \in \N$ such that $|f_n(x) - f(x)| < \varepsilon, \forall n \geq N, \forall x \in S$. So, $\lim_{n \to \infty} f_n(c) = f(c), \forall c \in S$. Therefore, $f_n$ converges to $f$ pointwise.
 \end{proof}
+
+\subsection{Convergence criteria and test}
 
 \begin{theorem}[Cauchy criterion for uniform convergence]
     Consider $S \subseteq \R$, non-empty. Let $f_n: S \to \R$ be a sequence of functions. Then, $f_n$ converges to $f$ uniformly on $S$ if $\forall \varepsilon > 0, \exists N \in \N$ such that:
@@ -263,6 +267,10 @@ Power series are a natural generalization of polynomials.
 \end{remark}
 
 It is clear from the definition of power series that the series converges for $x=x_0$ to $a_0$. One question follows naturally from this observation: ``for what values of $x$ the power series converges?''
+
+\begin{definition}[Radius of convergence]
+    A power series $f(x) = \sum_{n=0}^\infty a_n(x - x_0)^n$ is said to have radius of convergence $\rho$ if $f(x)$ converges absolutely if $|x-x_0| < \rho$ and diverges $|x - x_0| > \rho$, with $\rho \in \R_+\cup \{ +\infty\}$.
+\end{definition}
 
 \begin{theorem}
     Suppose $(|a_n|^{1/n})$ converges, \emph{i.e.}:
