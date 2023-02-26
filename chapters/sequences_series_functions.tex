@@ -272,37 +272,6 @@ It is clear from the definition of power series that the series converges for $x
     A power series $f(x) = \sum_{n=0}^\infty a_n(x - x_0)^n$ is said to have radius of convergence $\rho$ if $f(x)$ converges absolutely if $|x-x_0| < \rho$ and diverges $|x - x_0| > \rho$, with $\rho \in \R_+\cup \{ +\infty\}$.
 \end{definition}
 
-\begin{theorem}
-    Suppose $(|a_n|^{1/n})$ converges, \emph{i.e.}:
-    \begin{equation*}
-        R = \lim \limits_{n \to \infty} |a_n|^{1/n}
-    \end{equation*}
-    and define $\rho$, the \emph{radius of convergence}, as:
-    \begin{equation*}
-        \rho = \begin{cases}
-            \frac{1}{R} \text{ if } R > 0 \\
-            \infty \text{ if } R = 0
-        \end{cases}
-    \end{equation*}
-    Then:
-    \begin{enumerate}
-        \item If $|x-x_0| < \rho$, the series $\sum a_n(x - x_0)^n$ converges;
-        \item If $|x-x_0| > \rho$, the series diverges.
-    \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-    First, notice that:
-    \begin{equation*}
-        \lim \limits_{n \to \infty} |a_n(x-x_0)^n|^{1/n} = R |x-x_0|
-    \end{equation*}
-    So, the theorem is valid from the Root test.
-\end{proof}
-
-\begin{remark}
-    There exists power series which converge only at one point.
-\end{remark}
-
 Suppose $\sum a_n(x-x_0)^n$ is a power series with radius of convergence $\rho$. Then, define $f: (x_0 - \rho, x_0 + \rho) \to \R$ such that:
 \begin{equation*}
     f(x) := \sum \limits_{n=0}^\infty a_n (x - x_0)^n
@@ -321,23 +290,31 @@ Where,
 \end{equation*}
 
 \begin{theorem}
-    Let $\sum_{i=0}^\infty a_i(x - x_0)^i$ be a power series with radius of convergence $\rho \in (0, \infty]$. Then,  $\forall r \in (0, \rho), \sum_{i=0}^\infty a_i(x - x_0)^i$ converges uniformly on $[x_0 - r, x_0 + r]$.
+    Consider a power series $f(x) = \sum_{n=0}^\infty a_n (x - x_0)^n$, and define \\ $\rho = 1/\limsup_{n \to \infty} |a_n|^{1/n}$, with the convention that $1/0=\infty$ and $1/\infty=0$. Then $\rho$ is the radius of convergence of the $f(x)$. And,
+    \begin{itemize}
+        \item $f(x)$ converges absolutely for each $x \in (x_0 - \rho, x_0 + \rho)$,
+        \item $f(x)$ converges uniformly on any closed interval $[a,b] \subseteq (x_0 - \rho, x_0 + \rho)$,
+        \item $f(x)$ diverges for any $x \not \in [x_0 -\rho, x_0 + \rho]$, provided $\rho$ is finite.
+    \end{itemize}
 \end{theorem}
 
 \begin{proof}
-    Let $r \in [0, p)$. Then, $\forall i \in \N \cup \{0\}, \forall x \in [x_0 - r, x_0 + r], |a_i(x-x_0)^i| \leq |a_i|r^i = M_i$. Now,
+    Define $r := 1/\limsup |a_n|^{1/n}$, in order to apply the Root test on $f(x)$, set:
     \begin{equation*}
-        \lim \limits_{i \to \infty} M_i^{1/i} = \lim \limits_{i \to \infty} |a_i|^{1/i} r = \begin{cases}
-            \frac{r}{p} \text{ if } \rho < \infty \\
-            0 \text{ if } \rho = \infty
-        \end{cases}
+       s(x) := \limsup \limits_{n \to \infty} |a_n(x - x_0)^n|^{1/n} = |x-x_0| \cdot \limsup \limits_{n \to \infty} |a_n|^{1/n}
     \end{equation*}
-    since $1/\rho = \lim_{i \to \infty} |a_i|^{1/i}$. Since $r < \rho$,
-    \begin{equation*}
-        \lim \limits_{i \to \infty} M_i^{1/i} < 1 \Longrightarrow \sum \limits_{i=1}^\infty M_i \text{ converges.}
-    \end{equation*}
-    By the Weierstrass M-test, $\sum_{i=0}^\infty a_i(x-x_0)^i$ converges uniformly on $[x_0 - r, x_0 + r]$.
+    Then, consider three possibilities:
+    \begin{enumerate}
+        \item If $r = 0$ then $s(x) = \infty$, so the series does not converge for any $ x \neq x_0$. Hence, the radius of convergence is $\rho = r = 0$,
+        \item If $r = \infty$ then $s(x) = 0$, and the series converges - by the Root test - for any $x \in \R$. Hence, the radius of convergence is $\rho = r = \infty$,
+        \item If $r \in (0, \infty)$, then $s(x) = |x-x_0|/r$. \\
+        So, $s(x) < 1$ if and only if $|x - x_0| < r$, which implies the series converges absolutely if $x \in (x_0 - r, x_0 + r)$ and $\rho = r$. \\ 
+        On the other hand, if $|x-x_0| > r$ then $s(x) > 1$, so the series diverges absolutely if $x \not \in [x_0 - r, x_0 + r]$.\\ 
+        Finally, let $[a,b] \subseteq (x_0 - \rho, x_0 + \rho)$, choose $x_1 \in (x_0 - \rho, x_0 + \rho)$ such for any $x \in [a,b]$ we have $|x - x_0| \leq |x_1 - x_0|$. Set $M_n = |a_n||x_1 - x_0|^n$. From the first result of this theorem, we have $\sum M_n$ converges. Since $|a_n(x - x_0)^n| \leq M_n, \forall n \in N$ and $x \in [a,b]$. So, from the Weierstrass M-test the series $f(x)$ converges uniformly on $[a,b]$.
+    \end{enumerate}
 \end{proof}
+
+From the definition of the radius of convergence, if $\rho = 0$ then $f(x)$ converges only for $x = x+0$. Else, if $\rho = \infty$, then $f(x)$ converges for any $x \in \R$.
 
 \begin{theorem}
     If a power series $\sum_{n=0}^\infty a_n x^n$ converges absolutely at a point $c > 0$, then the series converges uniformly on a closed interval $[-c, c]$.
