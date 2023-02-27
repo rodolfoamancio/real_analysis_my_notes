@@ -435,6 +435,35 @@ converges on $x = 1$, but not on $x = -1$. More importantly, it converges unifor
     If a power series $f(x) = \sum_{n=0}^\infty a_n (x - x_0)^n$ converges at some point $x_1 > x_0$, then $f(x)$ converges uniformly on $[x_0, x_1]$ and absolutely on $[x_0, x_1)$. \emph{Id est}, the series may not converge absolutely on $x = x_1$.
 \end{remark}
 
+Before evaluating the differentiability of power series, we must first show that the radius of convergence of a power series remains unchanged by term-by-term differentiation.
+
+\begin{lemma}
+    If $a_n \in \R, \forall n \in \N$, then:
+    \begin{equation*}
+        \limsup\limits_{n\to \infty} (n|a_n|)^{1/n} = \limsup \limits_{n \to \infty}|a_n|^{1/n}
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    Let $\varepsilon > 0$. Notice $n^{1/n} \to 1$ as $n \to \infty$, choose $N \in \N$ such that $1 - \varepsilon < n^{1/n} < 1 + \varepsilon, \forall n \geq N$, which implies:
+    \begin{equation*}
+        (1 - \varepsilon)|a_n|^{1/n} (n|a_n|)^{1/n} < (1 + \varepsilon)|a_n|^{1/n}
+    \end{equation*}
+    So, $\sup_{k > n}\{ k |a_k|^{1/k}\} \leq (1 + \varepsilon)\sup_{k > n} \{|a_k|^{1/k}\}$. Taking the limit as $n \to \infty$ leads to:
+    \begin{equation*}
+        x: \limsup \limits_{n \to \infty} (n |a_n|^{1/n}) \leq (1+\varepsilon)\limsup \limits_{n \to \infty} |a_n|^{1/n} =: (1+\varepsilon)y
+    \end{equation*}
+    Taking the limit as $n \to \infty$ implies $x \leq y$. Following a similar strategy for $(1-\varepsilon)$ instead of $(1+\varepsilon)$ leads to $x \geq y$. Hence, $x = y$
+\end{proof}
+
+\begin{theorem}[Derivative of a power series]
+    Consider a power series $f(x) = \sum_{n=0}^\infty a_n(x - x_0)^n$ with radius of convergence $\rho >0$. Then, $f'(x) = \sum_{n=1}^\infty n a_n (x - x_0)^{n-1}, \forall x \in (x_0 - \rho, x_0 + \rho)$.
+\end{theorem}
+
+\begin{proof}
+    Define $S = (x_0 - \rho, x_0 + \rho)$ and suppose $[a,b] \subseteq S$. 
+\end{proof}
+
 \begin{theorem}
     Consider $\sum_{n=0}^\infty a_n(x - x_0)^n$, a power series with radius of convergence $\rho \in (0, \infty]$. Then,
     \begin{enumerate}
