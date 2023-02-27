@@ -438,6 +438,7 @@ converges on $x = 1$, but not on $x = -1$. More importantly, it converges unifor
 Before evaluating the differentiability of power series, we must first show that the radius of convergence of a power series remains unchanged by term-by-term differentiation.
 
 \begin{lemma}
+    \label{lemma:limsup_power_series_derivative}
     If $a_n \in \R, \forall n \in \N$, then:
     \begin{equation*}
         \limsup\limits_{n\to \infty} (n|a_n|)^{1/n} = \limsup \limits_{n \to \infty}|a_n|^{1/n}
@@ -461,24 +462,9 @@ Before evaluating the differentiability of power series, we must first show that
 \end{theorem}
 
 \begin{proof}
-    Define $S = (x_0 - \rho, x_0 + \rho)$ and suppose $[a,b] \subseteq S$. 
+    Define $S = (x_0 - \rho, x_0 + \rho)$ and suppose $[a,b] \subseteq S$. By Lemma \ref{lemma:limsup_power_series_derivative}, the radius of convergence of the power series $g(x) = \sum_{n=1}^\infty n a_n (x - x_0)^n$ is $\rho$. Thus, $g(x)$ converges absolutely on $S$ and uniformly on $[a,b]$.\\
+    Consider the derived series $f^{*}(x) = \sum_{n=1}^\infty n a_n (x - x_0)^{n-1}$. Then, $f^{*}(x_0) = a_1$. If $x \in S \setminus \{x_0\}$, then $f^{*}(x) = g(x)/(x - x_0)$ and, again, $f^{*}(x)$ converges absolutely. So, the radius of convergence of $f^{*}(x)$ is at least $\rho$. Hence, $f(x)$ is differentiable on $[a,b]$ and $f'(x) = f^{*}(x), \forall x \in [a,b]$. Since $[a,b] \subseteq S$ then $f'(x) = f^{*}(x), \forall x \in S$.
 \end{proof}
-
-\begin{theorem}
-    Consider $\sum_{n=0}^\infty a_n(x - x_0)^n$, a power series with radius of convergence $\rho \in (0, \infty]$. Then,
-    \begin{enumerate}
-        \item $\forall c \in (x_0 - \rho, x_0 + \rho), \sum_{n=0}^\infty a_n(x - x_0)^n$ is differentiable at $c$ and:
-            \begin{equation*}
-                \frac{\dint}{\dint x} \sum \limits_{n=0}^\infty a_n(x - x_0)^n = \sum \limits_{n=0}^\infty n a_n (x - x_0)^{n-1}
-            \end{equation*}
-        \item $\forall a, b$ such that $x_o - p < a <  b < x_0 + p$, then:
-            \begin{equation*}
-                \int_a^b \sum \limits_{n = 0}^\infty a_n(x- x_0)^n = \sum \limits_{n=0}^\infty \left(
-                    \frac{(b-x_0)^{n+1}}{n+1} - \frac{(a - x_0)^{n+1}}{n + 1}
-                \right)
-            \end{equation*}
-    \end{enumerate}
-\end{theorem}
 
 \begin{corollary}
     If $f(x) = \sum_{n=0}^\infty a_n (x-x_0)^n$ has a positive radius of convergence, $\rho$, then $f(x) \in \mathcal{C}^\infty(x_0 - \rho, x_0 + \rho)$ and
@@ -501,6 +487,20 @@ Before evaluating the differentiability of power series, we must first show that
         &= \sum \limits_{n = k + 1}^\infty \frac{n!}{(n-k-1)!}a_n (x - x_0)^{n-k-1}, \forall x \in (x_0 - \rho, x_0 + \rho)
     \end{align*}
     Hence, by induction the relation is valid for all $k \in \N$.
+\end{proof}
+
+\begin{theorem}
+    Consider a power series $f(x) = \sum_{n=0}^\infty a_n(x - x_0)^n$ with radius of convergence $\rho \in (0, \infty)$, and $a,b \in \R$ such that $x_0 - \rho < a < b < x_0 + \rho$, then:
+    \begin{equation*}
+        \int_a^b f(x) \dint x = \sum \limits_{n = 0}^\infty a_n \int_a^b (x - x_0)^n \dint x
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    By Abel's theorem, $f(x)$ converges uniformly on $[a,b]$ since $[a,b] \subseteq (x_0 -\rho, x_0 + \rho)$. Hence, by term-by-term integration:
+    \begin{equation*}
+        \int_a^b f(x) \dint x = \sum \limits_{n = 0}^\infty a_n \int_a^b (x - x_0)^n \dint x
+    \end{equation*}
 \end{proof}
 
 \begin{theorem}[Weierstrass approximation theorem]
