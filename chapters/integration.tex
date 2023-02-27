@@ -2,15 +2,9 @@
 
 \section{The Riemann Integral}
 
-The Riemann integral is the first rigorous theory of `area', and it is the inverse of differentiation. However, it is not a complete theory of `area', the problems it fails to solve are addressed Lebesque integration.
+The Riemann integral is the first rigorous theory of `area', and it is the inverse of differentiation. However, it is not a complete theory of `area', the problems it fails to solve are addressed Lebesque integration. \\
 
-First, we will define and calculate integrals of continuous function on the interval $[a,b]$. In order to avoid writing it every time, we define:
-
-\begin{definition}
-    Define: $C([a,b]) = \{f: [a,b] \to \R: f \text{ is continuous on } [a,b]\}$.
-\end{definition}
-
-The Riemann integral will be defined over a partition of an interval, we define:
+The Riemann integral will be defined over a partition of an interval:
 
 \begin{definition}[Partition]
     A partition $\underline{x}$ of $[a,b]$ is a set $\underline{x} = \{a = x_0 < x_1 < ... < x_n = b \}$. The norm of $\underline{x}$ is denoted by $||\underline{x}||$ and defined by $||\underline{x}||:= \max \{x_1 - x_0, x_2 - x_1, ..., x_n - x_{n-1} \}$.
@@ -21,7 +15,7 @@ The Riemann integral will be defined over a partition of an interval, we define:
 \end{definition}
 
 \begin{definition}[Riemann sum]
-    Consider $f \in C([a,b])$. Then, the Riemann sum corresponding to the tagged partition $(\underline{x}, \underline{\xi})$ is the number:
+    Consider $f \in \mathcal{C}([a,b])$. Then, the Riemann sum corresponding to the tagged partition $(\underline{x}, \underline{\xi})$ is the number:
     \begin{equation}
         S_f(\underline{x}, \underline{\xi}):= \sum \limits_{k=1}^n f(\xi_k)(x_k - x_{k-1})
     \end{equation}
@@ -41,22 +35,22 @@ The Riemann sum can be understood as an approximation for the area under the gra
 Next, the derivation of this theorem will be shown. The uniqueness of the integral follows immediately from the uniqueness of the limit, and need not be proven here. In order to prove it, a few tools are presented ahead:
 
 \begin{definition}[Modulus of continuity]
-    Consider $f \in C([a,b])$, and $\eta >0$. Then, the modulus of continuity $\omega_f(\eta)$ is defined as: $\omega_f(\eta) = \sup \{|f(x) - f(y)|:|x-y| \leq \eta\}$.
+    Consider $f \in \mathcal{C}([a,b])$, and $\eta >0$. Then, the modulus of continuity $\omega_f(\eta)$ is defined as: $\omega_f(\eta) = \sup \{|f(x) - f(y)|:|x-y| \leq \eta\}$.
 \end{definition}
 
 \begin{theorem}[Theorem I]
     \begin{equation}
-        \lim \limits_{\eta \to 0} \omega_f(\eta) = 0, \forall f \in C([a,b])
+        \lim \limits_{\eta \to 0} \omega_f(\eta) = 0, \forall f \in \mathcal{C}([a,b])
     \end{equation}
-    Putting it into words: for any continuous function $f \in C([a,b])$, for all $\varepsilon > 0$, there exists $\delta > 0$ such that $\forall \eta < \delta, \omega_f(\eta)<\varepsilon$.
+    Putting it into words: for any continuous function $f \in \mathcal{C}([a,b])$, for all $\varepsilon > 0$, there exists $\delta > 0$ such that $\forall \eta < \delta, \omega_f(\eta)<\varepsilon$.
 \end{theorem}
 
 \begin{proof}
-    Consider $\varepsilon > 0$. Since $f \in C([a,b])$ then $f$ is uniformly continuous on $[a,b]$. Thus, $\exists \delta > 0$ such that $|f(x) - f(y)| < \varepsilon/2, \forall |x-y| < \delta$. Take $\eta < \delta$, then if $|x-y| \leq \eta < \delta$ we have $|f(x) - f(y)| < \varepsilon/2$. So, $\varepsilon/2$ is an upper bound for $\{|f(x) - f(y)|:|x-y|\leq \eta\}$. Therefore, $\omega_f(\eta) \leq \varepsilon/2 < \varepsilon$.
+    Consider $\varepsilon > 0$. Since $f \in \mathcal{C}([a,b])$ then $f$ is uniformly continuous on $[a,b]$. Thus, $\exists \delta > 0$ such that $|f(x) - f(y)| < \varepsilon/2, \forall |x-y| < \delta$. Take $\eta < \delta$, then if $|x-y| \leq \eta < \delta$ we have $|f(x) - f(y)| < \varepsilon/2$. So, $\varepsilon/2$ is an upper bound for $\{|f(x) - f(y)|:|x-y|\leq \eta\}$. Therefore, $\omega_f(\eta) \leq \varepsilon/2 < \varepsilon$.
 \end{proof}
 
 \begin{theorem}[Theorem II]
-    If $(\underline{x}, \underline{\xi})$ and $(\underline{x}', \underline{\xi}')$ are tagged partitions of $[a,b]$ such that $\underline{x} \subseteq \underline{x}'$, then if $f \in C([a,b])$ we have $|S_f(\underline{x}, \underline{\xi} - S_f(\underline{x}', \underline{\xi}') \leq \omega_f(||\underline{x}||)(b-a)$.
+    If $(\underline{x}, \underline{\xi})$ and $(\underline{x}', \underline{\xi}')$ are tagged partitions of $[a,b]$ such that $\underline{x} \subseteq \underline{x}'$, then if $f \in \mathcal{C}([a,b])$ we have $|S_f(\underline{x}, \underline{\xi} - S_f(\underline{x}', \underline{\xi}') \leq \omega_f(||\underline{x}||)(b-a)$.
 \end{theorem}
 
 \begin{definition}[Refinement]
@@ -99,7 +93,7 @@ Next, the derivation of this theorem will be shown. The uniqueness of the integr
 \end{proof}
 
 \begin{theorem}[Theorem III]
-    If $(\underline{x}, \underline{\xi})$ and $(\underline{x}', \underline{\xi}')$ are two tagged partitions of $[a,b]$, and $f \in C([a,b])$, then $|S_f(\underline{x}, \underline{\xi}) - S_f(\underline{x}', \underline{\xi}')| \leq (\omega_f(||\underline{x}||) + \omega_f(||\underline{x}'||))(b-a)$.
+    If $(\underline{x}, \underline{\xi})$ and $(\underline{x}', \underline{\xi}')$ are two tagged partitions of $[a,b]$, and $f \in \mathcal{C}([a,b])$, then $|S_f(\underline{x}, \underline{\xi}) - S_f(\underline{x}', \underline{\xi}')| \leq (\omega_f(||\underline{x}||) + \omega_f(||\underline{x}'||))(b-a)$.
 \end{theorem}
 
 \begin{proof}
@@ -134,7 +128,7 @@ Finally, we can return to the derivation of the Riemann integral, as desired.
 \section{Properties of the Riemann integral}
 
 \begin{theorem}
-    If $f, g \in C([a,b])$ and $\alpha \in \R$, then
+    If $f, g \in \mathcal{C}([a,b])$ and $\alpha \in \R$, then
     \begin{enumerate}
         \item Linearity
             \begin{equation}
@@ -174,7 +168,7 @@ Finally, we can return to the derivation of the Riemann integral, as desired.
 \end{proof}
 
 \begin{theorem}
-    Consider $f \in C([a,b])$, and
+    Consider $f \in \mathcal{C}([a,b])$, and
     \begin{eqnarray*}
         m_f &=& \inf \{ f(x) : a \leq x \leq b \} \in \R \\
         M_f &=& \sup \{ f(x) : a \leq x \leq b \} \in \R \\
@@ -205,7 +199,7 @@ Finally, we can return to the derivation of the Riemann integral, as desired.
 \end{proof}
 
 \begin{theorem}
-    Consider $f, g \in C([a,b])$ with $f(x) \leq g(x), \forall x \in [a,b]$, then:
+    Consider $f, g \in \mathcal{C}([a,b])$ with $f(x) \leq g(x), \forall x \in [a,b]$, then:
     \begin{equation*}
         \int_a^b f(x) \dint x \leq \int_a^b f(x) \dint x
     \end{equation*}
@@ -225,7 +219,7 @@ Finally, we can return to the derivation of the Riemann integral, as desired.
 \end{proof}
 
 \begin{theorem}
-    Consider $f \in C([a,b])$, then:
+    Consider $f \in \mathcal{C}([a,b])$, then:
     \begin{equation*}
         \left |
             \int_a^b f(x) \dint x
@@ -244,7 +238,7 @@ Finally, we can return to the derivation of the Riemann integral, as desired.
 \section{Fundamental theorem of calculus}
 
 \begin{theorem}[Fundamental theorem of calculus]
-    Consider $f \in C([a,b])$.
+    Consider $f \in \mathcal{C}([a,b])$.
     \begin{enumerate}
         \item If $F:[a,b] \to \R$ is differentiable and $F'(x) = f(x)$, then
             \begin{equation*}
@@ -309,7 +303,7 @@ Finally, we can return to the derivation of the Riemann integral, as desired.
 \section{Integration methods}
 
 \begin{theorem}[Integration by parts]
-    Suppose $f, g \in C([a,b])$ and $f', g' \in C([a,b])$. Then,
+    Suppose $f, g \in C^1([a,b])$. Then,
     \begin{equation*}
         \int_a^b f'(x)g(x) \dint x = (f(b)g(b) - f(a)g(a)) - \int_a^b f(x) g'(x) \dint x
     \end{equation*}
@@ -323,7 +317,7 @@ Finally, we can return to the derivation of the Riemann integral, as desired.
 \end{proof}
 
 \begin{lemma}[Riemman-Lebesgue]
-    Consider $f \in C([-\pi, \pi])$, $f' \in C([a,b])$ and $f$ even periodic with period $2 \pi$, \emph{i.e.} $f(-\pi) = f(\pi)$. For $n \in \N \cup \{0\}$, define:
+    Consider $f \in \mathcal{C}([-\pi, \pi])$, $f' \in \mathcal{C}([a,b])$ and $f$ even periodic with period $2 \pi$, \emph{i.e.} $f(-\pi) = f(\pi)$. For $n \in \N \cup \{0\}$, define:
     \begin{eqnarray*}
         a_n &=& \frac{1}{\pi} \int_{-\pi}^\pi f(x) \sin(n x) \dint x \\
         b_n &=& \frac{1}{\pi} \int_{-\pi}^\pi f(x) \cos(n x) \dint x \\
