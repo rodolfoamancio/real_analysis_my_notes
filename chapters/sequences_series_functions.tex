@@ -467,6 +467,7 @@ Before evaluating the differentiability of power series, we must first show that
 \end{proof}
 
 \begin{corollary}
+    \label{corollary:k-th_der_power_series}
     If $f(x) = \sum_{n=0}^\infty a_n (x-x_0)^n$ has a positive radius of convergence, $\rho$, then $f(x) \in \mathcal{C}^\infty(x_0 - \rho, x_0 + \rho)$ and
     \begin{equation*}
         f^{(k)}(x) = \sum \limits_{n = k}^\infty \frac{n!}{(n-k)!}a_n (x - x_0)^{n-k}, \forall x \in (x_0 - \rho, x_0 + \rho) \text{ and } k \in \N
@@ -577,6 +578,8 @@ Finally, we return to proving Weierstrass approximation theorem.
 
 \section{Analytic functions}
 
+Once power series functions have been introduced, it is possible to study functions that can be represented as power functions. First, let us define:
+
 \begin{definition}[Analytic function]
     A function, $f$, is said to be \emph{analytic} on a non-empty, open interval $(a,b)$ if, and only if, given $x_0 \in (a,b)$ there exists a power series centered on $x_0$ which converges to $f$ near $x_0$. \emph{Id est}, there exists $(a_n)_{n=0}^\infty$, $c, d \in (a,b)$ and $c < x_0 < d$ such that:
     \begin{equation*}
@@ -587,6 +590,25 @@ Finally, we return to proving Weierstrass approximation theorem.
 \begin{remark}
     An analytic function is said to belong to the analytic class, $\mathcal{C}^\omega(S)$.
 \end{remark}
+
+\begin{theorem}[Uniqueness]
+    Let $c, d \in \R \cup \{-\infty, +\infty\}$ with $d > c$. Consider $x_0 \in (c, d)$ and suppose $f: (c,d) \to \R$. If $f(x) = \sum_{n=0}^\infty a_n (x - x_0)^n, \forall x \in (c, d)$ then $f \in \mathcal{C}^\omega(c,d)$ and:
+    \begin{equation*}
+        a_n = \frac{f^{(n)}(x_0)}{n!}, \text{ with } k \in \{0, 1, ...\}
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    From the definition of the power series, $f(x_0) = a_0$. Additionally, $(c,d) \subseteq (x_0 - \rho, x_0 + \rho)$ where $\rho > 0$ is the radius of convergence of the power series. From Corollary \ref{corollary:k-th_der_power_series}, $f \in \mathcal{C}^\infty(c,d)$ and:
+    \begin{equation*}
+        f^{(k)}(x) = \sum \limits_{n=k}^\infty \frac{n!}{(n-k)!}a_n (x - x_0)^{n-k}, \forall x \in (c,d)
+    \end{equation*}
+    Now, if $x = x_0$:
+    \begin{itemize}
+        \item if $n > k$ then the right-hand side of the previous equation equals zero;
+        \item else, if $n = k$ then $f^{(k)}(x_0) = k! a_k, \forall k \in \N$
+    \end{itemize}
+\end{proof}
 
 \begin{theorem}[Taylor's theorem]
     Suppose $f: [a,b] \to \R$ and $f \in \mathcal{C}^{n+1}(a,b)$. Given $x, x_0 \in [a,b]$, there exists $c \in (a,b)$ such that:
