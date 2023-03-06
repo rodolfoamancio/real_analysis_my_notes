@@ -13,12 +13,14 @@ In order to expand our concepts of limits from sequences to functions on real nu
 \end{definition}
 
 This notion can be further clarified by a few examples:
-\paragraph{Examples}
-\begin{enumerate}
-    \item $S = \{1/n: n \in \N\}$: $0$ is a cluster point of $S$, since $1/n$ can be made arbitrary small, so $ (0 - \delta, 0 + \delta) \cap S \setminus \{0\} \neq \varnothing, \forall \delta > 0$.
-    \item $S = (0,1)$ then $[0,1]$ is the set of cluster points of $S$.
-    \item $S = \Q$ then $\R$ is the set of cluster points.
-\end{enumerate}
+
+\begin{eg}
+    \begin{enumerate}
+        \item $S = \{1/n: n \in \N\}$: $0$ is a cluster point of $S$, since $1/n$ can be made arbitrary small, so $ (0 - \delta, 0 + \delta) \cap S \setminus \{0\} \neq \varnothing, \forall \delta > 0$.
+        \item $S = (0,1)$ then $[0,1]$ is the set of cluster points of $S$.
+        \item $S = \Q$ then $\R$ is the set of cluster points.
+    \end{enumerate}        
+\end{eg}
 
 \begin{theorem}
     Let $S \subseteq \R$, then $x$ is a cluster point of $S$ if, and only if, there exists a sequence $\{x_n\}$ of elements in $S \setminus \{x\}$ such that $x_n \to x$.
@@ -105,14 +107,17 @@ This notion can be further clarified by a few examples:
     We denote it by $L = \lim_{x \to c^+} f(x)$.
 \end{definition}
 
-\paragraph{Example} Consider
-\begin{equation*}
-    f(x) = \begin{cases}
-    1 \textnormal{ if } x > 0 \\
-    0 \textnormal{ if } x < 0
-    \end{cases}
-\end{equation*}
-Then, $\lim_{x \to 0^-} f(x) = 0$ and $\lim_{x \to 0^+} f(x) = 0$, despite $f(0)$ being undefined.
+\begin{eg}
+    Consider
+    \begin{equation*}
+        f(x) = \begin{cases}
+        1 \textnormal{ if } x > 0 \\
+        0 \textnormal{ if } x < 0
+        \end{cases}
+    \end{equation*}
+    Then, $\lim_{x \to 0^-} f(x) = 0$ and $\lim_{x \to 0^+} f(x) = 1$, despite $f(0)$ being undefined.    
+\end{eg}
+
 
 \begin{theorem}
     Consider $c$ a cluster point of $S\cap(-\infty, c)$ and $S\cap(c, \infty)$, with $S \subseteq \R$. Then, $c$ is a cluster point of $S$. Or equivalently:
@@ -267,9 +272,9 @@ As shown in a past example, it is possible that $\lim_{x \to c} f(x) \neq f(c)$.
     Furthermore, if $f$ is differentiable $\forall c \in I$ then we write the derivative as $f'$, or $f'(x)$ or $\frac{\dint f}{\dint x}$.
 \end{definition}
 
-\paragraph{Example} For all $n \in \N$, the derivative of the power function $f: \R \to \R$, $f(x) = \alpha x^n$ is given by $f'(c) = \alpha n c^{n-1}, \forall c \in \R$.
-
-\begin{proof}
+\begin{eg}
+    For all $n \in \N$, the derivative of the power function $f: \R \to \R$, $f(x) = \alpha x^n$ is given by $f'(c) = \alpha n c^{n-1}, \forall c \in \R$. \\
+    \textbf{Solution:}\\
     First, note that $\forall n \in \N$:
     \begin{equation*}
         (x-c) \sum \limits_{j=0}^{n-1} x^{n-1-j}c^j = \sum \limits_{j=0}^{n-1}x^{n-j}c^j - \sum \limits_{j=0}^{n-1} x^{n-1-j}c^{j+1}
@@ -284,7 +289,7 @@ As shown in a past example, it is possible that $\lim_{x \to c} f(x) \neq f(c)$.
     \begin{equation*}
         f'(c) = \lim \limits_{x \to c} \frac{\alpha x^n - \alpha c^n}{x-c} = \alpha \lim \limits_{x \to c} \sum \limits_{j=0}^{n-1} x^{n-1-j}c^j = \alpha \sum \limits_{j=0}^{n-1} c^{n-1-j}c^j = \alpha n c^{n-1}
     \end{equation*}
-\end{proof}
+\end{eg}
 
 \begin{theorem}
     If the function $f: I \to \R$ is differentiable at $c \in I$, then it is also continuous at $c$.
@@ -301,11 +306,11 @@ As shown in a past example, it is possible that $\lim_{x \to c} f(x) \neq f(c)$.
 
 \subsection{Weierstrass' function}
 
-Continuity seems to be a prerequisite for the differentiation of a function. However, we may be tempted to take it as a sufficient condition, which unfortunately is not the case. This behaviour can be seen by an example.
+Continuity seems to be a prerequisite for the differentiation of a function. However, we may be tempted to take it as a sufficient condition, which unfortunately is not the case. This behavior can be seen by an example.
 
-\paragraph{Example} Consider $f(x) = |x|$. Then, $f$ is not differentiable at $0$, even though it is continuous at $0$.
-
-\begin{proof}
+\begin{eg}
+    Consider $f(x) = |x|$. Then, $f$ is not differentiable at $0$, even though it is continuous at $0$. \\
+    \textbf{Proof:}\\
     Consider a sequence $\{x_n\}$ such that $x_n \to 0$ and
     \begin{equation*}
         \lim \limits_{n \to \infty} \frac{f(x_n) - f(0)}{x_n - 0}
@@ -315,11 +320,11 @@ Continuity seems to be a prerequisite for the differentiation of a function. How
         \frac{f(x_n)-f(0)}{x_n - 0} = \frac{|(-1)^n/n|}{(-1)^n/n} =(-1)^n
     \end{equation*}
     Hence, $\lim_{n \to \infty} (-1)^n$ does not exist.
-\end{proof}
+\end{eg}
 
-It is clear that a function may be continuous, and yet non-differentiable at some point. However, if $f: \R \to \R$ is continuous at $\R$, is there a point $c \in \R$ such that $f$ is differentiable at $c$. The answer is no. There exists a function everywhere continuous and nowhere differentiable, called the Weierstrass' function.
+It is clear that a function may be continuous, and yet non-differentiable at some point. However, if $f: \R \to \R$ is continuous at $\R$, is there a point $c \in \R$ such that $f$ is differentiable at $c$? The answer is no. There exists a function which is continuous and nowhere differentiable, called the Weierstrass' function.
 
-In order to prove such function exists and fulfils the description above it is necessary to gather some tools, the following theorems are presented with this goal.
+In order to prove such function exists and fulfills the description above it is necessary to gather some tools, the following theorems are presented with this goal.
 
 \begin{theorem}
     For the cosine function, it is true that:
