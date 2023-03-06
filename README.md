@@ -12,7 +12,7 @@ Here is the list of topics I plan to organize on chapters:
 - [X] Sequences and series
 - [X] Differentiation
 - [X] Integration
-- [ ] Sequences and series of functions
+- [X] Sequences and series of functions
 - [ ] Basic topology
 - [ ] Advanced topics
 
@@ -23,3 +23,5 @@ My main references I have used for studying and making these notes so far are:
 2. Abbott, S. (2001). Understanding analysis. New York: Springer.
 3. Rodriguez, C. (2020). Real Analysis, 18.100A | Fall 2020 | Undergraduate, Graduate. MOOC offered by MIT. Classes available on [YouTube](https://www.youtube.com/playlist?list=PLUl4u3cNGP61O7HkcF7UImpM0cR_L2gSw) and supplementary material [here] (https://ocw.mit.edu/courses/18-100a-real-analysis-fall-2020/).
 4. Bressoud, D. (2022). A radical approach to real analysis (Vol. 10). American Mathematical Society.
+5. Wade, William R. Introduction to Analysis. Pearson Education, 2014.
+6. Pugh, C. C., & Pugh, C. C. (2002). Real mathematical analysis (Vol. 2011). New York/Heidelberg/Berlin: Springer.
