@@ -78,14 +78,23 @@ Informally, we understand that two sets are equal if every element of one set is
     A set $A$ is a proper subset of $B$ if $A \subseteq B$ and $A \neq B$. Notation: $A \subsetneq B$.
 \end{definition}
 
-Now, tow (or more) sets can be combined by operations. We define:
+A few more definitions are necessary to introduce set operations, for the following statements, consider two sets $A$ and $B$
 
-\begin{itemize}
-    \item Union: $A \cup B = \{ x: x \in A \text{ or } x \in B\}$
-    \item Intersection: $A \cap B = \{ x: x \in A \text{ and } x \in B\}$
-    \item Difference: $A \setminus B = \{ x : x \in A \text { and } x \notin B\}$
-    \item Complement: $A^C = \{ x \notin A \}$
-\end{itemize}
+\begin{definition}[Set union]
+    $A \cup B = \{ x: x \in A \text{ or } x \in B\}$
+\end{definition}
+
+\begin{definition}[Set intersection]
+    $A \cap B = \{ x: x \in A \text{ and } x \in B\}$
+\end{definition}
+
+\begin{definition}[Set difference]
+    $A \setminus B = \{ x : x \in A \text { and } x \notin B\}$
+\end{definition}
+
+\begin{definition}[Set complement]
+    $A^C = \{ x \notin A \}$
+\end{definition}
 
 \begin{definition}[Disjoint sets]
     Two sets, $A$ and $B$, are disjoint if $A \cap B = \varnothing$.
@@ -103,9 +112,8 @@ Some important from set theory are the so-called De Morgan's laws:
     \end{itemize}
 \end{theorem}
 
-Following the proof of the first result is shown, the other results can be derived similarly.
-
 \begin{proof}
+    Proof for the first item of the previous theorem, the other results are derived similarly.\\
     Two sets $X$ and $Y$ are equal if $X \subseteq Y$ and $Y \subseteq X$. Our goal is to show that $(B \cup C)^C \subseteq B^C \cap C^C$ and $(B \cup C)^C \supseteq B^C \cap C^C$. \\
     Let $x \in (B \cup C)^C$. It follows that $x \notin (B \cup C)$ then $x \notin B$ and $x \notin C$. So, $x \in B^C \cap C^C$ and we have $(B \cup C)^C \subseteq B^C \cap C^C$. \\
     From the opposite direction, let  $x \in B^C \cap C^C$. Then $x \in B^C$ and $x \in C^C$ which means $x \notin B$ and $x \notin C$. So $x \notin (B \cup C) \Rightarrow x \in (B \cup C)^C$. So $B^C \cap C^C \subseteq (B \cup C)^C$.
@@ -207,7 +215,7 @@ The previous example shows an important characteristic of the supremum (or infim
 The formal definition of function is the following:
 
 \begin{definition}[Function]
-    Given a set $A$ and a set $B$, a function is a mapping rule which takes as an argument an element $a \in A$ and associates it with an element of $B$. We write $f: A \to B$. $f(a)$ is used to express the element of $B$, $f(a) \in B$, associated with the element $a \in A$. $A$ is called the domain of the function, while $B$ is its codmoain. The image of $f$ is not necessarily equal to $B$, but refers to $\{b \in B: b = f(a) \text{ for some } a \in A\} \subseteq B$.
+    Given a set $A$ and a set $B$, a function is a mapping rule which takes as an argument an element $a \in A$ and associates it with an element of $B$. We write $f: A \to B$. $f(a)$ is used to express the element of $B$, $f(a) \in B$, associated with the element $a \in A$. $A$ is called the domain of the function, while $B$ is its codomoain. The image of $f$ is not necessarily equal to $B$, but refers to $\{b \in B: b = f(a) \text{ for some } a \in A\} \subseteq B$.
 \end{definition}
 
 It is worth noting how this definition liberates math from the usual `formula' understanding of a function. In particular, this definition is closer to Dirichlet's definition, and it allows math to deal with more interesting and complex functions, such as:
