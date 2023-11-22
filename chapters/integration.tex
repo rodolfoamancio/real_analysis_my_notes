@@ -125,6 +125,24 @@ Finally, we can return to the derivation of the Riemann integral, as desired.
     Thus, by the Squeeze theorem, $|S_f(\underline{x}(r), \underline{\xi}(r)) - L| \to 0$ as $r \to \infty$.
 \end{proof}
 
+The derivation on a generalized partition may seem too complex for people with knowledge of calculus, up to this point the most familiar way of describing the Riemann integral involves the upper and lower sum, which are defined as:
+
+\begin{definition}[Lower and upper Riemann sum]
+    Consider $f \in \mathcal{C}([a,b])$. Additionally, consider a partition $\underline{x}$ of a subset $I = (c,d) \in [a,b]$. For each subinterval $[x_{k-1}, x_k]$ of $\underline{x}$, let $l_k = \inf \{f(x) : x \in [x_{k-1}, x_k]\}$ and $u_k = \sup \{f(x) : x \in [x_{k-1}, x_k]\}$. Then,
+    \begin{equation}
+        L_f(\underline{x}) := \sum \limits_{k=1}^n l_k (x_k - x_{k-1})
+    \end{equation}
+    is the Lower Riemann sum, and
+    \begin{equation}
+        U_f(\underline{x}) := \sum \limits_{k=1}^n u_k (x_k - x_{k-1})
+    \end{equation}
+    is the upper Riemann sum.
+\end{definition}
+
+Since, from the definition a tagged partition $\xi_k \in [x_{k-1}, x_k]$ it becomes clear that $l_k \leq f(\xi_k) \leq u_k$ and as a consequence $L_f(\underline{x}) \leq S_f(\underline{x}, \underline{\xi}) \leq U_f(\underline{x})$.
+
+Instead of deriving the results considering how the upper and lower sums converge as the partition becomes more refined, the generalized version provides a concise way for constructing the definition and evaluating the results.
+
 \section{Properties of the Riemann integral}
 
 \begin{theorem}

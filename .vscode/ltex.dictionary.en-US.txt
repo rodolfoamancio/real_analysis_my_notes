@@ -3,3 +3,4 @@ infimum
 supremum
 Pointwise
 pointwise
+subinterval
