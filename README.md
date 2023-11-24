@@ -1,6 +1,8 @@
 # My notes on real analysis
 The best way to learn something is to teach, so they say. I find that particularly valuable. I enjoy studying and teaching, and I also try to make notes and organize my studies. More importantly, I try to make it clear and hope to write it on an easy to grasp fashion.
 
+**Please note**: this is not mean as a reference textbook, but rather a summary of my studies. No commercial goal intended. 
+
 ## About this project
 Real analysis is something I have been studying on my own for some time now. Partially because it is useful for other topics I am interested in, such as measure theory, probability and math in general. And partially because as a professional data scientist I often miss the theoretical explorations of math.
 
