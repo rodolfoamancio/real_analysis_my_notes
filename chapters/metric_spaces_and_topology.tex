@@ -1,0 +1,20 @@
+\chapter{Metric spaces and topology}
+
+Metric spaces allow to evaluate the previous results of analysis for functions of one variable, also referred as analysis on the line, to multiple dimensions. First, it is necessary to define what is a metric:
+
+\begin{definition}[Metric]
+    Given a set $M$, a function $d: M \times M \to \R$ is a \emph{metric} on $M$ if $\forall x, y \in M$ the following conditions are valid:
+    \begin{itemize}
+        \item $d(x,y) \geq 0$ and $d(x,y) = 0$ if and only if $x=y$,
+        \item $d(x,y) = d(y,x)$,
+        \item $d(x,y) \leq d(x,z) + d(z,y), \forall z \in M$ (Triangle inequality).
+    \end{itemize}
+\end{definition}
+
+A metric space is defined as a tuple formed by a set $M$ and a metric $d$: $(M, d)$.
+
+Consider the following examples:
+
+% \begin{example}
+%     For $M = \R^2$, is $d(x, y) = \sqrt{(x_1 -  x_2)^2 + (y_1 - y_2)^2}$ a valid metric?
+% \end{example}
