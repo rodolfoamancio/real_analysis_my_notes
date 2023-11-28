@@ -4,17 +4,23 @@ Metric spaces allow to evaluate the previous results of analysis for functions o
 
 \begin{definition}[Metric]
     Given a set $M$, a function $d: M \times M \to \R$ is a \emph{metric} on $M$ if $\forall x, y \in M$ the following conditions are valid:
-    \begin{itemize}
+    \begin{enumerate}
         \item $d(x,y) \geq 0$ and $d(x,y) = 0$ if and only if $x=y$,
         \item $d(x,y) = d(y,x)$,
         \item $d(x,y) \leq d(x,z) + d(z,y), \forall z \in M$ (Triangle inequality).
-    \end{itemize}
+    \end{enumerate}
 \end{definition}
 
 A metric space is defined as a tuple formed by a set $M$ and a metric $d$: $(M, d)$.
 
 Consider the following examples:
 
-% \begin{example}
-%     For $M = \R^2$, is $d(x, y) = \sqrt{(x_1 -  x_2)^2 + (y_1 - y_2)^2}$ a valid metric?
-% \end{example}
+\begin{eg}
+    For $M = \R^2$, is $d(x, y) = \sqrt{(x_1 -  x_2)^2 + (y_1 - y_2)^2}$ a valid metric? \\
+    \textbf{Solution} \\
+    Evaluating the three properties a \emph{metric} must satisfy:
+    \begin{enumerate}
+        \item First, $(x_1 - x_2)^2$ and $(y_1 - y_2)$ are strictly non-negative for any values of $x,y \in \R^2$. Since $\sqrt{z} \geq 0, \forall z \in R : z \geq 0$ then $d(x, y) \geq 0$. Second, $d(x, y) = 0$ which implies $\sqrt{(x_1 - x_2)^2 + (y_1- y_2)^2} = 0$, so $(x_1 - x_2)^2 = - (y_1 - y_2)^2$. Since $z^2 \geq 0, \forall z \in \R$ then the only possible solution for this equation is $x_1 = x_2$ and $y_1 = y_2$ and $d(x, y) = 0 \Longleftrightarrow x = y$,
+        \item Since $(x_1 - x_2)^2 = (x_2 - x_1)^2, \forall x_1, x_2 \in \R$ and the same is valid for the second argument inside the square root, then $d(x, y) = d(y, x)$,
+    \end{enumerate}
+\end{eg}
