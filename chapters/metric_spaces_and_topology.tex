@@ -22,5 +22,17 @@ Consider the following examples:
     \begin{enumerate}
         \item First, $(x_1 - x_2)^2$ and $(y_1 - y_2)$ are strictly non-negative for any values of $x,y \in \R^2$. Since $\sqrt{z} \geq 0, \forall z \in R : z \geq 0$ then $d(x, y) \geq 0$. Second, $d(x, y) = 0$ which implies $\sqrt{(x_1 - x_2)^2 + (y_1- y_2)^2} = 0$, so $(x_1 - x_2)^2 = - (y_1 - y_2)^2$. Since $z^2 \geq 0, \forall z \in \R$ then the only possible solution for this equation is $x_1 = x_2$ and $y_1 = y_2$ and $d(x, y) = 0 \Longleftrightarrow x = y$,
         \item Since $(x_1 - x_2)^2 = (x_2 - x_1)^2, \forall x_1, x_2 \in \R$ and the same is valid for the second argument inside the square root, then $d(x, y) = d(y, x)$,
+        \item For the third point, start by considering $x = (x_1, y_1), y = (x_2, y_2), z = (x_3, y_3)$. Using a little of linear algebra, $x \cdot y = x_1x_2 + y_1y_2$ is the dot product and $|x| = \sqrt{x \cdot x}$. Define $u = x - y$ and $v = y - z$, so $u + v = x - z$. With, $d(x,y) = |u|$ and $d(y,z) = |v|$. Hence, the triangle inequality may be written as:
+        \begin{equation*}
+            |u + v| \leq |u| + |v|, \forall u, v \in \R
+        \end{equation*}
+        Squaring both sides leads to:
+        \begin{align*}
+            |u + v|^2 &\leq |u|^2 + 2|u||v| + |v|^2 \\
+            (u + v) \cdot (u + v) &\leq |u|^2 + 2|u||v| + |v|^2 \\
+            |u|^2 + 2u\cdot v + |v|^2 &\leq |u|^2 + 2|u||v| + |v|^2 \\
+            u\cdot v &\leq |u||v|
+        \end{align*}
+        From linear algebra, $u \cdot v = |u||v|\cos(\theta)$ where $\theta$ is the angle betweeen the two vectors, as $-1 \leq \cos(\theta) \leq 1 ,\forall \theta \in [-\pi, \pi]$ then the relation above is true and the condition is verified.
     \end{enumerate}
 \end{eg}
