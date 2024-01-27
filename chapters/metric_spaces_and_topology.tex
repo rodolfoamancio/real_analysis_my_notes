@@ -5,9 +5,9 @@ Metric spaces allow to evaluate the previous results of analysis for functions o
 \begin{definition}[Metric]
     Given a set $M$, a function $d: M \times M \to \R$ is a \emph{metric} on $M$ if $\forall x, y \in M$ the following conditions are valid:
     \begin{enumerate}
-        \item $d(x,y) \geq 0$ and $d(x,y) = 0$ if and only if $x=y$,
-        \item $d(x,y) = d(y,x)$,
-        \item $d(x,y) \leq d(x,z) + d(z,y), \forall z \in M$ (Triangle inequality).
+        \item Positive definiteness: $d(x,y) \geq 0$ and $d(x,y) = 0$ if and only if $x=y$,
+        \item Symmetry: $d(x,y) = d(y,x)$,
+        \item Triangle inequality: $d(x,y) \leq d(x,z) + d(z,y), \forall z \in M$.
     \end{enumerate}
 \end{definition}
 
@@ -36,3 +36,11 @@ Consider the following examples:
         From linear algebra, $u \cdot v = |u||v|\cos(\theta)$ where $\theta$ is the angle betweeen the two vectors, as $-1 \leq \cos(\theta) \leq 1 ,\forall \theta \in [-\pi, \pi]$ then the relation above is true and the condition is verified.
     \end{enumerate}
 \end{eg}
+
+\begin{definition}[Convergence]
+    A sequence $(x_n) $ in a metric space $(X, d)$ converges to $x \in X$ if for all $\varepsilon > 0$ there exists $N \in \N$ such that $d(x_m, x) < \varepsilon$ if $n \geq N$.
+\end{definition}
+
+\begin{definition}[Cauchy sequence]
+    A sequence $(x_n)$ in a metric space $(X, d)$ is Cauchy if for all $\varepsilon > 0$ there exists $N \in \N$ such that $d(x_n, x_m) < \varepsilon$ provided $m, n \geq N$.
+\end{definition}
