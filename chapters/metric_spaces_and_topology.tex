@@ -37,6 +37,17 @@ Consider the following examples:
     \end{enumerate}
 \end{eg}
 
+\begin{eg}
+    Consider $f, g \in \mathcal{C}([0,1])$. Is $d(f,g) = \sup\{|f(x) - g(x)|: x \in [0,1]\}$ a metric?
+    \textbf{Solution}
+    Consider each property:
+    \begin{enumerate}
+        \item Since $|x| \geq 0, \forall x \ in \R$ so $|f(x) - g(x)| \geq 0, \forall x \in [0,1]$ and consequently its supremum, hence the first condition is satisfied;
+        \item Notice that $|f(x) - g(x)| = |-1*(g(x) - f(x))|$ since $|x||y| = |xy| \forall x,y \in \R^2$. Thus, $|f(x) - g(x)| = |-1*(g(x) - f(x))| = |-1||g(x) - f(x)| = |g(x) - f(x)|$. Since $|x| = |-x|, \forall x \in \R$, then $|f(x) - g(x)| = |g(x) - f(x)|$;
+        \item Finally, let $h \in \mathcal{C}([0, 1])$ with $\alpha = \sup \{|f(x) - h(x)|: x \in [0,1] \}$ and $\beta = \sup \{|h(x) - g(x)|: x \in [0,1] \}$. From the triangle inequality: $\alpha + \beta \geq |f(x) - h(x)| + |h(x) - g(x)| = |f(x) - g(x)|, \forall x \in [0,1]$ and $\alpha + \beta$ is an upper bound for $|f(x) - g(x)|$. Thus, $\alpha + \beta \geq \sup\{|h(x) - g(x)|: x \in [0,1]\}$.
+    \end{enumerate}
+\end{eg}
+
 \begin{definition}[Convergence]
     A sequence $(x_n) $ in a metric space $(X, d)$ converges to $x \in X$ if for all $\varepsilon > 0$ there exists $N \in \N$ such that $d(x_m, x) < \varepsilon$ if $n \geq N$.
 \end{definition}
