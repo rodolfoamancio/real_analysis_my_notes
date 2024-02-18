@@ -60,3 +60,8 @@ Consider the following examples:
     A metric space $(X, d)$ is complete if every Cauchy sequence $(x_n) \subseteq X$ converges to any element $x \in X$
 \end{definition}
 
+\begin{eg}
+    Consider a sequence $(x_n)$ in a metric space $(X, d)$ which converges to $x \in X$. Show that $(x_n)$ is also Cuachy.\\
+    \textbf{Solution}
+    Let $\varepsilon > 0$, then $(x_n)$ is Cauchy if there exists $N \in \N$ such that $d(x_n, x_m) < \varepsilon, \forall n, m \geq N$. Since the sequence is convergent, there exists $L \in \N$ such that $d(x_{l}, x) < \varepsilon', \forall l \geq L$ given an arbitrary $\varepsilon' > 0$. From the triangle inequality, $d(x_n, x_m) \leq d(x_n, x) + d(x_m, x)$. Choose $\varepsilon' = \varepsilon/2$, then $d(x_n, x_m) \leq d(x_n, x) + d(x_m, x) < \varepsilon/2 + \varepsilon/2 = \varepsilon$, for $m, n \geq L$. Hence, $d(x_n, x_m) < \varepsilon$ and the sequence is Cauchy.
+\end{eg}
