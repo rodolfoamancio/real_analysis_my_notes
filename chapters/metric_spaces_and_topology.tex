@@ -65,3 +65,10 @@ Consider the following examples:
     \textbf{Solution}
     Let $\varepsilon > 0$, then $(x_n)$ is Cauchy if there exists $N \in \N$ such that $d(x_n, x_m) < \varepsilon, \forall n, m \geq N$. Since the sequence is convergent, there exists $L \in \N$ such that $d(x_{l}, x) < \varepsilon', \forall l \geq L$ given an arbitrary $\varepsilon' > 0$. From the triangle inequality, $d(x_n, x_m) \leq d(x_n, x) + d(x_m, x)$. Choose $\varepsilon' = \varepsilon/2$, then $d(x_n, x_m) \leq d(x_n, x) + d(x_m, x) < \varepsilon/2 + \varepsilon/2 = \varepsilon$, for $m, n \geq L$. Hence, $d(x_n, x_m) < \varepsilon$ and the sequence is Cauchy.
 \end{eg}
+
+Unlike $\R$, higher dimensions spaces do not hold the converse statement, \textit{id est} ``Cauchy sequences converge''. In one dimension, this is equivalent to the Axiom of Completeness. However, spaces such as $\R^2$ do not present a clear criterion for ordering, and thus the definition of upper bonds — for instance — are not so clear. Since completeness will be a prerequisite for further developments, the convergence of Cauchy sequences will be taken as the definition of completeness.
+
+\begin{definition}[Completeness]
+    A metric space $(X, d)$ is complete if every Cauchy sequence in $X$ converges to an element $x \in X$.
+\end{definition}
+
