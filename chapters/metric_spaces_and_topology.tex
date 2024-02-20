@@ -72,3 +72,15 @@ Unlike $\R$, higher dimensions spaces do not hold the converse statement, \texti
     A metric space $(X, d)$ is complete if every Cauchy sequence in $X$ converges to an element $x \in X$.
 \end{definition}
 
+Additionally, the most natural metric to be used when working in $\mathcal{C}([0,1])$ was discussed in a previous example:
+
+\begin{equation*}
+    ||f - g||_\infty d(f,g) = \sup \{ |f(x) - g(x)|:x \in [0,1] \}
+\end{equation*}
+
+Setting $g = 0$ yields the ``sup-norm'':
+
+\begin{equation*}
+    ||f||_\infty = d(f, 0) = \sup \{ |f(x)|:x \in [0,1] \} 
+\end{equation*}
+
