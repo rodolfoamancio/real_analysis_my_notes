@@ -103,7 +103,22 @@ Now, from this initial setting the previous results of analysis on a line can be
     \end{enumerate}
 \end{definition}
 
+% \begin{eg}
+%     Verify the following statements:
+%     \begin{enumerate}
+%         \item A typical $\varepsilon$-neighborhood ($V_\varepsilon(x)$) is an open set. \\
+%         From the definition, if $(X, d)$ is a metric space then $V_\varepsilon(x) = \{ v \in X: d(x, v) < \varepsilon\}$ with $x \in X$. Let $v \in V_\varepsilon(x)$ then define $W_{\varepsilon'}(v) = \{w \in V_\varepsilon(x) : d(w, v) < \varepsilon'\}$. $V$ is open if $W \subseteq V$. 
+%         \item B
+%     \end{enumerate}
+% \end{eg}
 
 \begin{definition}[Compactness]
     Consider a set $C \subset X$ and a metric space $(X,d)$. Then, $C$ is compact if every sequence $(c_n) \in C$ has a convergent subsequence which converges to a limit $c \in C$.
+\end{definition}
+
+\begin{definition}[Closure and interior]
+    Consider the metric space $(X, d)$ with a subset $A$. The closure of $A$ denoted $\overline{A}$ is the union of $A$ with its limit points. And the interior of $A$ denoted $A^{o}$ is given by:
+    \begin{equation*}
+        E^{o} = \{ a \in A : \text{ there exists } V_{\varepsilon}(a) \subseteq A\}
+    \end{equation*}
 \end{definition}
